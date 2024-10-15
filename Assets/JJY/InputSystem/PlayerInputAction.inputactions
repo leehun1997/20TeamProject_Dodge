@@ -2,7 +2,7 @@
     "name": "PlayerInputAction",
     "maps": [
         {
-            "name": "Player",
+            "name": "KeyboardMouse",
             "id": "f90b4783-e3b9-4c6c-912a-c6ef585c80bd",
             "actions": [
                 {
