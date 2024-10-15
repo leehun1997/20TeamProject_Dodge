@@ -32,8 +32,8 @@ public class TopDownController : MonoBehaviour
     {
         OnLookEvent?.Invoke(direction);
     }
-    //private void CallAttackEvent(AttackSO attackSO)
+    //public void CallAttackEvent()
     //{
-    //    OnAttackEvent?.Invoke(attackSO);
+    //    OnAttackEvent?.Invoke();
     //}
 }
