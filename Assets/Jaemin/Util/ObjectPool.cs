@@ -41,10 +41,10 @@ public class ObjectPool : MonoBehaviour
         }
 
         Queue<GameObject> queue = PoolDictionary[name];
-        int originalQueueCount = queue.Count;
+        int QueueCount = queue.Count;
 
         // 비활성화된 오브젝트를 찾을 때까지 반복
-        for (int i = 0; i < originalQueueCount; i++)
+        for (int i = 0; i < QueueCount; i++)
         {
             GameObject obj = queue.Dequeue();
 
