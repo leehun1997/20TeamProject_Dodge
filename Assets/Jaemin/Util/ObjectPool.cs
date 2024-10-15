@@ -41,14 +41,14 @@ public class ObjectPool : MonoBehaviour
         }
 
         Queue<GameObject> queue = PoolDictionary[name];
-        int QueueCount = queue.Count;
+        int originalQueueCount = queue.Count;
 
         // 비활성화된 오브젝트를 찾을 때까지 반복
-        for (int i = 0; i < QueueCount; i++)
+        for (int i = 0; i < originalQueueCount; i++)
         {
             GameObject obj = queue.Dequeue();
 
-            // 만약 오브젝트가 비활성화 상태라면 사용하고, 그렇지 않다면 큐 뒤로 보냅니다.
+            // 만약 오브젝트가 비활성화 상태라면 사용하고, 그렇지 않다면 큐 뒤로 보낸다
             if (!obj.activeInHierarchy)
             {
                 obj.SetActive(true);
@@ -56,11 +56,11 @@ public class ObjectPool : MonoBehaviour
                 return obj; // 활성화된 오브젝트를 반환
             }
 
-            // 오브젝트가 이미 활성화된 경우 큐 뒤로 보냅니다.
+            // 오브젝트가 이미 활성화된 경우 큐 뒤로 보낸다
             queue.Enqueue(obj);
         }
 
-        // 사용할 수 있는 비활성화된 오브젝트가 없는 경우 null을 반환합니다.
+        // 사용할 수 있는 비활성화된 오브젝트가 없는 경우 null을 반환
         return null;
     }
 }
