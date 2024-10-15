@@ -3,18 +3,32 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : TopDownController
 {
-     
-     void OnMove(InputValue value)
+    private Camera camera;
+    
+    protected override void Awake()
     {
-        Debug.Log("키보드 눌림");
-        //Vector2 moveInput = value.Get<Vector2>().normalized;
-       // CallMoveEvent(moveInput);
+        base.Awake();
+        camera = Camera.main;
     }
 
-    void OnLook(InputValue value)
+    public void OnMove(InputValue value)
+     {       
+          Vector2 moveInput = value.Get<Vector2>().normalized;
+          CallMoveEvent(moveInput);
+     }
+
+    public void OnLook(InputValue value)
     {
-        Debug.Log("마우스 눌림");
+        Vector3 mousePos = value.Get<Vector2>();
+        Vector3 worldPos = camera.ScreenToWorldPoint(mousePos);
+        
+        Vector2 newAim = (worldPos - transform.position).normalized;
+        Debug.Log(newAim.x + "," + newAim.y);
+        CallLookEvent(newAim);
     }
 
 
+   
+    
+    
 }

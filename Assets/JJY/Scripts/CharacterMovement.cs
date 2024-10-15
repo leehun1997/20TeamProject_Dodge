@@ -35,12 +35,10 @@ public class CharacterMovement : MonoBehaviour
          direction = _dircetion;
     }
     
-
-
+    
     private void Move(Vector2 direction)
     {
         rb.velocity = direction * speed;
     }
-
-
+    
 }
