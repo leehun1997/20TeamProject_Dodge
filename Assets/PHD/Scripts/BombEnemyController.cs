@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class BombEnemyController : EnemyController
 {
     [SerializeField][Range(0f, 1000f)] float walkTargetRange = 0f;
+    private Vector3 playerPastPosition;
+    private SpriteRenderer BombEnemyRenderer;
 
     private bool isCollision;
+    private bool onceChase = true;
 
 
     protected override void Start()
     {
         base.Start();
         // ## 헬스시스템 구독
-
-        Vector2 direction = Vector2.zero;
-        if (DistanceToTarget() < walkTargetRange)
-        {
-            direction = DirectionToTarget();
-        }
-
-        CallMoveEvent(direction); //일부러 FixedUpdate에서 안부름 계속 쫓아다니면 너무 하드함
+        playerPastPosition = ClosesTarget.position;
+        BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
+        
+        Chase();
 
     }
 
@@ -32,14 +33,45 @@ public class BombEnemyController : EnemyController
     {
         base.FixedUpdate();
 
+
         if (isCollision) 
         {
             ApplyDamage();
         }
 
+        if (Mathf.Abs(playerPastPosition.x - transform.position.x) < 0.1
+            && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1) {
+            Destroy(gameObject, 0);
+        }
+
     }
 
+ 
+
     private void ApplyDamage()
+    {
+        
+    }
+
+    private void Chase() 
+    {
+        Vector2 direction = Vector2.zero;
+
+        direction = DirectionToTarget();
+
+        CallMoveEvent(direction);
+        Rotate(direction);
+        onceChase = false;
+        
+    }
+
+    private void Rotate(Vector2 direction)
+    {
+        float rotz = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        BombEnemyRenderer.flipY = Mathf.Abs(rotz) < 0f;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         
     }

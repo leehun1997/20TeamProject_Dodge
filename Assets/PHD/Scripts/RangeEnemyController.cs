@@ -61,6 +61,7 @@ public class RangeEnemyController : EnemyController
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToTarget, attackTargetRange, layerMaskTarget);
 
+        Debug.DrawRay(transform.position, directionToTarget, Color.red);
         if (hit.collider != null)
         {
             isAttacking = true;
