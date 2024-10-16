@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputController : TopDownController
+public class PlayerInputController : DodgeController
 {
     private Camera camera;
     

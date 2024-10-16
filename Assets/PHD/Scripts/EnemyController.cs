@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
-public class EnemyController : TopDownController
+public class EnemyController : DodgeController
 {
 
     protected Transform ClosesTarget { get; private set; }

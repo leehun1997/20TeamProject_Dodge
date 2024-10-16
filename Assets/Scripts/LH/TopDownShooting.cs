@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TopDownShooting : MonoBehaviour
 {
-    private TopDownController controller;
+    private DodgeController controller;
     [SerializeField] private Transform BulletSpawnPoint;
     private Vector2 shootDirection = Vector2.up;
 
     private void Awake()
     {
-        controller = GetComponent<TopDownController>();
+        controller = GetComponent<DodgeController>();
     }
 
     private void Start()

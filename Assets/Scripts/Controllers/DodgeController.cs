@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TopDownController : MonoBehaviour
+public class DodgeController : MonoBehaviour
 {
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
-    //public event Action<AttackSO> OnAttackEvent;
+    public event Action<BulletSO> OnAttackEvent;
     protected bool isAttacking { get; set; }
 
     
@@ -32,10 +32,10 @@ public class TopDownController : MonoBehaviour
     {
         OnLookEvent?.Invoke(direction);
     }
-    //private void CallAttackEvent(AttackSO attackSO)
-    //{
-    //    OnAttackEvent?.Invoke(attackSO);
-    //}
+    private void CallAttackEvent(BulletSO attackSO)
+    {
+       OnAttackEvent?.Invoke(attackSO);
+    }
 }
 
 

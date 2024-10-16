@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterAiming : MonoBehaviour
 {    
-    private TopDownController controller;
+    private DodgeController controller;
      
     
     [Header("Aiming Settings")]
@@ -12,7 +12,7 @@ public class CharacterAiming : MonoBehaviour
     
     private void Awake()
     {
-        controller = GetComponent<TopDownController>();
+        controller = GetComponent<DodgeController>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     
