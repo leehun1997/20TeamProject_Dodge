@@ -33,7 +33,6 @@ public class BombEnemyController : EnemyController
     {
         base.FixedUpdate();
 
-        
 
         if (isCollision) 
         {
@@ -44,12 +43,6 @@ public class BombEnemyController : EnemyController
             && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1) {
             Destroy(gameObject, 0);
         }
-
-       /* while (onceChase)
-        {
-            Chase();
-            
-        }*/
 
     }
 
