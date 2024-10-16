@@ -52,6 +52,7 @@ public class CharacterStatHandler : MonoBehaviour
 
     private void ShowDebug()
     {
+        Debug.Log(gameObject.name);
         Debug.Log("초기설정 스탯SO : " + currentStat.characterStatSO);
         Debug.Log("초기설정 최대HP : " + currentStat.characterStatSO.MaxHP);
         Debug.Log("초기설정 이동속도 : " + currentStat.characterStatSO.MoveSpeed);

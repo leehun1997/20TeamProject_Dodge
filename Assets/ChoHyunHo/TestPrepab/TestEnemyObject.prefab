@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6947184531741026730}
   - component: {fileID: 5575690102515505297}
   m_Layer: 0
-  m_Name: TestObject
+  m_Name: TestEnemyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    characterStatSO: {fileID: 11400000, guid: c948b2fd1075fc74b87ceaec49e11f0f, type: 2}
-    bulletSO: {fileID: 11400000, guid: 7c825f616a37fb64eb24924eeae978a8, type: 2}
+    characterStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
+    bulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}
