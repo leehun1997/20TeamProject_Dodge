@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a81cfeca8c94ad47b32630334dc739e, type: 3}
-  m_Name: WeaponSO
+  m_Name: BulletSO
   m_EditorClassIdentifier: 
   targetLayer:
     serializedVersion: 2
