@@ -14,7 +14,7 @@ public class ProjectileController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private TrailRenderer trailRenderer;
 
-    //private BulletSO attackData;
+    private BulletSO attackData;
     private Vector2 direction;
     private float timeAfterShoot = 0f;
     private bool fxDestroy = true;
@@ -23,7 +23,7 @@ public class ProjectileController : MonoBehaviour
     {
         rigidbody= GetComponent<Rigidbody2D>();
         spriteRenderer= GetComponent<SpriteRenderer>();
-        //trailRenderer= GetComponent<TrailRenderer>();
+        trailRenderer= GetComponent<TrailRenderer>();
     }
 
     // Update is called once per frame
@@ -36,29 +36,28 @@ public class ProjectileController : MonoBehaviour
 
         timeAfterShoot += Time.deltaTime;
 
-        //if(timeAfterShoot > attackData.duration)
-        //{
-        //    DestroyProjectile(transform.position);
-        //}
-
-        //rigidbody.velocity = direction * attackData.speed;
+        if (timeAfterShoot > attackData.duration)
+        {
+            DestroyProjectile(transform.position);
+        }
+        rigidbody.velocity = direction * attackData.speed;
     }
 
-    public void InitiateAttack(Vector2 direction)//, BulletSO bulletSO)
+    public void InitiateAttack(Vector2 direction, BulletSO bulletSO)
     {
-        //this.attackData = bulletSO;
+        Debug.Log("InitiateAttack");
+        this.attackData = bulletSO;
         this.direction = direction;
 
-        UpdateProjectileSprite();
+        UpdateProjectile();
         //trailRenderer.Clear();//필요없으면 제거        
 
         isReady= true;
     }
 
-    private void UpdateProjectileSprite()//다양한 공격 정보 업데이트
+    private void UpdateProjectile()//다양한 공격 정보 업데이트
     {
-        transform.localScale = Vector3.one;// * attackData.size
-        //spriteRenderer.color = bulletSO.projectilrColor;
+        transform.localScale = Vector3.one * attackData.size;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,11 +67,11 @@ public class ProjectileController : MonoBehaviour
             Vector2 destroyPosition = collision.ClosestPoint(transform.position) - direction * 0.2f;
             DestroyProjectile(destroyPosition);
         }
-        //else if(attackData.target.value, collision.gameObject.layer)
-        //{
-        //    //데미지 계산 필요
-        //    DestroyProjectile(collision.ClosestPoint(transform.position));
-        //}
+        else if (IsLayerMatched(attackData.targetLayer , collision.gameObject.layer))
+        {
+            //데미지 계산 필요
+            DestroyProjectile(collision.ClosestPoint(transform.position));
+        }
     }
 
     private bool IsLayerMatched(int value, int layer)//레이어 마스크는 2진수 개념이지만 2진수는 아니다. 

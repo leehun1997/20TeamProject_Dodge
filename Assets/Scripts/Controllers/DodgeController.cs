@@ -10,16 +10,22 @@ public class DodgeController : MonoBehaviour
     public event Action<BulletSO> OnAttackEvent;
     protected bool isAttacking { get; set; }
 
-    
+    protected CharacterStatHandler statHandler { get; set; }
 
     protected virtual void Awake()
     {
+        
+    }
 
+    private void Start()
+    {
+        statHandler = GetComponent<CharacterStatHandler>();
     }
 
     private void Update()
     {
-
+        if (isAttacking)
+            CallAttackEvent(statHandler.currentStat.bulletSO);
     }
 
 
@@ -32,7 +38,7 @@ public class DodgeController : MonoBehaviour
     {
         OnLookEvent?.Invoke(direction);
     }
-    private void CallAttackEvent(BulletSO attackSO)
+    public void CallAttackEvent(BulletSO attackSO)
     {
        OnAttackEvent?.Invoke(attackSO);
     }
