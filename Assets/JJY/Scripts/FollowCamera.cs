@@ -12,6 +12,5 @@ public class FollowCamera : MonoBehaviour
     {
         Vector3 cameraPos = target.position + new Vector3(0, 0, -10f);
         transform.position = cameraPos;
-
     }
 }

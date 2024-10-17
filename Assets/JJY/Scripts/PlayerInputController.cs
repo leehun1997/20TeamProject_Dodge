@@ -5,30 +5,40 @@ public class PlayerInputController : DodgeController
 {
     private Camera camera;
     
+    private bool pressed = false;
+
+    public BulletSO bulletSO;
+    
     protected override void Awake()
     {
         base.Awake();
         camera = Camera.main;
     }
-
+        
     public void OnMove(InputValue value)
      {       
           Vector2 moveInput = value.Get<Vector2>().normalized;
           CallMoveEvent(moveInput);
      }
 
+    
     public void OnLook(InputValue value)
     {
         Vector3 mousePos = value.Get<Vector2>();
         Vector3 worldPos = camera.ScreenToWorldPoint(mousePos);
         
         Vector2 newAim = (worldPos - transform.position).normalized;
-        Debug.Log(newAim.x + "," + newAim.y);
+        //Debug.Log(newAim.x + "," + newAim.y);
         CallLookEvent(newAim);
     }
 
+    public void OnFire(InputValue value)
+    {
+        isAttacking = value.isPressed;
+    }
 
-   
-    
-    
+
+
+
+
 }

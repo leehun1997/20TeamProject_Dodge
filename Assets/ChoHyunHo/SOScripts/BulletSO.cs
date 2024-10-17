@@ -12,6 +12,7 @@ public class BulletSO : ScriptableObject
     public float size;
     public float speed;
     public float delay;
+    public float duration;//몇초 후 투사체 파괴
 
     public GameObject bulletPrefab;
     //피격 방식 총알이 Layer검사해서 참이면 damage전달
