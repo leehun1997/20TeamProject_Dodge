@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using static ObjectPool;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,12 @@ public class GameManager : MonoBehaviour
 
     public ObjectPool Pool {  get; private set; } //읽기는 가능하지만 다른 곳에서 초기화 불가능
 
+    [Header("GameUI")]
+    [SerializeField] private TextMeshProUGUI currentScoreTxt;//현재 점수
+    [SerializeField] private TextMeshProUGUI highScoreTxt; //최고 점수
+    [SerializeField] private TextMeshProUGUI playTime; //최고 점수
+    private float time=0f;
+    private float highTime = 0;
     private void Awake()
     {
         if(Instance == null)
@@ -26,8 +34,19 @@ public class GameManager : MonoBehaviour
         }
 
         //Player초기화
-        Player = GameObject.FindGameObjectWithTag(playerTag).transform; //PlayerTag에 맞는 tag를 가지고 있는 오브젝트의 transform정보를 Palyer에 넣어준다/
+        //Player = GameObject.FindGameObjectWithTag(playerTag).transform; //PlayerTag에 맞는 tag를 가지고 있는 오브젝트의 transform정보를 Palyer에 넣어준다/
 
-        Pool = FindObjectOfType<ObjectPool>(); //씬 안에 ObjectPool 붙어있는 오브젝트를 찾고Pool변수에 참조로 넣어 게임 매니저에서 그풀을 사용
+        //Pool = FindObjectOfType<ObjectPool>(); //씬 안에 ObjectPool 붙어있는 오브젝트를 찾고Pool변수에 참조로 넣어 게임 매니저에서 그풀을 사용
+    }
+
+    private void Update()
+    {
+        time += Time.deltaTime;
+        playTime.text = $"Time : {time:F2}";
+    }
+
+    public void Score()
+    {
+
     }
 }
