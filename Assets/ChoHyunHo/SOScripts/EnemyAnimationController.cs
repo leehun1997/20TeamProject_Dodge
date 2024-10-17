@@ -13,6 +13,7 @@ public class EnemyAnimationController : AnimationController
     private void Start()
     {
         //dodgeController.OnMoveEvent += Move;
+        Move();
     }
 
     private void Move()
