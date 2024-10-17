@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,13 +10,14 @@ public class CharacterMovement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField][Range(0,20)]  private float speed;
     
-    private TopDownController controller;
+    private DodgeController controller;
     private Rigidbody2D rb;
     private Vector2 direction;
+
     
     private void Awake()
     {
-        controller = GetComponent<TopDownController>();
+        controller = GetComponent<DodgeController>();
         rb = GetComponent<Rigidbody2D>();
     }
     

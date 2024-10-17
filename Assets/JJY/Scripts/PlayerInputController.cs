@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputController : TopDownController
+public class PlayerInputController : DodgeController
 {
     private Camera camera;
     
+    private bool pressed = false;
+
+    public BulletSO bulletSO;
     
     protected override void Awake()
     {
@@ -25,9 +28,17 @@ public class PlayerInputController : TopDownController
         Vector3 worldPos = camera.ScreenToWorldPoint(mousePos);
         
         Vector2 newAim = (worldPos - transform.position).normalized;
-        Debug.Log(newAim.x + "," + newAim.y);
+        //Debug.Log(newAim.x + "," + newAim.y);
         CallLookEvent(newAim);
     }
-    
-    
+
+    public void OnFire(InputValue value)
+    {
+        isAttacking = value.isPressed;
+    }
+
+
+
+
+
 }
