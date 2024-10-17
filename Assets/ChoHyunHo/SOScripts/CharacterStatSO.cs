@@ -4,10 +4,10 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "StatSO", menuName = "StatSO/Default", order = 0)]
 
-//°¡Àå ±âº»ÀûÀÎ ½ºÅİ ÇÇ ¼Óµµ
+//ê°€ì¥ ê¸°ë³¸ì ì¸ ìŠ¤í…Ÿ í”¼ ì†ë„
 public class CharacterStatSO : ScriptableObject
 {
-    [Header("°øÅë ±âº» ½ºÅİ")]
+    [Header("ê³µí†µ ê¸°ë³¸ ìŠ¤í…Ÿ")]
     public float MaxHP;
     public float MoveSpeed;
 }

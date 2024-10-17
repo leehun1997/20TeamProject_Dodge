@@ -33,7 +33,5 @@ public class CharacterAiming : MonoBehaviour
         //spriteRenderer.flipX = Mathf.Abs(rotZ) > 90f;
         transform.rotation = Quaternion.Euler(0,0,angle);
     }
-
-    
     
  }

@@ -2,40 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ÇÃ·¹ÀÌ¾îÀÇ ½ºÅİÀ» ÃÖÃÊ¿¡ ÃÊ±âÈ­¸¸ ÇØÁÙ Å¬·¡½º
+//í”Œë ˆì´ì–´ì˜ ìŠ¤í…Ÿì„ ìµœì´ˆì— ì´ˆê¸°í™”ë§Œ í•´ì¤„ í´ë˜ìŠ¤
 public class CharacterStatHandler : MonoBehaviour
 {
-    [SerializeField] private CharacterStat characterStat;//ÀÎ½ºÆåÅÍ¿¡¼­ ¿¬°á ÇÑ ÈÄ ÇØ´ç Ä³¸¯ÅÍ¿¡ ¸Â´Â SO¸¦ ¿¬°áÇØ¾ßÇÔ
-    private CharacterStatSO instanceCharacterStatSO;//ÀÎ½ºÆåÅÍ¿¡¼­ ¿¬°áÇÒ ´ë»óÀÌ ¾Æ´Ô
-    private BulletSO instanceBulletSO;//ÀÎ½ºÆåÅÍ¿¡¼­ ¿¬°áÇÒ ´ë»óÀÌ ¾Æ´Ô
-    //ÃÖ»óÀ§ ºÎ¸ğ SOÀÎ ÀÌÀ¯ »ó¼Ó¹Ş´Â SO°¡ ´Ù È£È¯µÈ´Ù ½ÇÁ¦·Î ¿¬°áÇÒ SO´Â characterStatÀÇ SOµé (Ä³¸¯ÅÍ À¯Çü¿¡ ¸Â´Â SO¸¦ ³Ö¾î¾ßÇÑ´Ù)
+    [SerializeField] private CharacterStat characterStat;//ì¸ìŠ¤í™í„°ì—ì„œ ì—°ê²° í•œ í›„ í•´ë‹¹ ìºë¦­í„°ì— ë§ëŠ” SOë¥¼ ì—°ê²°í•´ì•¼í•¨
+    private CharacterStatSO instanceCharacterStatSO;//ì¸ìŠ¤í™í„°ì—ì„œ ì—°ê²°í•  ëŒ€ìƒì´ ì•„ë‹˜
+    private BulletSO instanceBulletSO;//ì¸ìŠ¤í™í„°ì—ì„œ ì—°ê²°í•  ëŒ€ìƒì´ ì•„ë‹˜
+    //ìµœìƒìœ„ ë¶€ëª¨ SOì¸ ì´ìœ  ìƒì†ë°›ëŠ” SOê°€ ë‹¤ í˜¸í™˜ëœë‹¤ ì‹¤ì œë¡œ ì—°ê²°í•  SOëŠ” characterStatì˜ SOë“¤ (ìºë¦­í„° ìœ í˜•ì— ë§ëŠ” SOë¥¼ ë„£ì–´ì•¼í•œë‹¤)
 
-    //¾Æ¹«³ª Á¶È¸°¡´É ¼¼ÆÃÀº ÀÌ Å¬·¡½º¸¸
+    //ì•„ë¬´ë‚˜ ì¡°íšŒê°€ëŠ¥ ì„¸íŒ…ì€ ì´ í´ë˜ìŠ¤ë§Œ
     public CharacterStat currentStat { get; private set; }
 
     private void Awake()
     {
-        InitialSetup();//ÃÊ±â¼³Á¤ ÀÌ¶ó´Â ¶æ
+        InitialSetup();//ì´ˆê¸°ì„¤ì • ì´ë¼ëŠ” ëœ»
     }
     
     private void InitialSetup()
     {
         instanceCharacterStatSO = null;
         instanceBulletSO = null;
-        //currentStatÀº Á÷·ÄÈ­µÇ¾î »óÅÂ°¡ À¯Áö,º¸Á¸ µÈ´Ù ¾Æ¹«°Íµµ ¾øÀ» ¶§(ÃÖÃÊ)¸¸ ÃÊ±âÈ­ÇÑ´Ù
+        //currentStatì€ ì§ë ¬í™”ë˜ì–´ ìƒíƒœê°€ ìœ ì§€,ë³´ì¡´ ëœë‹¤ ì•„ë¬´ê²ƒë„ ì—†ì„ ë•Œ(ìµœì´ˆ)ë§Œ ì´ˆê¸°í™”í•œë‹¤
         if (characterStat.characterStatSO == null)
         {
-            Debug.Log("characterStatSO ¿¬°áÇÏÁö¾ÊÀ½");
+            Debug.Log("characterStatSO ì—°ê²°í•˜ì§€ì•ŠìŒ");
         }
         if (characterStat.bulletSO == null)
         {
-            Debug.Log("bulletSO ¿¬°áÇÏÁö¾ÊÀ½");
+            Debug.Log("bulletSO ì—°ê²°í•˜ì§€ì•ŠìŒ");
         }
         
         if (characterStat.bulletSO != null)
         {
             instanceBulletSO = Instantiate(characterStat.bulletSO);
-            //¹ØÀÇ CharacterStat ÇÁ·ÎÆÛÆ¼ ÃÊ±âÈ­¿¡ ¹Ù·Î »ç¿ë ºÒ°¡ bulletSO = Instantiate(characterStat.bulletSO)¾ÈµÊ
+            //ë°‘ì˜ CharacterStat í”„ë¡œí¼í‹° ì´ˆê¸°í™”ì— ë°”ë¡œ ì‚¬ìš© ë¶ˆê°€ bulletSO = Instantiate(characterStat.bulletSO)ì•ˆë¨
         }
 
         if (characterStat.characterStatSO != null)
@@ -54,16 +54,16 @@ public class CharacterStatHandler : MonoBehaviour
     private void ShowDebug()
     {
         Debug.Log(gameObject.name);
-        Debug.Log("ÃÊ±â¼³Á¤ ½ºÅÈSO : " + currentStat.characterStatSO);
-        Debug.Log("ÃÊ±â¼³Á¤ ÃÖ´ëHP : " + currentStat.characterStatSO.MaxHP);
-        Debug.Log("ÃÊ±â¼³Á¤ ÀÌµ¿¼Óµµ : " + currentStat.characterStatSO.MoveSpeed);
-        Debug.Log("ÃÊ±â¼³Á¤ ÃÑ¾ËSO : " + currentStat.bulletSO);
-        Debug.Log("ÃÑ¾ËSO Å¸°Ù(¾øÀ½) : " + currentStat.bulletSO.targetLayer);
-        Debug.Log("ÃÑ¾ËSO °ø°İ·Â : " + currentStat.bulletSO.damage);
-        Debug.Log("ÃÑ¾ËSO Å©±â : " + currentStat.bulletSO.size);
-        Debug.Log("ÃÑ¾ËSO ¼Óµµ : " + currentStat.bulletSO.speed);
-        Debug.Log("ÃÑ¾ËSO µô·¹ÀÌ : " + currentStat.bulletSO.delay);
-        Debug.Log("ÃÑ¾ËSO ÇÁ¸®ÆÕ(¾øÀ½) : " + currentStat.bulletSO.bulletPrefab);
+        Debug.Log("ì´ˆê¸°ì„¤ì • ìŠ¤íƒ¯SO : " + currentStat.characterStatSO);
+        Debug.Log("ì´ˆê¸°ì„¤ì • ìµœëŒ€HP : " + currentStat.characterStatSO.MaxHP);
+        Debug.Log("ì´ˆê¸°ì„¤ì • ì´ë™ì†ë„ : " + currentStat.characterStatSO.MoveSpeed);
+        Debug.Log("ì´ˆê¸°ì„¤ì • ì´ì•ŒSO : " + currentStat.bulletSO);
+        Debug.Log("ì´ì•ŒSO íƒ€ê²Ÿ(ì—†ìŒ) : " + currentStat.bulletSO.targetLayer);
+        Debug.Log("ì´ì•ŒSO ê³µê²©ë ¥ : " + currentStat.bulletSO.damage);
+        Debug.Log("ì´ì•ŒSO í¬ê¸° : " + currentStat.bulletSO.size);
+        Debug.Log("ì´ì•ŒSO ì†ë„ : " + currentStat.bulletSO.speed);
+        Debug.Log("ì´ì•ŒSO ë”œë ˆì´ : " + currentStat.bulletSO.delay);
+        Debug.Log("ì´ì•ŒSO í”„ë¦¬íŒ¹(ì—†ìŒ) : " + currentStat.bulletSO.bulletPrefab);
     }
 
 }

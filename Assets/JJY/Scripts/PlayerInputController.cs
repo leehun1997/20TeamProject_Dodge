@@ -24,10 +24,12 @@ public class PlayerInputController : DodgeController
     
     public void OnLook(InputValue value)
     {
-        Vector3 mousePos = value.Get<Vector2>();
-        Vector3 worldPos = camera.ScreenToWorldPoint(mousePos);
+        Vector2 mousePos = value.Get<Vector2>();
+        Vector2 worldPos = camera.ScreenToWorldPoint(mousePos);
+        Vector2 newAim = (worldPos - (Vector2)transform.position).normalized;
         
-        Vector2 newAim = (worldPos - transform.position).normalized;
+        
+        Debug.Log("정규화값"+newAim.magnitude);
         //Debug.Log(newAim.x + "," + newAim.y);
         CallLookEvent(newAim);
     }
@@ -36,9 +38,5 @@ public class PlayerInputController : DodgeController
     {
         isAttacking = value.isPressed;
     }
-
-
-
-
-
+    
 }
