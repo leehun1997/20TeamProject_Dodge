@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using static ObjectPool;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -20,6 +22,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playTime; //최고 점수
     private float time=0f;
     private float highTime = 0;
+
+    [Header("PlayeeHp")]
+    public Slider playerHpSlider; //HealthSystem에서 구현하여 실행시키기
+
+    [Header("Score")]
+    public float currentScore;//현재 점수
+    public float highScore;//최고 점수
     private void Awake()
     {
         if(Instance == null)
@@ -34,9 +43,9 @@ public class GameManager : MonoBehaviour
         }
 
         //Player초기화
-        //Player = GameObject.FindGameObjectWithTag(playerTag).transform; //PlayerTag에 맞는 tag를 가지고 있는 오브젝트의 transform정보를 Palyer에 넣어준다/
+        Player = GameObject.FindGameObjectWithTag(playerTag).transform; //PlayerTag에 맞는 tag를 가지고 있는 오브젝트의 transform정보를 Palyer에 넣어준다/
 
-        //Pool = FindObjectOfType<ObjectPool>(); //씬 안에 ObjectPool 붙어있는 오브젝트를 찾고Pool변수에 참조로 넣어 게임 매니저에서 그풀을 사용
+        Pool = FindObjectOfType<ObjectPool>(); //씬 안에 ObjectPool 붙어있는 오브젝트를 찾고Pool변수에 참조로 넣어 게임 매니저에서 그풀을 사용
     }
 
     private void Update()
@@ -47,6 +56,9 @@ public class GameManager : MonoBehaviour
 
     public void Score()
     {
-
+        //몬스터 죽었을 때 점수를 받아오는 로직
     }
+  
+
+    
 }
