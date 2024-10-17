@@ -17,12 +17,12 @@ public class DodgeController : MonoBehaviour
         
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         statHandler = GetComponent<CharacterStatHandler>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (isAttacking)
             CallAttackEvent(statHandler.currentStat.bulletSO);

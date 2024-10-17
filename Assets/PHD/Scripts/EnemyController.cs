@@ -15,15 +15,16 @@ public class EnemyController : DodgeController
     }
 
     // Update is called once per frame
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
        ClosesTarget = GameManager.Instance.Player; // 게임매니저에 Player 가 있을시 가져오기
        
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
-
+        base.Update();
     }
 
     protected virtual void FixedUpdate()
