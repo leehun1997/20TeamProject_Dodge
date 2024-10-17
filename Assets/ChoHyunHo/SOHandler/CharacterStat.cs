@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[System.Serializable]//Á÷·ÄÈ­ Á÷·ÄÈ­ °¡´ÉÇÑ class,struct·Î ¸¸µé¾îÁø °´Ã¼instantiate´Â »óÅÂ¸¦ ÀúÀå, º¹¿ø °¡´ÉÇÏ´Ù°í ÇÑ´Ù
-//MonoBehavior¸¦ »ó¼ÓÇÏÁö ¾ÊÀ½ = ÄÄÆ÷³ÍÆ® ¾Æ´Ô = newÅ°¿öµå·Î »ı¼º ºÒ°¡
+[System.Serializable]//ì§ë ¬í™” ì§ë ¬í™” ê°€ëŠ¥í•œ class,structë¡œ ë§Œë“¤ì–´ì§„ ê°ì²´instantiateëŠ” ìƒíƒœë¥¼ ì €ì¥, ë³µì› ê°€ëŠ¥í•˜ë‹¤ê³  í•œë‹¤
+//MonoBehaviorë¥¼ ìƒì†í•˜ì§€ ì•ŠìŒ = ì»´í¬ë„ŒíŠ¸ ì•„ë‹˜ = newí‚¤ì›Œë“œë¡œ ìƒì„± ë¶ˆê°€
 
-//½ºÅİ Á¤º¸¸¦ PlayerStatHandler¿¡¼­ °ª ÃÊ±âÈ­ µÊ
+//ìŠ¤í…Ÿ ì •ë³´ë¥¼ PlayerStatHandlerì—ì„œ ê°’ ì´ˆê¸°í™” ë¨
 public class CharacterStat
 {
-    [Header ("playerStatHandler¿¡¼­ ÃÊ±âÈ­ µÉ °ÍÀÓ")]
-    [Header ("Ä³¸¯ÅÍ À¯Çü¿¡ ¸Â´Â SO¸¦ ¿¬°áÇØ¾ßÇÔ")]
+    [Header ("playerStatHandlerì—ì„œ ì´ˆê¸°í™” ë  ê²ƒì„")]
+    [Header ("ìºë¦­í„° ìœ í˜•ì— ë§ëŠ” SOë¥¼ ì—°ê²°í•´ì•¼í•¨")]
     public CharacterStatSO characterStatSO;
     public BulletSO bulletSO;
 }

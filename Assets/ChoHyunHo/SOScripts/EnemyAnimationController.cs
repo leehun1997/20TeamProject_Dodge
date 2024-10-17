@@ -12,12 +12,11 @@ public class EnemyAnimationController : AnimationController
 
     private void Start()
     {
-        //dodgeController.OnMoveEvent += Move;
-        Move();
+        dodgeController.OnMoveEvent += Move;
     }
 
-    private void Move()
+    private void Move(Vector2 v)
     {
-        animator.SetBool(isMoving, true);
+        animator.SetBool(isMoving, v.magnitude > 0.5f);
     }
 }

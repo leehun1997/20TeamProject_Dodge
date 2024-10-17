@@ -15,7 +15,7 @@ public class TopDownShooting : MonoBehaviour
 
     private void Start()
     {
-        controller.OnLookEvent += Aim;
+        controller.OnLookEvent += Aim2;
         controller.OnAttackEvent +=Shooting;
         
     }
@@ -29,14 +29,14 @@ public class TopDownShooting : MonoBehaviour
         CreateProjectile(bSO);
     }
 
-    private void Aim(Vector2 direction)//값만 받아오기
+    private void Aim2(Vector2 direction)//값만 받아오기
     {
         shootDirection = direction;
     }
 
     private void CreateProjectile(BulletSO bulletSO)
     {
-        GameObject b = Instantiate(bulletSO.bulletPrefab, BulletSpawnPoint.transform.position, Quaternion.identity);
+        GameObject b = Instantiate(bulletSO.bulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
         ProjectileController attackController = b.GetComponent<ProjectileController>();
         attackController.InitiateAttack(shootDirection,bulletSO); //기본 공격만 있다고 가정, 공격의 종류가 많아지면 변경
     }
