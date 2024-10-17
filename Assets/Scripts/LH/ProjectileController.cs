@@ -26,8 +26,14 @@ public class ProjectileController : MonoBehaviour
         trailRenderer= GetComponent<TrailRenderer>();
     }
 
+
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    private void FixedUpdate()
     {
         if (!isReady)
         {
@@ -40,7 +46,7 @@ public class ProjectileController : MonoBehaviour
         {
             DestroyProjectile(transform.position);
         }
-        rigidbody.velocity = direction * attackData.speed;
+        rigidbody.velocity = direction.normalized * attackData.speed;
     }
 
     public void InitiateAttack(Vector2 direction, BulletSO bulletSO)

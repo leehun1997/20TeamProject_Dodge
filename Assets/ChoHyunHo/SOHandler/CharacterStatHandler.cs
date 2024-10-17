@@ -6,9 +6,9 @@ using UnityEngine;
 public class CharacterStatHandler : MonoBehaviour
 {
     [SerializeField] private CharacterStat characterStat;//인스펙터에서 연결 한 후 해당 캐릭터에 맞는 SO를 연결해야함
-    private CharacterStatSO instanceCharacterStatSO;
+    private CharacterStatSO instanceCharacterStatSO;//인스펙터에서 연결할 대상이 아님
     private BulletSO instanceBulletSO;//인스펙터에서 연결할 대상이 아님
-    //최상위 부모 SO인 이유 상속받는 SO가 다 들어간다 실제로 연결할 SO는 characterStat의 SO들 (캐릭터 유형에 맞는 SO를 넣어야한다)
+    //최상위 부모 SO인 이유 상속받는 SO가 다 호환된다 실제로 연결할 SO는 characterStat의 SO들 (캐릭터 유형에 맞는 SO를 넣어야한다)
 
     //아무나 조회가능 세팅은 이 클래스만
     public CharacterStat currentStat { get; private set; }
@@ -34,7 +34,8 @@ public class CharacterStatHandler : MonoBehaviour
         
         if (characterStat.bulletSO != null)
         {
-            instanceBulletSO = Instantiate(characterStat.bulletSO);//밑의 CharacterStat 프로퍼티 초기화에 바로 사용 불가 bulletSO = Instantiate(characterStat.bulletSO)안됨
+            instanceBulletSO = Instantiate(characterStat.bulletSO);
+            //밑의 CharacterStat 프로퍼티 초기화에 바로 사용 불가 bulletSO = Instantiate(characterStat.bulletSO)안됨
         }
 
         if (characterStat.characterStatSO != null)
@@ -47,7 +48,7 @@ public class CharacterStatHandler : MonoBehaviour
             characterStatSO = instanceCharacterStatSO,
             bulletSO = instanceBulletSO
         };
-        ShowDebug();
+        //ShowDebug();
     }
 
     private void ShowDebug()

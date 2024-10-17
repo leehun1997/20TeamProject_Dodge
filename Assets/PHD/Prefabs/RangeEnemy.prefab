@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4687060894598873872}
   - component: {fileID: 6026193399286950801}
   - component: {fileID: 9001765507958013766}
+  - component: {fileID: 101160672200117796}
   m_Layer: 7
   m_Name: RangeEnemy
   m_TagString: Untagged
@@ -124,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkTargetRange: 20.3
-  attackTargetRange: 15.2
+  attackTargetRange: 4.1
   Target:
     serializedVersion: 2
     m_Bits: 64
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5619cae4cef6d4142a043e9608ae2f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 2818830149884309232}
 --- !u!95 &6026193399286950801
 Animator:
   serializedVersion: 5
@@ -188,8 +189,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    characterStatSO: {fileID: 0}
-    bulletSO: {fileID: 0}
+    characterStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
+    bulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}
+--- !u!114 &101160672200117796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4034923347607393888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb22dfb18f52dc4983cecf9d667e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletSpawnPoint: {fileID: 0}
 --- !u!1 &8003353099409353100
 GameObject:
   m_ObjectHideFlags: 0
