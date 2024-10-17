@@ -9,6 +9,7 @@ public class DodgeController : MonoBehaviour
     public event Action<Vector2> OnLookEvent;
     public event Action<BulletSO> OnAttackEvent;
     protected bool isAttacking { get; set; }
+    private float delayTime = 0f;
 
     protected CharacterStatHandler statHandler { get; set; }
 
@@ -24,8 +25,15 @@ public class DodgeController : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isAttacking)
+        if (isAttacking && delayTime <= 0)
+        {
+            delayTime = statHandler.currentStat.bulletSO.delay;
             CallAttackEvent(statHandler.currentStat.bulletSO);
+        }
+        else
+        {
+            delayTime -= Time.deltaTime;
+        }
     }
 
 

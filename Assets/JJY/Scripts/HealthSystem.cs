@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -16,8 +17,10 @@ public class HealthSystem : MonoBehaviour
     public float maxHp =>  statHandler.currentStat.characterStatSO.MaxHP;
 
     public float CurrentHp { get; private set; }
-    
-    
+
+    [SerializeField] private Slider healthSlider; //슬라이더를 인스펙터에서 가져옴
+    [SerializeField] private bool isPlayer; // 플레이어 여부 확인
+
     private void Awake()
     {
          statHandler = GetComponent<CharacterStatHandler>();
@@ -28,6 +31,12 @@ public class HealthSystem : MonoBehaviour
     private void Start()
     {
         CurrentHp = maxHp;
+
+        if(isPlayer&&healthSlider != null)
+        {
+            healthSlider.maxValue = maxHp;
+            healthSlider.value = CurrentHp;
+        }
     }
 
     
@@ -35,9 +44,11 @@ public class HealthSystem : MonoBehaviour
     //button에 넣어서 테스트 가능
     public void TestChangeHp(int num)
     {
+       
         if (num == 0)
         {
-            ChangeHP(-10f);
+            ChangeHP(-1f);
+            Debug.Log("데미지 1");        
         }
         
         else
@@ -50,6 +61,13 @@ public class HealthSystem : MonoBehaviour
     {
         
         CurrentHp = Mathf.Min(amount + CurrentHp , maxHp);
+        Debug.Log($"{amount} / {CurrentHp}");
+        // 플레이어의 경우에만 슬라이더 업데이트
+        if (isPlayer && healthSlider != null)
+        {
+            healthSlider.value = CurrentHp;
+        }
+
         if (CurrentHp <= 0)
         {
             OnDeath?.Invoke();
