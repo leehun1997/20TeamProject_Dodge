@@ -14,7 +14,7 @@ public class EnemyAnimationController : AnimationController
     private void Start()
     {
         dodgeController.OnMoveEvent += Move;
-        healthSystem.OnDeath += Death;
+        healthSystem.OnDeath += OnDeath;
     }
 
     private void Move(Vector2 v)
@@ -22,7 +22,7 @@ public class EnemyAnimationController : AnimationController
         animator.SetBool(isMoving, v.magnitude > 0.5f);
     }
 
-    private void Death()
+    private void OnDeath()
     {
         animator.SetBool(isDead, true);
     }
