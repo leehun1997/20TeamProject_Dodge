@@ -27,6 +27,11 @@ public class RangeEnemyController : EnemyController
         
     }
 
+    protected override void Update()
+    {
+        base.Update();
+    }
+
     protected override void FixedUpdate ()
     {
         base.FixedUpdate ();
@@ -64,6 +69,7 @@ public class RangeEnemyController : EnemyController
         Debug.DrawRay(transform.position, directionToTarget, Color.red);
         if (hit.collider != null)
         {
+            
             isAttacking = true;
             CallLookEvent(directionToTarget);
             CallMoveEvent(Vector2.zero);

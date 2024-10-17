@@ -21,7 +21,7 @@ public class TopDownShooting : MonoBehaviour
 
     private void Shooting(BulletSO bulletSO)
     {
-        PlayerBulletSO bSO = bulletSO as PlayerBulletSO;
+        BulletSO bSO = bulletSO as BulletSO;
         if (bulletSO == null) return;
 
         Debug.Log("ReadyToShoot");

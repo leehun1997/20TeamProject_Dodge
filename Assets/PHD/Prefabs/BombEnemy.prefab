@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    characterStatSO: {fileID: 0}
-    bulletSO: {fileID: 0}
+    characterStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
+    bulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}
 --- !u!1 &1896812654099050444
 GameObject:
   m_ObjectHideFlags: 0
