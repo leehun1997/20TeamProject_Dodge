@@ -29,7 +29,7 @@ public class TopDownShooting : MonoBehaviour
         CreateProjectile(bSO);
     }
 
-    private void Aim2(Vector2 direction)//°ª¸¸ ¹Þ¾Æ¿À±â
+    private void Aim2(Vector2 direction)//ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
     {
         shootDirection = direction;
     }
@@ -38,6 +38,6 @@ public class TopDownShooting : MonoBehaviour
     {
         GameObject b = Instantiate(bulletSO.bulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
         ProjectileController attackController = b.GetComponent<ProjectileController>();
-        attackController.InitiateAttack(shootDirection,bulletSO); //±âº» °ø°Ý¸¸ ÀÖ´Ù°í °¡Á¤, °ø°ÝÀÇ Á¾·ù°¡ ¸¹¾ÆÁö¸é º¯°æ
+        attackController.InitiateAttack(shootDirection,bulletSO); //ï¿½âº» ï¿½ï¿½ï¿½Ý¸ï¿½ ï¿½Ö´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }
