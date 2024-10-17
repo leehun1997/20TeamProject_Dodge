@@ -16,7 +16,8 @@ public class BombEnemyController : EnemyController
     private SpriteRenderer BombEnemyRenderer;
     Vector2 direction = Vector2.zero;
     public CharacterStatSO CSO;
-    //private HealthSystem SupHealth; ##
+    private HealthSystem SupHealth;
+    
 
     private bool isCollision = false;
     private bool onceChase = true;
@@ -25,15 +26,13 @@ public class BombEnemyController : EnemyController
     protected override void Start()
     {
         base.Start();
-        // healthSystem = GetComponent<HealthSystem>(); ##
-        // healthSystem.Ondamage += OnDamage; ##
+        SupHealth = GetComponent<HealthSystem>();
         playerPastPosition = ClosesTarget.position;
         BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
         
         Chase();
 
     }
-
 
     protected override void FixedUpdate()
     {
@@ -43,12 +42,13 @@ public class BombEnemyController : EnemyController
         if (isCollision) 
         {
             ApplyDamage();
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 0f);
+            Debug.Log(SupHealth.CurrentHp);
         }
 
         if (Mathf.Abs(playerPastPosition.x - transform.position.x) < 0.1
             && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1) {
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 0f);
         }
 
     }
@@ -57,9 +57,9 @@ public class BombEnemyController : EnemyController
 
     private void ApplyDamage()
     {
-        EnemyStatSO bombEnemyStatSO = statHandler.currentStat.characterStatSO as EnemyStatSO;
-
-        //bool isAttackable = SupHealth.체력변하는함수(-공격력); ##
+        //EnemyStatSO bombEnemyStatSO = statHandler.currentStat.characterStatSO as EnemyStatSO;
+        SupHealth.ChangeHP(-20f);
+        
     }
 
     private void Chase() 
@@ -77,8 +77,9 @@ public class BombEnemyController : EnemyController
         GameObject player = collision.gameObject;
 
         if (!player.CompareTag(targetTag)) { return; }
-        // SupHealth = collision.GetComponent<HealthSystem>();
+        SupHealth = collision.GetComponent<HealthSystem>();
         isCollision = true;
+
     }
 }
 

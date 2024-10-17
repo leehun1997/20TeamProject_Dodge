@@ -49,6 +49,8 @@ GameObject:
   - component: {fileID: 1326545248825954056}
   - component: {fileID: 6256762495025106894}
   - component: {fileID: 3703719236171358446}
+  - component: {fileID: 7088359840724482634}
+  - component: {fileID: 2521924397057310968}
   m_Layer: 6
   m_Name: PlayerBlue
   m_TagString: Player
@@ -171,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
+  accelerationTime: 2
 --- !u!114 &4007489871353771033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 8681362554883338453}
+  rotationSpeed: 5
 --- !u!114 &3703719236171358446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +256,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a4b314c4792904aac49200f9e9b6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7088359840724482634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3860057544589093311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6efc390333874000aebe8457b0714136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2521924397057310968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3860057544589093311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd93b6524d927e0409a6c701fd9396a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6774978496482717757
