@@ -5,18 +5,20 @@ public class PlayerInputController : TopDownController
 {
     private Camera camera;
     
+    
     protected override void Awake()
     {
         base.Awake();
         camera = Camera.main;
     }
-
+        
     public void OnMove(InputValue value)
      {       
           Vector2 moveInput = value.Get<Vector2>().normalized;
           CallMoveEvent(moveInput);
      }
 
+    
     public void OnLook(InputValue value)
     {
         Vector3 mousePos = value.Get<Vector2>();
@@ -26,9 +28,6 @@ public class PlayerInputController : TopDownController
         Debug.Log(newAim.x + "," + newAim.y);
         CallLookEvent(newAim);
     }
-
-
-   
     
     
 }
