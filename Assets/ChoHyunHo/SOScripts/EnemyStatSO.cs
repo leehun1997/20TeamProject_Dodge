@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StatSO", menuName = "StatSO/EnemyStatSO", order = 2)]
-public class EnemyStatSO : CharacterStatSO
+public class EnemyStatSO : CharacterStatSO //스크립터블 오브젝트면서 상속받는방법
 {
     [Header("적 고유 스텟")]
     public string str = "아직 적 고유의 스텟이 없음";

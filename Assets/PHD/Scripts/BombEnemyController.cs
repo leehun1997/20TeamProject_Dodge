@@ -13,6 +13,8 @@ public class BombEnemyController : EnemyController
     [SerializeField][Range(0f, 1000f)] float walkTargetRange = 0f;
     private Vector3 playerPastPosition;
     private SpriteRenderer BombEnemyRenderer;
+    Vector2 direction = Vector2.zero;
+    public CharacterStatSO CSO;
 
     private bool isCollision;
     private bool onceChase = true;
@@ -29,10 +31,11 @@ public class BombEnemyController : EnemyController
 
     }
 
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
+        
 
         if (isCollision) 
         {
@@ -50,25 +53,19 @@ public class BombEnemyController : EnemyController
 
     private void ApplyDamage()
     {
-        
+        CharacterStatSO bombEnemyStatSO = statHandler.currentStat.characterStatSO;
+        // EnemyStatSO bombEnemyStatSO1 = statHandler.currentStat.characterStatSO; 
+        //EnemyStatSO 는 클래스고 currentStat.characterStatSO는 스크립터블오브젝트라 불가능
     }
 
     private void Chase() 
     {
-        Vector2 direction = Vector2.zero;
 
         direction = DirectionToTarget();
 
         CallMoveEvent(direction);
-        Rotate(direction);
+        CallLookEvent(direction);
         onceChase = false;
-        
-    }
-
-    private void Rotate(Vector2 direction)
-    {
-        float rotz = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        BombEnemyRenderer.flipY = Mathf.Abs(rotz) < 0f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -68,6 +68,7 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (IsLayerMatched(levelCollisionLayer.value, collision.gameObject.layer))
         {
             Vector2 destroyPosition = collision.ClosestPoint(transform.position) - direction * 0.2f;
