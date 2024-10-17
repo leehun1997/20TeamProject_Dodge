@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &589503091310119016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1573893683839387040}
+  m_Layer: 7
+  m_Name: BSP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1573893683839387040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589503091310119016}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 57811536119123390}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4034923347607393888
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +47,7 @@ GameObject:
   - component: {fileID: 4687060894598873872}
   - component: {fileID: 6026193399286950801}
   - component: {fileID: 9001765507958013766}
+  - component: {fileID: 101160672200117796}
   m_Layer: 7
   m_Name: RangeEnemy
   m_TagString: Untagged
@@ -37,6 +69,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6854198666565380302}
+  - {fileID: 1573893683839387040}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7681434741167999383
@@ -82,7 +115,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
 --- !u!50 &1375052406541788161
 Rigidbody2D:
@@ -124,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkTargetRange: 20.3
-  attackTargetRange: 15.2
+  attackTargetRange: 4.1
   Target:
     serializedVersion: 2
     m_Bits: 64
@@ -153,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5619cae4cef6d4142a043e9608ae2f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 2818830149884309232}
 --- !u!95 &6026193399286950801
 Animator:
   serializedVersion: 5
@@ -188,8 +221,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat:
-    characterStatSO: {fileID: 0}
-    bulletSO: {fileID: 0}
+    characterStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
+    bulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}
+--- !u!114 &101160672200117796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4034923347607393888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb22dfb18f52dc4983cecf9d667e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletSpawnPoint: {fileID: 1573893683839387040}
 --- !u!1 &8003353099409353100
 GameObject:
   m_ObjectHideFlags: 0
