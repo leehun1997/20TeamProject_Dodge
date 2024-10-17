@@ -9,32 +9,32 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance; //GameManager¸¦ ´Ù¸¥ °÷¿¡¼­ ½±°Ô Á¢±Ù°¡´É
+    public static GameManager Instance; //GameManagerë¥¼ ë‹¤ë¥¸ ê³³ì—ì„œ ì‰½ê²Œ ì ‘ê·¼ê°€ëŠ¥
     [SerializeField ]private string playerTag;
 
-    public Transform Player { get; private set; } //ÀĞ±â´Â °¡´ÉÇÏÁö¸¸ ´Ù¸¥ °÷¿¡¼­ ÃÊ±âÈ­ ºÒ°¡´É
+    public Transform Player { get; private set; } //ì½ê¸°ëŠ” ê°€ëŠ¥í•˜ì§€ë§Œ ë‹¤ë¥¸ ê³³ì—ì„œ ì´ˆê¸°í™” ë¶ˆê°€ëŠ¥
 
-    public ObjectPool Pool {  get; private set; } //ÀĞ±â´Â °¡´ÉÇÏÁö¸¸ ´Ù¸¥ °÷¿¡¼­ ÃÊ±âÈ­ ºÒ°¡´É
+    public ObjectPool Pool {  get; private set; } //ì½ê¸°ëŠ” ê°€ëŠ¥í•˜ì§€ë§Œ ë‹¤ë¥¸ ê³³ì—ì„œ ì´ˆê¸°í™” ë¶ˆê°€ëŠ¥
 
     [Header("GameUI")]
-    [SerializeField] private TextMeshProUGUI currentScoreTxt;//ÇöÀç Á¡¼ö
-    [SerializeField] private TextMeshProUGUI highScoreTxt; //ÃÖ°í Á¡¼ö
-    [SerializeField] private TextMeshProUGUI playTime; //ÃÖ°í Á¡¼ö
+    [SerializeField] private TextMeshProUGUI currentScoreTxt;//í˜„ì¬ ì ìˆ˜
+    [SerializeField] private TextMeshProUGUI highScoreTxt; //ìµœê³  ì ìˆ˜
+    [SerializeField] private TextMeshProUGUI playTime; //ìµœê³  ì ìˆ˜
     private float time=0f;
     private float highTime = 0;
 
     [Header("PlayeeHp")]
-    public Slider playerHpSlider; //HealthSystem¿¡¼­ ±¸ÇöÇÏ¿© ½ÇÇà½ÃÅ°±â
+    public Slider playerHpSlider; //HealthSystemì—ì„œ êµ¬í˜„í•˜ì—¬ ì‹¤í–‰ì‹œí‚¤ê¸°
 
     [Header("Score")]
-    public float currentScore;//ÇöÀç Á¡¼ö
-    public float highScore;//ÃÖ°í Á¡¼ö
+    public float currentScore;//í˜„ì¬ ì ìˆ˜
+    public float highScore;//ìµœê³  ì ìˆ˜
     private void Awake()
     {
         if(Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); //¾À ÀüÈ¯ ÈÄ¿¡µµ  GameManager À¯ÁöÇÏ±â À§ÇØ
+            DontDestroyOnLoad(gameObject); //ì”¬ ì „í™˜ í›„ì—ë„  GameManager ìœ ì§€í•˜ê¸° ìœ„í•´
         }
         else
         {
@@ -42,10 +42,10 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        //PlayerÃÊ±âÈ­
-        Player = GameObject.FindGameObjectWithTag(playerTag).transform; //PlayerTag¿¡ ¸Â´Â tag¸¦ °¡Áö°í ÀÖ´Â ¿ÀºêÁ§Æ®ÀÇ transformÁ¤º¸¸¦ Palyer¿¡ ³Ö¾îÁØ´Ù/
+        //Playerì´ˆê¸°í™”
+        Player = GameObject.FindGameObjectWithTag(playerTag).transform; //PlayerTagì— ë§ëŠ” tagë¥¼ ê°€ì§€ê³  ìˆëŠ” ì˜¤ë¸Œì íŠ¸ì˜ transformì •ë³´ë¥¼ Palyerì— ë„£ì–´ì¤€ë‹¤/
 
-        Pool = FindObjectOfType<ObjectPool>(); //¾À ¾È¿¡ ObjectPool ºÙ¾îÀÖ´Â ¿ÀºêÁ§Æ®¸¦ Ã£°íPoolº¯¼ö¿¡ ÂüÁ¶·Î ³Ö¾î °ÔÀÓ ¸Å´ÏÀú¿¡¼­ ±×Ç®À» »ç¿ë
+        Pool = FindObjectOfType<ObjectPool>(); //ì”¬ ì•ˆì— ObjectPool ë¶™ì–´ìˆëŠ” ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ê³ Poolë³€ìˆ˜ì— ì°¸ì¡°ë¡œ ë„£ì–´ ê²Œì„ ë§¤ë‹ˆì €ì—ì„œ ê·¸í’€ì„ ì‚¬ìš©
     }
 
     private void Update()
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void Score()
     {
-        //¸ó½ºÅÍ Á×¾úÀ» ¶§ Á¡¼ö¸¦ ¹Ş¾Æ¿À´Â ·ÎÁ÷
+        //ëª¬ìŠ¤í„° ì£½ì—ˆì„ ë•Œ ì ìˆ˜ë¥¼ ë°›ì•„ì˜¤ëŠ” ë¡œì§
     }
   
 

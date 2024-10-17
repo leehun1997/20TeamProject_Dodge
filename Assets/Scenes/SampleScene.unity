@@ -153,6 +153,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
+  currentScoreTxt: {fileID: 0}
+  highScoreTxt: {fileID: 0}
+  playTime: {fileID: 0}
+  playerHpSlider: {fileID: 0}
+  currentScore: 0
+  highScore: 0
 --- !u!4 &85620002
 Transform:
   m_ObjectHideFlags: 0
