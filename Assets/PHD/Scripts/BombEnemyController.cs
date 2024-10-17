@@ -11,19 +11,22 @@ using UnityEngine.UIElements;
 public class BombEnemyController : EnemyController
 {
     [SerializeField][Range(0f, 1000f)] float walkTargetRange = 0f;
+    [SerializeField] private string targetTag = "Player";
     private Vector3 playerPastPosition;
     private SpriteRenderer BombEnemyRenderer;
     Vector2 direction = Vector2.zero;
     public CharacterStatSO CSO;
+    //private HealthSystem SupHealth; ##
 
-    private bool isCollision;
+    private bool isCollision = false;
     private bool onceChase = true;
 
 
     protected override void Start()
     {
         base.Start();
-        // ## 헬스시스템 구독
+        // healthSystem = GetComponent<HealthSystem>(); ##
+        // healthSystem.Ondamage += OnDamage; ##
         playerPastPosition = ClosesTarget.position;
         BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
         
@@ -40,11 +43,12 @@ public class BombEnemyController : EnemyController
         if (isCollision) 
         {
             ApplyDamage();
+            Destroy(gameObject, 0.5f);
         }
 
         if (Mathf.Abs(playerPastPosition.x - transform.position.x) < 0.1
             && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1) {
-            Destroy(gameObject, 0);
+            Destroy(gameObject, 0.5f);
         }
 
     }
@@ -53,9 +57,9 @@ public class BombEnemyController : EnemyController
 
     private void ApplyDamage()
     {
-        CharacterStatSO bombEnemyStatSO = statHandler.currentStat.characterStatSO;
-        // EnemyStatSO bombEnemyStatSO1 = statHandler.currentStat.characterStatSO; 
-        //EnemyStatSO 는 클래스고 currentStat.characterStatSO는 스크립터블오브젝트라 불가능
+        EnemyStatSO bombEnemyStatSO = statHandler.currentStat.characterStatSO as EnemyStatSO;
+
+        //bool isAttackable = SupHealth.체력변하는함수(-공격력); ##
     }
 
     private void Chase() 
@@ -70,7 +74,11 @@ public class BombEnemyController : EnemyController
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        GameObject player = collision.gameObject;
+
+        if (!player.CompareTag(targetTag)) { return; }
+        // SupHealth = collision.GetComponent<HealthSystem>();
+        isCollision = true;
     }
 }
 
