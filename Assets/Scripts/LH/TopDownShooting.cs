@@ -17,6 +17,7 @@ public class TopDownShooting : MonoBehaviour
     {
         controller.OnLookEvent += Aim2;
         controller.OnAttackEvent +=Shooting;
+        
     }
 
     private void Shooting(BulletSO bulletSO)

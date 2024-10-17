@@ -58,6 +58,7 @@ public class RangeEnemyController : EnemyController
         }
         else 
         {
+            CallLookEvent(directionToTarget);
             CallMoveEvent(directionToTarget);
         }
     }
