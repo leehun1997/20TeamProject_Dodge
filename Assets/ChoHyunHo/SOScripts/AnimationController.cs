@@ -7,12 +7,12 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     protected Animator animator;
-    //protected DodgeController dodgeController;//최상위 컨트롤러로 받아와 델리게이트에 애니메이션 출력 함수를 구독시켜야함
+    protected DodgeController dodgeController;//최상위 컨트롤러로 받아와 델리게이트에 애니메이션 출력 함수를 구독시켜야함
     //Delegate? Invoke();시 움직이는함수 + 애니메이션바꾸는함수 같이 실행될것임
 
     protected virtual void Awake()
     {
-        animator = GetComponent<Animator>();
-        //dodgeController=GetComponent<DodgeController>();
+        animator = GetComponentInChildren<Animator>();
+        dodgeController = GetComponent<DodgeController>();
     }
 }
