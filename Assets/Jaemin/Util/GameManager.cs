@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
     private float time=0f;
     private float highTime = 0;
 
-    [Header("PlayeeHp")]
-    public Slider playerHpSlider; //HealthSystem에서 구현하여 실행시키기
 
     [Header("Score")]
     public float currentScore;//현재 점수
