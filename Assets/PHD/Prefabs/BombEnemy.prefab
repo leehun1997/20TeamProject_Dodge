@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 1032840291792028269}
   - component: {fileID: 4818093447439048284}
   - component: {fileID: 6669283065249227693}
+  - component: {fileID: 5359015373122461712}
+  - component: {fileID: 687524993215304907}
+  - component: {fileID: 7617103096117435333}
   m_Layer: 7
   m_Name: BombEnemy
   m_TagString: Untagged
@@ -144,6 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkTargetRange: 1000
+  targetTag: Player
+  CSO: {fileID: 0}
 --- !u!114 &4818093447439048284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  accelerationTime: 2
 --- !u!114 &6669283065249227693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +177,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStat:
     characterStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
-    bulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}
+    bulletSO: {fileID: 0}
+--- !u!114 &5359015373122461712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079412457211747757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5619cae4cef6d4142a043e9608ae2f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 3265516542054453207}
+  rotationSpeed: 100
+--- !u!114 &687524993215304907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079412457211747757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6efc390333874000aebe8457b0714136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7617103096117435333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079412457211747757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd93b6524d927e0409a6c701fd9396a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1896812654099050444
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +227,7 @@ GameObject:
   - component: {fileID: 30437652107305576}
   - component: {fileID: 3265516542054453207}
   m_Layer: 7
-  m_Name: RangeEnemySprite
+  m_Name: BombEnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
