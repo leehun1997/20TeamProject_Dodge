@@ -14,14 +14,17 @@ public class HealthSystem : MonoBehaviour
     
     
     public float maxHp =>  statHandler.currentStat.characterStatSO.MaxHP;
-    public float CurrentHp { get; private set; }
 
+    public float CurrentHp { get; private set; }
+    
+    
     private void Awake()
     {
          statHandler = GetComponent<CharacterStatHandler>();
          Debug.Log(statHandler);
     }
 
+    
     private void Start()
     {
         CurrentHp = maxHp;
