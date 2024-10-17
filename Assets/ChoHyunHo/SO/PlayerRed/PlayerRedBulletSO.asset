@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0d089afa45c7345902dfd39ae326e9, type: 3}
-  m_Name: PlayerBulletSO
+  m_Name: PlayerRedBulletSO
   m_EditorClassIdentifier: 
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   damage: 1
   size: 1
-  speed: 10
+  speed: 2
   delay: 0.5
-  duration: 10
-  bulletPrefab: {fileID: 3862224924912003493, guid: f0d8888981f8dcd4da4be4fb151ef13b, type: 3}
+  duration: 5
+  bulletPrefab: {fileID: 4261132827534233690, guid: bff2d374031285946bfc039b9f3254bf, type: 3}
   str: "\uC544\uC9C1 \uD50C\uB808\uC774\uC5B4 \uACE0\uC720\uC758 \uBB34\uAE30\uAC00
     \uC5C6\uC74C"
