@@ -11,7 +11,7 @@ public enum StatType
 
 
 //플레이어의 스텟을 최초에 초기화만 해줄 클래스
-public  class CharacterStatHandler : MonoBehaviour
+public  abstract class CharacterStatHandler : MonoBehaviour
 {
     
     [SerializeField] private CharacterStat characterStat;//인스펙터에서 연결 한 후 해당 캐릭터에 맞는 SO를 연결해야함
@@ -23,10 +23,8 @@ public  class CharacterStatHandler : MonoBehaviour
         InitialSetup();
     }
 
-    protected virtual void InitialSetup()
-    {
-        Debug.Log("셋업");
-    }
+    protected abstract void InitialSetup();
+   
 
     public virtual void UpdateStat(StatType type, float value)
     {

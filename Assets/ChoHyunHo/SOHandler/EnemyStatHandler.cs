@@ -9,7 +9,6 @@ public class EnemyStatHandler : CharacterStatHandler
     protected override void InitialSetup()
     {
 
-        base.InitialSetup();
         currentStat = new CharacterStat
         {
             characterStatSO = enemyStatSo,
