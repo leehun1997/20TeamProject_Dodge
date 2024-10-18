@@ -23,7 +23,6 @@ public class PlayerStatHandler : CharacterStatHandler
             playerStatSO = Instantiate(basePlayerStatSO);
             playerBulletSO = Instantiate(basePlayerBulletSO);
         }
-
         
         currentStat = new CharacterStat
         {
