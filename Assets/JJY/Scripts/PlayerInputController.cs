@@ -1,13 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerInputController : DodgeController
 {
     private Camera camera;
-    
-    private bool pressed = false;
-
-    public BulletSO bulletSO;
     
     protected override void Awake()
     {
@@ -30,9 +27,26 @@ public class PlayerInputController : DodgeController
         CallLookEvent(newAim);
     }
 
-    public void OnFire(InputValue value)
+    public void OnLeftMouse(InputValue value)
     {
         isAttacking = value.isPressed;
     }
-    
+    public void OnRightMouse(InputValue value)
+    {
+        if(value.isPressed)//Â÷ÁöÁß
+        {
+            isCharging= true;
+            Debug.Log("Charging");
+        } 
+        else if(value.isPressed == false && isCharging == true)
+        {
+            isCharging= false;
+            if (chargeGage == 0) return;
+
+            Debug.Log("Charge Attack" + chargeGage);
+            CallChargeAttackEvent(statHandler.currentStat.bulletSO, chargeGage);
+            currentGage -= (int)chargeGage;
+            chargeGage= 0;
+        }
+    }
 }

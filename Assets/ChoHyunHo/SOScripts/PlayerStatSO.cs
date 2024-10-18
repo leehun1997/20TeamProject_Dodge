@@ -6,5 +6,6 @@ using UnityEngine;
 public class PlayerStatSO : CharacterStatSO
 {
     [Header("플레이어 고유 스텟")]
+    public int specialGage;
     public string str = "아직 플레이어 고유의 스텟이 없음";
 }
