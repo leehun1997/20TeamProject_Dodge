@@ -9,6 +9,7 @@ public class TopDownShooting : MonoBehaviour
     [SerializeField] private Transform BulletSpawnPoint;
     private Vector2 shootDirection = Vector2.up;
 
+
     private void Awake()
     {
         controller = GetComponent<DodgeController>();
@@ -27,6 +28,7 @@ public class TopDownShooting : MonoBehaviour
         if (bulletSO == null) return;
 
         Debug.Log("ReadyToShoot");
+
         CreateProjectile(bSO);
     }
 
@@ -46,9 +48,10 @@ public class TopDownShooting : MonoBehaviour
 
     private void CreateProjectile(BulletSO bulletSO)
     {
-        GameObject b = Instantiate(bulletSO.bulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
+        GameObject b = Instantiate(bulletSO.bulletPrefab, BulletSpawnPoint.transform.position,
+            Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
         ProjectileController attackController = b.GetComponent<ProjectileController>();
-        attackController.InitiateAttack(shootDirection,bulletSO); //�⺻ ���ݸ� �ִٰ� ����, ������ ������ �������� ����
+        attackController.InitiateAttack(shootDirection, bulletSO); //�⺻ ���ݸ� �ִٰ� ����, ������ ������ �������� ����
     }
     private void CreateProjectileCharge(BulletSO bulletSO, double chargeGage)
     {

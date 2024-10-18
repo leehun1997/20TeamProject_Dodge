@@ -1,55 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//플레이어의 스텟을 최초에 초기화만 해줄 클래스
-public class CharacterStatHandler : MonoBehaviour
+public enum StatType
 {
-    [SerializeField] private CharacterStat characterStat;//인스펙터에서 연결 한 후 해당 캐릭터에 맞는 SO를 연결해야함
-    private CharacterStatSO instanceCharacterStatSO;//인스펙터에서 연결할 대상이 아님
-    private BulletSO instanceBulletSO;//인스펙터에서 연결할 대상이 아님
-    //최상위 부모 SO인 이유 상속받는 SO가 다 호환된다 실제로 연결할 SO는 characterStat의 SO들 (캐릭터 유형에 맞는 SO를 넣어야한다)
+    MaxHP,
+    Speed
+}
 
-    //아무나 조회가능 세팅은 이 클래스만
-    public CharacterStat currentStat { get; private set; }
 
-    private void Awake()
-    {
-        InitialSetup();//초기설정 이라는 뜻
-    }
+//플레이어의 스텟을 최초에 초기화만 해줄 클래스
+public  abstract class CharacterStatHandler : MonoBehaviour
+{
     
-    private void InitialSetup()
+    [SerializeField] private CharacterStat characterStat;//인스펙터에서 연결 한 후 해당 캐릭터에 맞는 SO를 연결해야함
+    
+    public CharacterStat currentStat { get; protected set; }
+
+    protected virtual void Awake()
     {
-        instanceCharacterStatSO = null;
-        instanceBulletSO = null;
-        //currentStat은 직렬화되어 상태가 유지,보존 된다 아무것도 없을 때(최초)만 초기화한다
-        if (characterStat.characterStatSO == null)
-        {
-            Debug.Log("characterStatSO 연결하지않음");
-        }
-        if (characterStat.bulletSO == null)
-        {
-            Debug.Log("bulletSO 연결하지않음");
-        }
-        
-        if (characterStat.bulletSO != null)
-        {
-            instanceBulletSO = Instantiate(characterStat.bulletSO);
-            //밑의 CharacterStat 프로퍼티 초기화에 바로 사용 불가 bulletSO = Instantiate(characterStat.bulletSO)안됨
-        }
-
-        if (characterStat.characterStatSO != null)
-        {
-            instanceCharacterStatSO = Instantiate(characterStat.characterStatSO);
-        }
-
-        currentStat = new CharacterStat
-        {
-            characterStatSO = instanceCharacterStatSO,
-            bulletSO = instanceBulletSO
-        };
-        //ShowDebug();
+        InitialSetup();
     }
+
+    protected abstract void InitialSetup();
+   
+
+    public virtual void UpdateStat(StatType type, float value)
+    {
+        switch (type)
+        {
+            case StatType.MaxHP:
+                break;
+            case StatType.Speed:
+                currentStat.characterStatSO.MoveSpeed += value;
+                Debug.Log("SPEEDPACK USED"); // 테스트용 추후 삭제
+                break;
+        }
+    }
+
 
     private void ShowDebug()
     {
@@ -65,7 +54,4 @@ public class CharacterStatHandler : MonoBehaviour
         Debug.Log("총알SO 딜레이 : " + currentStat.bulletSO.delay);
         Debug.Log("총알SO 프리팹: " + currentStat.bulletSO.bulletPrefab);
     }
-
 }
-
-
