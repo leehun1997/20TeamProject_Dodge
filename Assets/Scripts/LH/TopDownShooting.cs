@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class TopDownShooting : MonoBehaviour
     {
         controller.OnLookEvent += Aim2;
         controller.OnAttackEvent += Shooting;
+        controller.OnChargeEvent += Charging;
     }
 
     private void Shooting(BulletSO bulletSO)
@@ -30,7 +32,16 @@ public class TopDownShooting : MonoBehaviour
         CreateProjectile(bSO);
     }
 
-    private void Aim2(Vector2 direction) //���� �޾ƿ���
+    private void Charging(BulletSO bulletSO,double chargeGage)
+    {
+        BulletSO bSO = bulletSO as BulletSO;
+        if (bulletSO == null) return;
+
+        Debug.Log("Charging123");
+        CreateProjectileCharge(bSO,chargeGage);
+    }
+
+    private void Aim2(Vector2 direction)//���� �޾ƿ���
     {
         shootDirection = direction;
     }
@@ -41,5 +52,11 @@ public class TopDownShooting : MonoBehaviour
             Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
         ProjectileController attackController = b.GetComponent<ProjectileController>();
         attackController.InitiateAttack(shootDirection, bulletSO); //�⺻ ���ݸ� �ִٰ� ����, ������ ������ �������� ����
+    }
+    private void CreateProjectileCharge(BulletSO bulletSO, double chargeGage)
+    {
+        GameObject b = Instantiate(bulletSO.specialbulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
+        ProjectileController attackController = b.GetComponent<ProjectileController>();
+        attackController.chargeAttack(shootDirection,bulletSO,chargeGage);
     }
 }
