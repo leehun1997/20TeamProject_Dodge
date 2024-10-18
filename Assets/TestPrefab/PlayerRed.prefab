@@ -266,7 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c1df9287750ac4ea19be2e4d3e9480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSO: {fileID: 0}
 --- !u!114 &5522503459008186674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,4 +402,4 @@ MonoBehaviour:
     characterStatSO: {fileID: 11400000, guid: 5e9ac201e582faf4694204e5d25e6fd0, type: 2}
     bulletSO: {fileID: 11400000, guid: a8759f8520eef7e42b325c7c3328b9a3, type: 2}
   PlayerStatSo: {fileID: 11400000, guid: c948b2fd1075fc74b87ceaec49e11f0f, type: 2}
-  PlayerBulletSo: {fileID: 11400000, guid: 79b71c93574ab09428140fe7b333d5b5, type: 2}
+  PlayerBulletSo: {fileID: 11400000, guid: 7c825f616a37fb64eb24924eeae978a8, type: 2}
