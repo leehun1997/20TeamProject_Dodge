@@ -376,21 +376,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 736418985565312737, guid: f324282f01578584e894093c23b63add, type: 3}
-      propertyPath: playTime
-      value: 
-      objectReference: {fileID: 5250424483682218937}
-    - target: {fileID: 736418985565312737, guid: f324282f01578584e894093c23b63add, type: 3}
-      propertyPath: playerTag
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 736418985565312737, guid: f324282f01578584e894093c23b63add, type: 3}
       propertyPath: PlayerSelectUI
       value: 
       objectReference: {fileID: 781063027}
     - target: {fileID: 736418985565312737, guid: f324282f01578584e894093c23b63add, type: 3}
-      propertyPath: currentScoreTxt
+      propertyPath: currentTimeTxt
       value: 
-      objectReference: {fileID: 6642018413871422760}
+      objectReference: {fileID: 5250424483682218937}
     - target: {fileID: 736418985565312737, guid: f324282f01578584e894093c23b63add, type: 3}
       propertyPath: playerHealthSlider
       value: 
@@ -540,6 +532,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1848348438}
+    - target: {fileID: 7653315601495247076, guid: 51eb53886bcbea144bbc796cb0916e74, type: 3}
+      propertyPath: loadS
+      value: 
+      objectReference: {fileID: 2396647710019631343}
     - target: {fileID: 7887626140031278841, guid: 51eb53886bcbea144bbc796cb0916e74, type: 3}
       propertyPath: m_Name
       value: PlayerSelectCanvas
@@ -649,29 +645,29 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8500328078811491386, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6192383816139696808, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1848348438}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
---- !u!114 &5250424483682218937 stripped
+--- !u!114 &2396647710019631343 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1352187594560931113, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6192383816139696808, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
   m_PrefabInstance: {fileID: 2396647710019631342}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6642018413871422760 stripped
+--- !u!114 &5250424483682218937 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 505231004276346475, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1352187594560931113, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
   m_PrefabInstance: {fileID: 2396647710019631342}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
