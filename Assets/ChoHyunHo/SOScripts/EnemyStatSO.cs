@@ -6,6 +6,6 @@ using UnityEngine;
 public class EnemyStatSO : CharacterStatSO //��ũ���ͺ� ������Ʈ�鼭 ��ӹ޴¹��
 {
     [Header("�� ���� ����")]
-    public string str = "���� �� ������ ������ ����";
+    public string str = "���� �� ������ ������ ����"; // "공부중"
 }
 
