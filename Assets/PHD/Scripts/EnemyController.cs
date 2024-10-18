@@ -12,6 +12,7 @@ public class EnemyController : DodgeController
     protected override void Awake()
     {
         base.Awake();
+        
     }
 
     // Update is called once per frame
