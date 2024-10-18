@@ -32,6 +32,22 @@ public class DodgeController : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (isCharging)//차지중이면 공격불가로 만들기
+        {
+            if (currentGage <= 0) 
+            { 
+                Debug.Log("Can't Use SpecialAttack!"); 
+                return; 
+            }
+            else  if (chargeGage >= currentGage)
+            {
+                Debug.Log($"Full Charge! {chargeGage} {currentGage}");
+                chargeGage = currentGage;
+            }
+            else
+                chargeGage += Time.deltaTime;
+        }
+
         if (isAttacking && delayTime <= 0)
         {
             delayTime = statHandler.currentStat.bulletSO.delay;
@@ -40,18 +56,6 @@ public class DodgeController : MonoBehaviour
         else
         {
             delayTime -= Time.deltaTime;
-        }
-        if (isCharging)
-        {
-            if (currentGage == 0) { Debug.Log("Can't Use SpecialAttack!"); return; }
-
-            if (chargeGage >= currentGage)
-            {
-                Debug.Log("Full Charge!");
-                chargeGage = currentGage;
-            }
-            else
-                chargeGage += Time.deltaTime;
         }
     }
 
