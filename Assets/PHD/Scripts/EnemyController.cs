@@ -18,9 +18,8 @@ public abstract class EnemyController : DodgeController
     protected override void Start()
     {
         base.Start();
-       ClosesTarget = GameManager.Instance.Player; // ���ӸŴ����� Player �� ������ ��������
-       
-    }
+        ClosesTarget = GameManager.Instance.Player; // ���ӸŴ����� Player �� ������ ��������
+     }
 
     protected override void Update()
     {
@@ -29,7 +28,7 @@ public abstract class EnemyController : DodgeController
 
     protected virtual void FixedUpdate()
     {
-
+        
     }
 
      

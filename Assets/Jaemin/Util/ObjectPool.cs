@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    
     [System.Serializable]
     public class Pool
     {
-        public string name; //ÀÌ¸§
-        public GameObject prefab; //¿ÀºêÁ§Æ® ÇÁ¸®Æé
-        public int size; //»ý¼ºÇÒ »çÀÌÁî
+        public string name; //ï¿½Ì¸ï¿½
+        public GameObject prefab; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        public int size; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     public List<Pool> pools = new List<Pool>();
@@ -24,18 +25,18 @@ public class ObjectPool : MonoBehaviour
             Queue<GameObject> queue = new Queue<GameObject>(); 
             for(int i = 0;  i < pool.size; i++)
             {
-                GameObject obj = Instantiate(pool.prefab, transform); //ÀÌ ½ºÅ©¸³Æ®¸¦ °¡Áö°í ÀÖ´Â ¿ÀºêÁ§Æ® ÀÚ½ÄÀ¸·Î ³Ö¾îÁØ´Ù.
+                GameObject obj = Instantiate(pool.prefab, transform); //ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ø´ï¿½.
                 obj.SetActive(false);
-                queue.Enqueue(obj);//queue¿¡ ³Ö´Â´Ù
+                queue.Enqueue(obj);//queueï¿½ï¿½ ï¿½Ö´Â´ï¿½
             }
 
-            PoolDictionary.Add(pool.name, queue); //1°³ÀÇ ´ëÇÑ ¿ÀºêÁ§Æ®¸¦ Ç®À» ³Ö¾îÁØ´Ù : ÀÌ¸§¸¶´Ù ´Ù¸£´Ù
+            PoolDictionary.Add(pool.name, queue); //1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ç®ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ø´ï¿½ : ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½
         }
     }
 
     public GameObject SpawnFromPool(string name)
     {
-        if (!PoolDictionary.ContainsKey(name)) //nameÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎÇÏ°í ¾øÀ¸¸é null
+        if (!PoolDictionary.ContainsKey(name)) //nameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ null
         {
             return null;
         }
@@ -43,24 +44,24 @@ public class ObjectPool : MonoBehaviour
         Queue<GameObject> queue = PoolDictionary[name];
         int QueueCount = queue.Count;
 
-        // ºñÈ°¼ºÈ­µÈ ¿ÀºêÁ§Æ®¸¦ Ã£À» ¶§±îÁö ¹Ýº¹
+        // ï¿½ï¿½È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½
         for (int i = 0; i < QueueCount; i++)
         {
             GameObject obj = queue.Dequeue();
 
-            // ¸¸¾à ¿ÀºêÁ§Æ®°¡ ºñÈ°¼ºÈ­ »óÅÂ¶ó¸é »ç¿ëÇÏ°í, ±×·¸Áö ¾Ê´Ù¸é Å¥ µÚ·Î º¸³½´Ù
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½, ï¿½×·ï¿½ï¿½ï¿½ ï¿½Ê´Ù¸ï¿½ Å¥ ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (!obj.activeInHierarchy)
             {
                 obj.SetActive(true);
                 queue.Enqueue(obj);
-                return obj; // È°¼ºÈ­µÈ ¿ÀºêÁ§Æ®¸¦ ¹ÝÈ¯
+                return obj; // È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¯
             }
 
-            // ¿ÀºêÁ§Æ®°¡ ÀÌ¹Ì È°¼ºÈ­µÈ °æ¿ì Å¥ µÚ·Î º¸³½´Ù
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ì¹ï¿½ È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ Å¥ ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             queue.Enqueue(obj);
         }
 
-        // »ç¿ëÇÒ ¼ö ÀÖ´Â ºñÈ°¼ºÈ­µÈ ¿ÀºêÁ§Æ®°¡ ¾ø´Â °æ¿ì nullÀ» ¹ÝÈ¯
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ nullï¿½ï¿½ ï¿½ï¿½È¯
         return null;
     }
 }

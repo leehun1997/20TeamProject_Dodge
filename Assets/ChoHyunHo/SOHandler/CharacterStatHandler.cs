@@ -18,7 +18,8 @@ public  abstract class CharacterStatHandler : MonoBehaviour
     public float  speed{ get; protected set; }
     public float maxHp { get; protected set; }
     public float damage { get; protected set;}
-    
+    public Transform target { get; protected set;}
+
     
     // 플레이어 , 몬스터 고유 정보를 불러올 수는 있는데 값을 변경하지는 못하는 상황 
     private CharacterStatHandler _handler; 
