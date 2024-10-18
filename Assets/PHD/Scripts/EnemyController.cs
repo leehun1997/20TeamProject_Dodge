@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
-public class EnemyController : DodgeController
+public abstract class EnemyController : DodgeController
 {
 
     protected Transform ClosesTarget { get; private set; }
@@ -18,7 +18,7 @@ public class EnemyController : DodgeController
     protected override void Start()
     {
         base.Start();
-       ClosesTarget = GameManager.Instance.Player; // °ÔÀÓ¸Å´ÏÀú¿¡ Player °¡ ÀÖÀ»½Ã °¡Á®¿À±â
+       ClosesTarget = GameManager.Instance.Player; // ï¿½ï¿½ï¿½Ó¸Å´ï¿½ï¿½ï¿½ï¿½ï¿½ Player ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        
     }
 
@@ -31,6 +31,9 @@ public class EnemyController : DodgeController
     {
 
     }
+
+     
+
 
     public float DistanceToTarget() 
     {

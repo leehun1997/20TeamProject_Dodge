@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StatSO", menuName = "StatSO/PlayerStatSO", order = 1)]
 public class PlayerStatSO : CharacterStatSO
 {
-    [Header("ÇÃ·¹ÀÌ¾î °íÀ¯ ½ºÅÝ")]
-    public string str = "¾ÆÁ÷ ÇÃ·¹ÀÌ¾î °íÀ¯ÀÇ ½ºÅÝÀÌ ¾øÀ½";
+    [Header("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
+    public string str = "ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½";
+    public int id = 0;
 }

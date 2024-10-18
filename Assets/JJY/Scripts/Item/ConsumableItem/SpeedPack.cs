@@ -9,9 +9,7 @@ public class SpeedPack : ConsumableItem
     
     protected override void UseConsumableItem()
     {
-        // TODO: CharacterStatHandler Update를 통해 처리로 변경 
-        Player.GetComponent<CharacterMovement>().SetSpeedForTest(speedUp);
-        Debug.Log("SPEEDPACK USED"); // 테스트용 추후 삭제
+        playerStat.UpdateStat(StatType.Speed,100);
         Destroy(gameObject);
     }
 }
