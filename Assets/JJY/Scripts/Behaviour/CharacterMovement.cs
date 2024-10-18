@@ -45,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
     
     private void Move(Vector2 direction)
     {
-        rb.velocity = Vector2.Lerp(rb.velocity, direction * characterStatHandler.currentStat.characterStatSO.MoveSpeed , Time.fixedDeltaTime / accelerationTime);
+        rb.velocity = Vector2.Lerp(rb.velocity, direction * characterStatHandler.speed , Time.fixedDeltaTime / accelerationTime);
     }
 
     

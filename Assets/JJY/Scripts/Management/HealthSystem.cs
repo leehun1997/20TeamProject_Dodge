@@ -14,7 +14,7 @@ public class HealthSystem : MonoBehaviour
     public event Action OnDamage; 
     
     
-    public float maxHp =>  statHandler.currentStat.characterStatSO.MaxHP;
+    public float maxHp =>  statHandler.maxHp;
 
     public float CurrentHp { get; private set; }
 

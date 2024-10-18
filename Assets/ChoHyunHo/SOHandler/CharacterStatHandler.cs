@@ -6,35 +6,46 @@ using UnityEngine;
 public enum StatType
 {
     MaxHP,
-    Speed
+    Speed,
+    BulletDamage
 }
 
 
 //플레이어의 스텟을 최초에 초기화만 해줄 클래스
 public  abstract class CharacterStatHandler : MonoBehaviour
 {
+    //공통 변수
+    public float  speed{ get; protected set; }
+    public float maxHp { get; protected set; }
+    public float damage { get; protected set;}
+    
+    
+    // 플레이어 , 몬스터 고유 정보를 불러올 수는 있는데 값을 변경하지는 못하는 상황 
+    private CharacterStatHandler _handler; 
     
     [SerializeField] private CharacterStat characterStat;//인스펙터에서 연결 한 후 해당 캐릭터에 맞는 SO를 연결해야함
-    
     public CharacterStat currentStat { get; protected set; }
-
+    
     protected virtual void Awake()
     {
         InitialSetup();
     }
 
     protected abstract void InitialSetup();
-   
+
 
     public virtual void UpdateStat(StatType type, float value)
     {
         switch (type)
         {
             case StatType.MaxHP:
+                maxHp += value;
                 break;
             case StatType.Speed:
-                currentStat.characterStatSO.MoveSpeed += value;
-                Debug.Log("SPEEDPACK USED"); // 테스트용 추후 삭제
+                speed += value;
+                break;
+            case StatType.BulletDamage:
+                currentStat.bulletSO.damage += value;
                 break;
         }
     }

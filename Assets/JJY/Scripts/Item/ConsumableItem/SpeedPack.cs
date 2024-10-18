@@ -12,4 +12,5 @@ public class SpeedPack : ConsumableItem
         playerStat.UpdateStat(StatType.Speed,100);
         Destroy(gameObject);
     }
+    
 }
