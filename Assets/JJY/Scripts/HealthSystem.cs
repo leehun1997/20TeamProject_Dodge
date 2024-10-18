@@ -17,7 +17,7 @@ public class HealthSystem : MonoBehaviour
     public float maxHp =>  statHandler.currentStat.characterStatSO.MaxHP;
     public float CurrentHp { get; private set; }
 
-    [SerializeField] private Slider healthSlider; //슬라이더를 인스펙터에서 가져옴
+    public Slider healthSlider; //슬라이더를 인스펙터에서 가져옴
     [SerializeField] private bool isPlayer; // 플레이어 여부 확인
 
     private void Awake()
