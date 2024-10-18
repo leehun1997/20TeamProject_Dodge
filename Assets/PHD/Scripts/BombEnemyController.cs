@@ -11,17 +11,22 @@ using UnityEngine.UIElements;
 public class BombEnemyController : EnemyController
 {
     [SerializeField][Range(0f, 1000f)] float walkTargetRange = 0f;
+    [SerializeField] private string targetTag = "Player";
     private Vector3 playerPastPosition;
     private SpriteRenderer BombEnemyRenderer;
+    Vector2 direction = Vector2.zero;
+    public CharacterStatSO CSO;
+    private HealthSystem SupHealth;
+    
 
-    private bool isCollision;
+    private bool isCollision = false;
     private bool onceChase = true;
 
 
     protected override void Start()
     {
         base.Start();
-        // ## 헬스시스템 구독
+        SupHealth = GetComponent<HealthSystem>();
         playerPastPosition = ClosesTarget.position;
         BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
         
@@ -32,16 +37,18 @@ public class BombEnemyController : EnemyController
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
+        
 
         if (isCollision) 
         {
             ApplyDamage();
+            Destroy(gameObject, 0f);
+            Debug.Log(SupHealth.CurrentHp);
         }
 
         if (Mathf.Abs(playerPastPosition.x - transform.position.x) < 0.1
             && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1) {
-            Destroy(gameObject, 0);
+            Destroy(gameObject, 0f);
         }
 
     }
@@ -50,30 +57,29 @@ public class BombEnemyController : EnemyController
 
     private void ApplyDamage()
     {
+        //EnemyStatSO bombEnemyStatSO = statHandler.currentStat.characterStatSO as EnemyStatSO;
+        SupHealth.ChangeHP(-20f);
         
     }
 
     private void Chase() 
     {
-        Vector2 direction = Vector2.zero;
 
         direction = DirectionToTarget();
 
         CallMoveEvent(direction);
-        Rotate(direction);
+        CallLookEvent(direction);
         onceChase = false;
-        
-    }
-
-    private void Rotate(Vector2 direction)
-    {
-        float rotz = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        BombEnemyRenderer.flipY = Mathf.Abs(rotz) < 0f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        GameObject player = collision.gameObject;
+
+        if (!player.CompareTag(targetTag)) { return; }
+        SupHealth = collision.GetComponent<HealthSystem>();
+        isCollision = true;
+
     }
 }
 

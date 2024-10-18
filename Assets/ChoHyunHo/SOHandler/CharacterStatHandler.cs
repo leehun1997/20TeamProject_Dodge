@@ -58,12 +58,12 @@ public class CharacterStatHandler : MonoBehaviour
         Debug.Log("초기설정 최대HP : " + currentStat.characterStatSO.MaxHP);
         Debug.Log("초기설정 이동속도 : " + currentStat.characterStatSO.MoveSpeed);
         Debug.Log("초기설정 총알SO : " + currentStat.bulletSO);
-        Debug.Log("총알SO 타겟(없음) : " + currentStat.bulletSO.targetLayer);
+        Debug.Log("총알SO 타겟: " + currentStat.bulletSO.targetLayer);
         Debug.Log("총알SO 공격력 : " + currentStat.bulletSO.damage);
         Debug.Log("총알SO 크기 : " + currentStat.bulletSO.size);
         Debug.Log("총알SO 속도 : " + currentStat.bulletSO.speed);
         Debug.Log("총알SO 딜레이 : " + currentStat.bulletSO.delay);
-        Debug.Log("총알SO 프리팹(없음) : " + currentStat.bulletSO.bulletPrefab);
+        Debug.Log("총알SO 프리팹: " + currentStat.bulletSO.bulletPrefab);
     }
 
 }

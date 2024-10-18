@@ -13,6 +13,7 @@ public class ProjectileController : MonoBehaviour
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
     private TrailRenderer trailRenderer;
+    private HealthSystem healthSystem;
 
     private BulletSO attackData;
     private Vector2 direction;
@@ -84,14 +85,21 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (IsLayerMatched(levelCollisionLayer.value, collision.gameObject.layer))
         {
             Vector2 destroyPosition = collision.ClosestPoint(transform.position) - direction * 0.2f;
+
+
             DestroyProjectile(destroyPosition);
         }
         else if (IsLayerMatched(attackData.targetLayer , collision.gameObject.layer))
         {
             //데미지 계산 필요
+            healthSystem = collision.GetComponent<HealthSystem>();
+            healthSystem.ChangeHP(-attackData.damage);
+            Debug.Log(attackData.damage + "  " + healthSystem.CurrentHp);
+
             DestroyProjectile(collision.ClosestPoint(transform.position));
         }
     }
