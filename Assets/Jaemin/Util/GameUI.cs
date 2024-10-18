@@ -58,6 +58,7 @@ public class GameUI : MonoBehaviour
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(SceneName);
         Debug.Log("¾À ÀüÈ¯");
+        Time.timeScale = 0f;
     }
 
     public void Toggle()
