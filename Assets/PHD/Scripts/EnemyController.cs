@@ -6,20 +6,22 @@ using UnityEngine;
 public abstract class EnemyController : DodgeController
 {
 
-    protected Transform ClosesTarget { get; private set; }
+    public Transform ClosesTarget { get; protected set; }
 
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
+        
     }
 
     // Update is called once per frame
     protected override void Start()
     {
         base.Start();
-        ClosesTarget = GameManager.Instance.Player; // ���ӸŴ����� Player �� ������ ��������
-     }
+     ClosesTarget = GameManager.Instance.Player; // 게임매니저에 Player 가 있을시 가져오기
+       
+    }
 
     protected override void Update()
     {

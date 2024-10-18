@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
-        playTime.text = $"Time : {time:F2}";
+        // playTime.text = $"Time : {time:F2}";
     }
 
     public void Score()
