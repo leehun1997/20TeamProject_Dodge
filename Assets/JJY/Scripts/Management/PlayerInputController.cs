@@ -38,21 +38,21 @@ public class PlayerInputController : DodgeController
         {
             isCharging= true;
             Debug.Log("Charging");
+            CallChargeAttackEvent(isCharging,chargeGage);
         } 
         else if(value.isPressed == false && isCharging == true)//player1의 특수 공격
         {
             isCharging= false;
             if (chargeGage == 0) return;
 
-            Debug.Log("Special Attack1" + chargeGage);
-            CallChargeAttackEvent(statHandler.currentStat.bulletSO, chargeGage);
+            Debug.Log("Special Attack" + chargeGage);
+            CallChargeAttackEvent(isCharging, chargeGage);
             currentGage -= (int)chargeGage;
             chargeGage= 0;
         }
-        else if (isCharging == true)//player2의 특수 공격, 조건 추가 필요
+        else
         {
-            Debug.Log("Special Attack2" + chargeGage);
-            CallChargeAttackEvent(statHandler.currentStat.bulletSO, currentGage);
+            Debug.Log("Charging End");
         }
     }
 }

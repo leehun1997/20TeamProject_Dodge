@@ -8,7 +8,7 @@ public class DodgeController : MonoBehaviour
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<BulletSO> OnAttackEvent;
-    public event Action<BulletSO,double> OnChargeEvent;
+    public event Action<bool,double> OnChargeEvent;
     protected bool isAttacking { get; set; }
     protected bool isCharging { get; set; }
 
@@ -17,26 +17,25 @@ public class DodgeController : MonoBehaviour
     protected int currentGage;
     protected double chargeGage = 0;
 
-    protected CharacterStatHandler statHandler { get; set; }
+    protected PlayerStatHandler statHandler { get; set; }
 
     protected virtual void Awake()
     {
-        
+        statHandler = GetComponent<PlayerStatHandler>();
     }
 
     protected virtual void Start()
-    {
-        statHandler = GetComponent<CharacterStatHandler>();
-        currentGage = statHandler.currentStat.characterStatSO.MaxGage;
+    {        
+        currentGage = statHandler.PlayerStatSo.specialGage;
     }
 
     protected virtual void Update()
     {
-        if (isCharging)//차지중이면 공격불가로 만들기
+        if (isCharging)//차지중이면 공격불가로 만들기?
         {
             if (currentGage <= 0) 
             { 
-                Debug.Log("Can't Use SpecialAttack!"); 
+                Debug.Log($"Can't Use SpecialAttack! {currentGage} {chargeGage}"); 
                 return; 
             }
             else  if (chargeGage >= currentGage)
@@ -73,9 +72,9 @@ public class DodgeController : MonoBehaviour
     {
        OnAttackEvent?.Invoke(attackSO);
     }
-    public void CallChargeAttackEvent(BulletSO attackSO,double chargeGage)
+    public void CallChargeAttackEvent(bool isCharging,double chargeGage)
     {
-        OnChargeEvent?.Invoke(attackSO,chargeGage);
+        OnChargeEvent?.Invoke(isCharging,chargeGage);
     }
 }
 

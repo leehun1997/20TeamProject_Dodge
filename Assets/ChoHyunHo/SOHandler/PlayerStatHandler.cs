@@ -8,7 +8,6 @@ public class PlayerStatHandler : CharacterStatHandler
 
     protected override void InitialSetup()
     {
-
         currentStat = new CharacterStat
         {
             characterStatSO = PlayerStatSo,

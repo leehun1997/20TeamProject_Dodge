@@ -73,6 +73,19 @@ public class ProjectileController : MonoBehaviour
 
         isReady = true;
     }
+    public void speciaAttack2(Vector2 direction, BulletSO bulletSO, double chargeGage)
+    {
+
+        Debug.Log("Player2 Special Attack");
+        this.attackData = bulletSO;
+        this.direction = direction;
+
+        chargeGage = chargeGage < 1 ? chargeGage: 1;
+        UpdateProjectile(chargeGage);
+        //trailRenderer.Clear();//필요없으면 제거        
+
+        isReady = true;
+    }
 
     private void UpdateProjectile()//다양한 공격 정보 업데이트
     {
