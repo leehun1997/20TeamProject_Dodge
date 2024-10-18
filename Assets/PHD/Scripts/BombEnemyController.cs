@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,10 +18,9 @@ public class BombEnemyController : EnemyController
     Vector2 direction = Vector2.zero;
     public CharacterStatSO CSO;
     private HealthSystem SupHealth;
-    
+    int i = 0;
 
     private bool isCollision = false;
-    private bool onceChase = true;
 
 
     protected override void Start()
@@ -34,6 +34,17 @@ public class BombEnemyController : EnemyController
 
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        if (Mathf.Abs(playerPastPosition.x - transform.position.x) < 0.1
+           && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -42,18 +53,24 @@ public class BombEnemyController : EnemyController
         if (isCollision) 
         {
             ApplyDamage();
-            Destroy(gameObject, 0f);
-            Debug.Log(SupHealth.CurrentHp);
+            gameObject.SetActive(false);
         }
 
-        if (Mathf.Abs(playerPastPosition.x - transform.position.x) < 0.1
-            && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1) {
-            Destroy(gameObject, 0f);
-        }
+       
 
     }
 
- 
+    public void Init() 
+    {
+        SupHealth = GetComponent<HealthSystem>();
+        if (ClosesTarget == null) 
+        {
+            ClosesTarget = GameManager.Instance.Player;
+        }
+        playerPastPosition = ClosesTarget.position;
+        BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
+        Chase();
+    }
 
     private void ApplyDamage()
     {
@@ -64,12 +81,11 @@ public class BombEnemyController : EnemyController
 
     private void Chase() 
     {
-
+        Debug.Log("chase");
         direction = DirectionToTarget();
 
         CallMoveEvent(direction);
         CallLookEvent(direction);
-        onceChase = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -81,5 +97,6 @@ public class BombEnemyController : EnemyController
         isCollision = true;
 
     }
+
 }
 

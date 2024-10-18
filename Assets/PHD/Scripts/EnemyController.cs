@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
-public class EnemyController : DodgeController
+public abstract class EnemyController : DodgeController
 {
 
-    protected Transform ClosesTarget { get; private set; }
+    public Transform ClosesTarget { get; protected set; }
 
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
+        
     }
 
     // Update is called once per frame
     protected override void Start()
     {
         base.Start();
-       ClosesTarget = GameManager.Instance.Player; // °ÔÀÓ¸Å´ÏÀú¿¡ Player °¡ ÀÖÀ»½Ã °¡Á®¿À±â
+     ClosesTarget = GameManager.Instance.Player; // ê²Œì„ë§¤ë‹ˆì €ì— Player ê°€ ìˆì„ì‹œ ê°€ì ¸ì˜¤ê¸°
        
     }
 
@@ -31,6 +32,9 @@ public class EnemyController : DodgeController
     {
 
     }
+
+     
+
 
     public float DistanceToTarget() 
     {

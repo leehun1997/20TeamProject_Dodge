@@ -8,8 +8,9 @@ using UnityEngine;
 public class CharacterStatSO : ScriptableObject
 {
     [Header("공통 기본 스텟")]
-    public float MaxHP;
+    public float MaxHP = 10;
     public float MoveSpeed;
+    public int MaxGage;
 }
 
 

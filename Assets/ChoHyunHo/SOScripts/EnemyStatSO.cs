@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StatSO", menuName = "StatSO/EnemyStatSO", order = 2)]
-public class EnemyStatSO : CharacterStatSO //½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ®¸é¼­ »ó¼Ó¹Þ´Â¹æ¹ý
+public class EnemyStatSO : CharacterStatSO //ï¿½ï¿½Å©ï¿½ï¿½ï¿½Íºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½é¼­ ï¿½ï¿½Ó¹Þ´Â¹ï¿½ï¿½
 {
-    [Header("Àû °íÀ¯ ½ºÅÝ")]
-    public string str = "¾ÆÁ÷ Àû °íÀ¯ÀÇ ½ºÅÝÀÌ ¾øÀ½";
+    [Header("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
+    public string str = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"; // "ê³µë¶€ì¤‘"
 }
+
