@@ -10,13 +10,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; //GameManager를 다른 곳에서 쉽게 접근가능
-    [SerializeField ]private string playerTag;
+    [SerializeField] private string playerTag;
     public Transform Player { get; private set; } //읽기는 가능하지만 다른 곳에서 초기화 불가능
-    public ObjectPool Pool {  get; private set; } //읽기는 가능하지만 다른 곳에서 초기화 불가능
+    public ObjectPool Pool { get; private set; } //읽기는 가능하지만 다른 곳에서 초기화 불가능
 
     [Header("GameUI")]
     [SerializeField] private TextMeshProUGUI currentTimeTxt; //현재 시간 테스트
-    private float currentTime1=0f; //현재 시간
+    private float currentTime1 = 0f; //현재 시간
     private float highTime = 0f;//최고 시간
     private float lowTime = 0f; //가장 빨리 깬 시간을 저장
     private float currentTime2 = 0f; //현재 시간
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject); //씬 전환 후에도  GameManager 유지하기 위해
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         Pool = FindObjectOfType<ObjectPool>(); //씬 안에 ObjectPool 붙어있는 오브젝트를 찾고Pool변수에 참조로 넣어 게임 매니저에서 그풀을 사용
 
-       
+
     }
 
     private void Start()
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         }
 
         ReconnectUI();
-        ReconnectPlayerSelectUI();
+        ReconnectPlayerSelectUI(); // PlayerSelectUI 재연결
     }
 
     private void ReconnectUI()
@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
     private void ReconnectPlayerSelectUI()
     {
         // PlayerSelectCanvas를 다시 찾습니다.
@@ -123,12 +122,104 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void Score()
     {
         //몬스터 죽었을 때 점수를 받아오는 로직
     }
-  
+
+    public void LoadS()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "InfiniteMap")
+        {
+            EndGameMap1(); // 최고 시간 저장
+        }
+        else if (currentSceneName == "StoryMap")
+        {
+            EndGameMap2(); // 최단 시간 저장
+        }
+
+        SceneManager.LoadScene("GameOver");
+        //Time.timeScale = 0f;
+    }
+
+    public void EndGameMap1() //게임이 클리어했을 때
+    {
+        if (highTime == 0 || currentTime1 > highTime) // 현재 시간이 최고 시간보다 크면 갱신
+        {
+            highTime = currentTime1;
+            SaveBestTime();
+            Debug.Log("새로운 최고 기록: " + highTime + " 초");
+        }
+    }
+
+    public void EndGameMap2()
+    {
+        if (lowTime == 0 || currentTime2 < lowTime) // 현재 시간이 최단 시간보다 작으면 갱신
+        {
+            lowTime = currentTime2;
+            SaveLowTime();
+            Debug.Log("새로운 최단 기록: " + lowTime + " 초");
+        }
+    }
+
+    private void SaveLowTime()// 빠른 점수라고해야하나
+    {
+        PlayerPrefs.SetFloat("LowTime", lowTime);
+        PlayerPrefs.Save();
+    }
+
+    private void SaveBestTime() //기록 저장 높은 점수
+    {
+        PlayerPrefs.SetFloat("BestTime", highTime);
+        PlayerPrefs.Save();
+    }
+
+    // 최고 기록 불러오기
+    private void LoadTimes() // 최고 기록 및 최단 기록 불러오기
+    {
+        if (PlayerPrefs.HasKey("BestTime"))
+        {
+            highTime = PlayerPrefs.GetFloat("BestTime");
+        }
+
+        if (PlayerPrefs.HasKey("LowTime"))
+        {
+            lowTime = PlayerPrefs.GetFloat("LowTime");
+        }
+    }
+
+    public void PlayerBlue() //Blue를 골랐을 때
+    {
+        playerPrefab = Resources.Load<GameObject>("Prefabs/PlayerBlue");
+        PlayerSelectUI.SetActive(false);
+        PlayerChange();
+
+
+    }
+
+    public void PlayerRed() //Red를 골랐을 때
+    {
+        playerPrefab = Resources.Load<GameObject>("Prefabs/PlayerRed");
+        PlayerSelectUI.SetActive(false);
+        PlayerChange();
+    }
+
+    public void PlayerChange()
+    {
+        if (playerPrefab != null)
+        {
+            newPlayer = Instantiate(playerPrefab);
+            HealthSystem healthSystem = newPlayer.GetComponent<HealthSystem>();
+            healthSystem.healthSlider = playerHealthSlider;
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Debug.Log("플레이어가 없다");
+        }
+    }
+
 
 
 }
