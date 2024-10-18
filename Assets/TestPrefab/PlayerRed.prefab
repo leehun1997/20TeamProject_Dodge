@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 2795411946517063025}
   - component: {fileID: 6310581300639288809}
   - component: {fileID: 7955269911194086689}
+  - component: {fileID: 1467951896719085702}
   m_Layer: 6
   m_Name: PlayerRed
   m_TagString: Player
@@ -376,6 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efc390333874000aebe8457b0714136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &7955269911194086689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,5 +389,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd93b6524d927e0409a6c701fd9396a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1467951896719085702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910557852464748505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd74d8f123f67f14eb213f269e7c8152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

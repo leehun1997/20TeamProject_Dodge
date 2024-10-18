@@ -45,5 +45,13 @@ public class CharacterMovement : MonoBehaviour
         //보간 적용 , Time.fixedDeltaTime / accelerationTime 계수만 큼 보간    흐른 시간 / 2f
         rb.velocity = Vector2.Lerp(rb.velocity, direction * speed, Time.fixedDeltaTime / accelerationTime);
     }
+
     
+    
+    //테스트를 위한 메서드
+    public void SetSpeedForTest(float amount)
+    {
+        speed += amount;
+    }
+
 }

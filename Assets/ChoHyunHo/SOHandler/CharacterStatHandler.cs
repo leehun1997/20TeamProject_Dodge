@@ -4,7 +4,7 @@ using UnityEngine;
 
 //플레이어의 스텟을 최초에 초기화만 해줄 클래스
 public class CharacterStatHandler : MonoBehaviour
-{
+ {
     [SerializeField] private CharacterStat characterStat;//인스펙터에서 연결 한 후 해당 캐릭터에 맞는 SO를 연결해야함
     private CharacterStatSO instanceCharacterStatSO;//인스펙터에서 연결할 대상이 아님
     private BulletSO instanceBulletSO;//인스펙터에서 연결할 대상이 아님
@@ -50,6 +50,8 @@ public class CharacterStatHandler : MonoBehaviour
         };
         //ShowDebug();
     }
+    
+    
 
     private void ShowDebug()
     {

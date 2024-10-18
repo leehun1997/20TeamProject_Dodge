@@ -1,9 +1,13 @@
-﻿public abstract class ConsumableItem : Item
+﻿using System;
+
+public abstract class ConsumableItem : Item
 {
-    protected override void UseItem()
+
+    public override void UseItem()
     {
         UseConsumableItem();
     }
-
+    
     protected abstract void UseConsumableItem();
+
 }
