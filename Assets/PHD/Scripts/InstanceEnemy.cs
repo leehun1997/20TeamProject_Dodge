@@ -11,7 +11,7 @@ public class InstanceEnemy : MonoBehaviour
     public GameObject instanceRangeEnemy;
     public GameObject instanceBombEnemy;
     string bombPrefabPath = "TestPrefab/BombEnemy";
-    string rangePrefabPath = "TestPrefab/RangeEnemy";
+    string rangePrefabPath = "TestPrefab/RangeEnemy"; // 인스턴스는 리소스 하위 파일만 가능하다
     private float instanceTime = 3f;
     private float checkInstanceTime = 0f;
     Vector2 randomPosition;
