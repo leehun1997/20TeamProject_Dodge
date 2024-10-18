@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8279967033616876647}
   - component: {fileID: 2848857218766733824}
   - component: {fileID: 6696664474470919645}
+  - component: {fileID: 7345767724875898301}
   m_Layer: 7
   m_Name: RangeEnemySprite
   m_TagString: Untagged
@@ -137,6 +138,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7345767724875898301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544055274771820148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa2d733696612446b8728b17f1f5160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathAnimationPrefab: {fileID: 0}
 --- !u!1 &2124374614835837934
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +170,6 @@ GameObject:
   - component: {fileID: 914531278091868662}
   - component: {fileID: 2168443160450665162}
   - component: {fileID: 6359558872373850080}
-  - component: {fileID: 9049871403175952173}
   m_Layer: 7
   m_Name: RangeEnemy
   m_TagString: Untagged
@@ -338,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa2d733696612446b8728b17f1f5160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathAnimationPrefab: {fileID: 0}
 --- !u!114 &2168443160450665162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,17 +378,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd93b6524d927e0409a6c701fd9396a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9049871403175952173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124374614835837934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6efc390333874000aebe8457b0714136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSlider: {fileID: 0}
-  isPlayer: 0

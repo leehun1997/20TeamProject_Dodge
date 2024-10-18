@@ -376,6 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efc390333874000aebe8457b0714136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &7955269911194086689
 MonoBehaviour:
   m_ObjectHideFlags: 0
