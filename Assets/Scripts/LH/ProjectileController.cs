@@ -61,10 +61,26 @@ public class ProjectileController : MonoBehaviour
 
         isReady= true;
     }
+    public void chargeAttack(Vector2 direction, BulletSO bulletSO, double chargeGage)
+    {
+        
+        Debug.Log("Last Charge Check");
+        this.attackData = bulletSO;
+        this.direction = direction;
+
+        UpdateProjectile(chargeGage);
+        //trailRenderer.Clear();//필요없으면 제거        
+
+        isReady = true;
+    }
 
     private void UpdateProjectile()//다양한 공격 정보 업데이트
     {
         transform.localScale = Vector3.one * attackData.size;
+    }
+    private void UpdateProjectile(double chargeGage)//다양한 공격 정보 업데이트
+    {
+        transform.localScale = Vector3.one * (float)chargeGage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

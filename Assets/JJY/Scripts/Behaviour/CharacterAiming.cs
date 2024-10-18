@@ -9,8 +9,7 @@ public class CharacterAiming : MonoBehaviour
     
     [Header("Aiming Settings")]
     [SerializeField] private SpriteRenderer spriteRenderer;
-
-    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField][Tooltip("rotationSpeed값이 클수록 회전 속도 빨라짐")] private float rotationSpeed = 5f;
 
     private void Awake()
     {
@@ -27,13 +26,6 @@ public class CharacterAiming : MonoBehaviour
     {
         Look(direction);
     }
-     
-    
-    // private void Look(Vector2 direction)
-    // {      
-    //     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    //     transform.rotation = Quaternion.Euler(0,0,angle);
-    // }
     
     private void Look(Vector2 direction)
     {

@@ -29,10 +29,11 @@ public class BombEnemyController : EnemyController
         SupHealth = GetComponent<HealthSystem>();
         playerPastPosition = ClosesTarget.position;
         BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
-        
         Chase();
-
     }
+
+   
+    
 
     protected override void FixedUpdate()
     {

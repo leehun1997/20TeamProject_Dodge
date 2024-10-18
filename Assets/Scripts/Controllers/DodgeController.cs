@@ -8,8 +8,14 @@ public class DodgeController : MonoBehaviour
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<BulletSO> OnAttackEvent;
+    public event Action<BulletSO,double> OnChargeEvent;
     protected bool isAttacking { get; set; }
+    protected bool isCharging { get; set; }
+
     private float delayTime = 0f;
+
+    protected int currentGage;
+    protected double chargeGage = 0;
 
     protected CharacterStatHandler statHandler { get; set; }
 
@@ -21,6 +27,7 @@ public class DodgeController : MonoBehaviour
     protected virtual void Start()
     {
         statHandler = GetComponent<CharacterStatHandler>();
+        currentGage = statHandler.currentStat.characterStatSO.MaxGage;
     }
 
     protected virtual void Update()
@@ -33,6 +40,18 @@ public class DodgeController : MonoBehaviour
         else
         {
             delayTime -= Time.deltaTime;
+        }
+        if (isCharging)
+        {
+            if (currentGage == 0) { Debug.Log("Can't Use SpecialAttack!"); return; }
+
+            if (chargeGage >= currentGage)
+            {
+                Debug.Log("Full Charge!");
+                chargeGage = currentGage;
+            }
+            else
+                chargeGage += Time.deltaTime;
         }
     }
 
@@ -49,6 +68,10 @@ public class DodgeController : MonoBehaviour
     public void CallAttackEvent(BulletSO attackSO)
     {
        OnAttackEvent?.Invoke(attackSO);
+    }
+    public void CallChargeAttackEvent(BulletSO attackSO,double chargeGage)
+    {
+        OnChargeEvent?.Invoke(attackSO,chargeGage);
     }
 }
 

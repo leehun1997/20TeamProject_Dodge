@@ -8,19 +8,22 @@ using UnityEngine.EventSystems;
 public class CharacterMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField][Range(0,20)]  private float speed;
-    [SerializeField][Range(0,20)]  private float accelerationTime = 2.0f;  
+    [Tooltip("accelerationTime이 클수록 더 천천히 목표 속도에 도달 ")]
+    [SerializeField][Range(0,20)]  private float accelerationTime = 2.0f;
 
+
+
+    private CharacterStatHandler  characterStatHandler;
     private DodgeController controller;
     private Rigidbody2D rb;
     private Vector2 direction;
-
-    private Vector2 currentVelocity; // 현재 속도
+     private Vector2 currentVelocity; // 현재 속도
 
     private void Awake()
     {
         controller = GetComponent<DodgeController>();
         rb = GetComponent<Rigidbody2D>();
+        characterStatHandler = GetComponent<CharacterStatHandler>();
     }
     
     void Start()
@@ -42,8 +45,11 @@ public class CharacterMovement : MonoBehaviour
     
     private void Move(Vector2 direction)
     {
-        //보간 적용 , Time.fixedDeltaTime / accelerationTime 계수만 큼 보간    흐른 시간 / 2f
-        rb.velocity = Vector2.Lerp(rb.velocity, direction * speed, Time.fixedDeltaTime / accelerationTime);
+        rb.velocity = Vector2.Lerp(rb.velocity, direction * characterStatHandler.currentStat.characterStatSO.MoveSpeed , Time.fixedDeltaTime / accelerationTime);
     }
+
     
+    
+  
+
 }
