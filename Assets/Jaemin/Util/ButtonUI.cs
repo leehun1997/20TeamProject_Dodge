@@ -37,7 +37,7 @@ public class ButtonUI : MonoBehaviour
         if(loadS != null)
         {
             loadS.onClick.RemoveAllListeners(); // 기존 이벤트 리스너 제거
-            loadS.onClick.AddListener(gameManager.LoadS); // PlayerBlue 메서드 연결
+            loadS.onClick.AddListener(gameManager.PlayerClear); // PlayerBlue 메서드 연결
         }
     }
 

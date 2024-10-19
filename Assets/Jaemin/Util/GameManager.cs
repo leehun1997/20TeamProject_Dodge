@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
 
     [Header("PlayerSelect")]
     private GameObject playerPrefab;//Prefab불러오기
-    public GameObject PlayerSelectUI;//선택 UI
     private GameObject newPlayer; //플레이어 생성
+    public GameObject PlayerSelectUI;//선택 UI
     public Slider playerHealthSlider; //플레이어가 소환될 때 slider 가져오기 위함
 
     private void Awake()
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         Pool = FindObjectOfType<ObjectPool>(); //씬 안에 ObjectPool 붙어있는 오브젝트를 찾고Pool변수에 참조로 넣어 게임 매니저에서 그풀을 사용
 
-
+ 
     }
 
     private void Start()
@@ -143,6 +143,17 @@ public class GameManager : MonoBehaviour
         //Time.timeScale = 0f;
     }
 
+    public void PlayerClear()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "StoryMap")
+        {
+            EndGameMap2(); // 최단 시간 저장
+        }
+
+        SceneManager.LoadScene("GameClear");
+    }
+
     public void EndGameMap1() //게임이 클리어했을 때
     {
         if (highTime == 0 || currentTime1 > highTime) // 현재 시간이 최고 시간보다 크면 갱신
@@ -165,7 +176,7 @@ public class GameManager : MonoBehaviour
 
     private void SaveLowTime()// 빠른 점수라고해야하나
     {
-        PlayerPrefs.SetFloat("LowTime", lowTime);
+        PlayerPrefs.SetFloat("LowTime", lowTime );
         PlayerPrefs.Save();
     }
 

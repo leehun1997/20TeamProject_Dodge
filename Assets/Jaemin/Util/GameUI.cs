@@ -23,7 +23,7 @@ public class GameUI : MonoBehaviour
     {
         // 오디오 소스 컴포넌트를 가져오거나 없으면 추가
         audioSource = gameObject.GetComponent<AudioSource>();
-
+        //PlayerPrefs.DeleteKey("LowTime");
         LoadBestTime();
         LoadLowTime();
     }
