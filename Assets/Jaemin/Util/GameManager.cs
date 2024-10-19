@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
         //몬스터 죽었을 때 점수를 받아오는 로직
     }
 
-    public void LoadS()
+    public void PlayerTimeSave()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (currentSceneName == "InfiniteMap")
