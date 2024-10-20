@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa238e7dfbe770d4490bca13416d3fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: 
-  currentScoreTxt: {fileID: 0}
-  highScoreTxt: {fileID: 0}
-  playTime: {fileID: 0}
+  playerTag: Player
+  currentTimeTxt: {fileID: 0}
+  currentScore: 0
+  highScore: 0
+  PlayerSelectUI: {fileID: 0}
+  playerHealthSlider: {fileID: 0}

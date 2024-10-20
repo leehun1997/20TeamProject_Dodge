@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class DestroyOnDeath : MonoBehaviour
@@ -25,17 +26,39 @@ public class DestroyOnDeath : MonoBehaviour
 
     private void OnDeath()
     {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
         if (this.CompareTag(targetTag))
         {
-            rigidbody.velocity = Vector2.zero;
-            //Instantiate(PlayerAnimation, this.transform.position , transform.rotation); 애니메이션을 갖고있는 empty object를 생성 되고 / 디스트로이는 그 오브젝트만
-            gameObject.SetActive(false);
+
+            //죽는 로직 : 플레이어가 죽었을 때 무한맵이면 시간 저장, 스토리면 그냥 restart로
+            if (currentSceneName == "InfiniteMap")
+            {
+                GameManager.Instance.PlayerTimeSave(); //게임 시간 저장
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOver");
+            }
+            
         }
-        else 
+        else if(this.CompareTag("Boss"))
+        {
+            //보스가 죽었을 때 스토리 모드 클리어 조건 달성
+            if (currentSceneName == "StoryMap")
+            {
+                GameManager.Instance.PlayerTimeSave(); //게임 시간 저장
+            }
+            else
+            {
+                SceneManager.LoadScene("GameClear");
+            }
+        }
+        else
         {
             rigidbody.velocity = Vector2.zero;
             gameObject.SetActive(false);
-        };
+        }
         
     }
 }
