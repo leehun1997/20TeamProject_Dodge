@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class OnDeathFragment : MonoBehaviour
 {
-    [Header("Ä³¸¯ÅÍ À¯Çü¿¡ ¸Â´Â ÆÄÆíÀ» ÀÚ½ÄÈ­ ÇÑ ÈÄ µî·Ï")]
+    [Header("Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½È­ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½")]
     [SerializeField] List<GameObject> fragmentPrefabs;
 
     private SpriteRenderer SpriteRenderer;
@@ -15,6 +17,8 @@ public class OnDeathFragment : MonoBehaviour
     private Vector2 makePosition;
     private int count = 0;
 
+    public event Action OnDeathAnimationEnd; 
+    
     
 
     private void Awake()
@@ -22,13 +26,14 @@ public class OnDeathFragment : MonoBehaviour
         SpriteRenderer=GetComponent<SpriteRenderer>();
     }
 
-    //Enemy_0_Death¾Ö´Ï¸ÞÀÌÅÍ>Death¾Ö´Ï¸ÞÀÌ¼Ç>Add Animation Event¿¡¼­ È£ÃâµÊ
+    //Enemy_0_Deathï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½>Deathï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½>Add Animation Eventï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½
     public void DeathAnimationEnd()
     {
         SpriteRenderer.enabled = false;
         InstancePrefabs();
+        OnDeathAnimationEnd?.Invoke();
     }
-    private void InstancePrefabs()//ÀÎ½ºÆåÅÍ¿¡¼­ µî·ÏµÈ ÆÄÆíÇÁ¸®ÆÕµé °´Ã¼È­
+    private void InstancePrefabs()//ï¿½Î½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ ï¿½ï¿½Ã¼È­
     {
         foreach (var obj in fragmentPrefabs)
         {
@@ -36,12 +41,13 @@ public class OnDeathFragment : MonoBehaviour
             newObj = Instantiate(obj, transform);
             obj.transform.localRotation = Quaternion.Euler(0, 0, RandNum);
         }
-    }
+        
+     }
 
-    public void FragmentDisable()//ÀÚ½ÄÀÎ ÆÄÆíµéÀÌ ºñÈ°¼ºÈ­(Á¦°Å)µÇ¸é È£Ãâ
+    public void FragmentDisable()//ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­(ï¿½ï¿½ï¿½ï¿½)ï¿½Ç¸ï¿½ È£ï¿½ï¿½
     {
         count += 1;
-        if (count >= fragmentPrefabs.Count)//¸ðµç ÆÄÆíÀÌ ºñÈ°¼ºÈ­(Á¦°Å)µÇ¸é ²¯´ø ·»´õ·¯on, gameObjectºñÈ°¼ºÈ­
+        if (count >= fragmentPrefabs.Count)//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­(ï¿½ï¿½ï¿½ï¿½)ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½on, gameObjectï¿½ï¿½È°ï¿½ï¿½È­
         {
             SpriteRenderer.enabled = true;
             gameObject.SetActive(false);

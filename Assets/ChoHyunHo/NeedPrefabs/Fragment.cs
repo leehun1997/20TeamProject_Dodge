@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.U2D.Animation;
@@ -18,20 +19,23 @@ public class Fragment : MonoBehaviour
 
     private void Start()
     {
-        healthSystem.OnDeath += OnDestroy;
+        healthSystem.OnDeath += OnDestroyMe;
         Push();
     }
-
+    
     private void Push()
     {
-        //TransformDirectionÀ¯´ÏÆ¼ Á¦°ø ¿ùµåÁÂÇ¥>·ÎÄÃÁÂÇ¥ Vector2¿¡¼­ÀÇ Á¤¸éÀº xÃà¡æ(»¡°£È­»ìÇ¥)ÀÌ´Ù Vector2.right°¡ 2D¿¡¼­ÀÇ Á¤¸é
-        //³Ê¹« ½Ø¼­ / 2
+        //TransformDirectionï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¥>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¥ Vector2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ xï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½Ç¥)ï¿½Ì´ï¿½ Vector2.rightï¿½ï¿½ 2Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //ï¿½Ê¹ï¿½ ï¿½Ø¼ï¿½ / 2
         rb2D.AddForce(transform.TransformDirection(Vector2.right) / 2, ForceMode2D.Impulse);
     }
-    private void OnDestroy()
+
+    //ìœ ë‹ˆí‹°ì—ì„œ ì´ë¯¸ ì œê³µí•˜ëŠ” ë©”ì„œë“œë“¤ì€ ì´ë²¤íŠ¸ êµ¬ë…ìë¡œ ì‚¬ìš© í•˜ë©´ ë¬¸ì œê°€ ìƒê¸¸ ìˆ˜ ìˆìŒ, 
+    
+    private void OnDestroyMe() // íŒŒê´´ëì„ ë•Œ ìƒê¸°ëŠ” í•¨ìˆ˜ 
     {
         gameObject.GetComponentInParent<OnDeathFragment>().FragmentDisable();
-        gameObject.SetActive(false);
+        Destroy(this);  
     }
-
+  
 }

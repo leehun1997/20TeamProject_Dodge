@@ -2,27 +2,29 @@
 using UnityEngine;
 
 
-[RequireComponent(typeof(HealthSystem))]
+[RequireComponent(typeof(OnDeathFragment))]
 public abstract class Dropper : MonoBehaviour
 {
-    private HealthSystem healthSystem;
+    private OnDeathFragment onDeathFragment;
  
     
     protected void Awake()
     {
-          healthSystem = GetComponent<HealthSystem>();
+        onDeathFragment = GetComponent<OnDeathFragment>();
     }
 
     protected virtual void OnEnable()
     {
-        healthSystem.OnDeath += Drop;
+        onDeathFragment.OnDeathAnimationEnd += Drop;
     }
     
     protected virtual void OnDisable()
     {
-        healthSystem.OnDeath -= Drop;
+        onDeathFragment.OnDeathAnimationEnd -= Drop;
     }
     
+    
+     
     
     protected abstract void Drop();
     

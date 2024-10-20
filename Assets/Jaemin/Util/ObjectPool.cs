@@ -8,8 +8,6 @@ public class ObjectPool : MonoBehaviour
     //테스트용 
     public static ObjectPool instance;
     
-    
-    
     [System.Serializable]
     public class Pool
     {
@@ -33,6 +31,11 @@ public class ObjectPool : MonoBehaviour
         PoolDictionary = new Dictionary<string, Queue<GameObject>>();
 
     }
+    
+    //기존 Player 생성 전 부터 바로 Pools 만듦
+    
+    //지금 Player 생성 후 만들도록 변경 함. 
+    
 
     public void CreatePools()
     {
@@ -42,7 +45,7 @@ public class ObjectPool : MonoBehaviour
             for(int i = 0;  i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab, transform); //�� ��ũ��Ʈ�� ������ �ִ� ������Ʈ �ڽ����� �־��ش�.
-                obj.SetActive(false);
+                obj.SetActive(false);  
                 queue.Enqueue(obj);//queue�� �ִ´�
             }
 
@@ -54,6 +57,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (!PoolDictionary.ContainsKey(name)) //name�� �����ϴ��� Ȯ���ϰ� ������ null
         {
+            Debug.Log($"{name}을 가진 오브젝트가 존재하지 않습니다. ");
             return null;
         }
 

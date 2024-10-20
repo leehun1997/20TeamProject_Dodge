@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,17 +8,27 @@ using UnityEngine.Pool;
 public class CallDeathAnimation : MonoBehaviour
 {
     SpawnerEnemy Spawner;
-
+    private HealthSystem healthSystem;
 
     private void Awake()
     {
         Spawner = GameObject.FindObjectOfType<SpawnerEnemy>();
+        healthSystem = GetComponent<HealthSystem>();
     }
 
-    private void OnDisable()//Çï½º ½Ã½ºÅÛOnDeath¿¡ ±¸µ¶µÈ DestroyOnDeath.OnDeath()¿¡¼­ ²¨ÁØ´Ù
+    
+    private void Start()
     {
-        //¿ÀºêÁ§Æ® Ç®¿¡¼­ »ý¼ºµÈ °´Ã¼µéÀº ÀÌ¸§¿¡(Clone)ÀÌ ºÙ´Â´Ù ÀÌ°É Á¦°ÅÇÑ ±ò²ûÇÑ ÀÌ¸§À» Áà¾ßÇÑ´Ù
-        //»ý¼º½Ã À§Ä¡, ¹æÇâÀ» µ¿ÀÏÇÏ°Ô ÇÏ±âÀ§ÇØ tranformµµ ¸Å°³º¯¼ö·Î Àü´ÞÇÑ´Ù
+        healthSystem.OnDeath += OnDeathAnim;
+    }
+
+    
+    
+    private void OnDeathAnim()//ï¿½ï½º ï¿½Ã½ï¿½ï¿½ï¿½OnDeathï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DestroyOnDeath.OnDeath()ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½
+    {
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ç®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½(Clone)ï¿½ï¿½ ï¿½Ù´Â´ï¿½ ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ tranformï¿½ï¿½ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
         Spawner.CreateDeathAnimation(gameObject.name.Remove(name.Length - 7), gameObject.transform);
     }
+    
 }

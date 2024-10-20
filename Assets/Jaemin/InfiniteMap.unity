@@ -328,7 +328,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63ae60db43eacfa46acf884c789b3dc7, type: 3}
---- !u!1001 &1612495927
+--- !u!1001 &979996986
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -336,10 +336,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1864046359731681278, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
-      propertyPath: Enemy_0_Death
-      value: Enemy_0_Death
-      objectReference: {fileID: 0}
     - target: {fileID: 4501667766091766195, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -380,34 +376,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5454761205618383086, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
-      propertyPath: pools.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5454761205618383086, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
-      propertyPath: pools.Array.data[2].name
-      value: Enemy_0_Death
-      objectReference: {fileID: 0}
-    - target: {fileID: 5454761205618383086, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
-      propertyPath: pools.Array.data[2].size
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5454761205618383086, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
-      propertyPath: pools.Array.data[3].name
-      value: BombEnemy_0_Death
-      objectReference: {fileID: 0}
-    - target: {fileID: 5454761205618383086, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
-      propertyPath: pools.Array.data[3].size
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5454761205618383086, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
-      propertyPath: pools.Array.data[2].prefab
-      value: 
-      objectReference: {fileID: 6362070292789610762, guid: 1fceb19cd40483f4ea06704d0935482f, type: 3}
-    - target: {fileID: 5454761205618383086, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
-      propertyPath: pools.Array.data[3].prefab
-      value: 
-      objectReference: {fileID: 6362070292789610762, guid: 1fceb19cd40483f4ea06704d0935482f, type: 3}
     - target: {fileID: 7174377245670715669, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -763,5 +731,5 @@ SceneRoots:
   - {fileID: 512990189}
   - {fileID: 780539637}
   - {fileID: 1185427600731152966}
-  - {fileID: 1612495927}
   - {fileID: 636158312}
+  - {fileID: 979996986}
