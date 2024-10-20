@@ -102,6 +102,7 @@ public class ProjectileController : MonoBehaviour
 
             DestroyProjectile(collision.ClosestPoint(transform.position));
         }
+
     }
 
     private bool IsLayerMatched(int value, int layer)//레이어 마스크는 2진수 개념이지만 2진수는 아니다. 
