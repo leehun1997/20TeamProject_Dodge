@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         {
             currentTime1 += Time.deltaTime;
             currentTimeTxt.text = $"Time : {currentTime1:F0}";
-            Debug.Log(currentTime1);
+            //Debug.Log(currentTime1);
         }
         else if (currentSceneName == "StoryMap")
         {
@@ -223,6 +223,7 @@ public class GameManager : MonoBehaviour
             healthSystem.healthSlider = playerHealthSlider;
             Time.timeScale = 1f;
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
+            ObjectPool.instance.CreatePools();
         }
         else
         {

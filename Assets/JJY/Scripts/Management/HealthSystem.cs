@@ -70,6 +70,8 @@ public class HealthSystem : MonoBehaviour
 
         if (CurrentHp <= 0)
         {
+            
+            Debug.Log("온데스");
             OnDeath?.Invoke();
         }
         else  if(amount > 0)

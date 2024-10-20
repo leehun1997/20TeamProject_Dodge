@@ -5,6 +5,11 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     
+    //테스트용 
+    public static ObjectPool instance;
+    
+    
+    
     [System.Serializable]
     public class Pool
     {
@@ -18,8 +23,19 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        // ----- 테스트용 ----- 
+        if(instance == null)
+             instance = this;
+        else
+            Destroy(this);
+        // ----- 테스트용 -----
+        
         PoolDictionary = new Dictionary<string, Queue<GameObject>>();
 
+    }
+
+    public void CreatePools()
+    {
         foreach(var pool in pools)
         {
             Queue<GameObject> queue = new Queue<GameObject>(); 
