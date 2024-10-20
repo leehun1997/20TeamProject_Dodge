@@ -7,6 +7,7 @@ using UnityEngine;
 public enum SfxType
 {
     Select = 0,
+    EnemyDeath  
 }
 
 public enum BgmType
@@ -32,10 +33,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] sfxClip;
 
 
-    [Header("AudioSource Pool")] [SerializeField]
-    private List<AudioSource> audioSourcePools;
-
+    [Header("AudioSource Pool")] 
     [SerializeField] private GameObject audioSourcePrefab;
+    private List<AudioSource> audioSourcePools;
 
     private int audioSourcePoolsSize = 10;
     private SfxType currentSfxType;
