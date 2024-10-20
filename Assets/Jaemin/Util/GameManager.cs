@@ -44,9 +44,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        //Player초기화
-        Player = GameObject.FindGameObjectWithTag(playerTag).transform; //PlayerTag에 맞는 tag를 가지고 있는 오브젝트의 transform정보를 Palyer에 넣어준다/
-
         //Pool = FindObjectOfType<ObjectPool>(); //씬 안에 ObjectPool 붙어있는 오브젝트를 찾고Pool변수에 참조로 넣어 게임 매니저에서 그풀을 사용
 
  
@@ -68,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             currentTime1 += Time.deltaTime;
             currentTimeTxt.text = $"Time : {currentTime1:F0}";
+            Debug.Log(currentTime1);
         }
         else if (currentSceneName == "StoryMap")
         {
