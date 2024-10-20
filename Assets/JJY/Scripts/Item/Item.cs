@@ -33,7 +33,7 @@ public abstract class Item : MonoBehaviour
 
     public void OnEnableItem()
     {
-        Invoke("StartDestroyAfterTime", startBlinkTime);
+        Invoke(nameof(StartDestroyAfterTime), startBlinkTime);
     }
 
 

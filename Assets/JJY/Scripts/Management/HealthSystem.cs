@@ -40,29 +40,12 @@ public class HealthSystem : MonoBehaviour
     }
 
     
-    
-    //button에 넣어서 테스트 가능
-    public void TestChangeHp(int num)
-    {
-       
-        if (num == 0)
-        {
-            ChangeHP(-1f);
-            Debug.Log("데미지 1");        
-        }
-        
-        else
-        {
-            ChangeHP(10f);
-        }
-    }
 
     public void ChangeHP(float amount)
     {
         
         CurrentHp = Mathf.Min(amount + CurrentHp , maxHp);
-        Debug.Log($"{amount} / {CurrentHp}");
-        // 플레이어의 경우에만 슬라이더 업데이트
+ 
         if (isPlayer && healthSlider != null)
         {
             healthSlider.value = CurrentHp;
@@ -70,8 +53,6 @@ public class HealthSystem : MonoBehaviour
 
         if (CurrentHp <= 0)
         {
-            
-            Debug.Log("온데스");
             OnDeath?.Invoke();
         }
         else  if(amount > 0)
