@@ -67,6 +67,13 @@ public class SpawnerEnemy : MonoBehaviour
         
     }
 
+    public void CreateDeathAnimation(string name, Transform makeTransform)//사망 애니메이션용 객체를 생성해야할 객체가 호출
+    {
+        GameObject Enemy_0_Death = objectPool.SpawnFromPool(name + "_Death");
+        Enemy_0_Death.transform.position = makeTransform.position;
+        Enemy_0_Death.transform.rotation = makeTransform.rotation;
+    }
+
     private void randomPos() 
     {
         float sup = 9f;

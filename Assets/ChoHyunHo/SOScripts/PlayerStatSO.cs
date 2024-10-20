@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StatSO", menuName = "StatSO/PlayerStatSO", order = 1)]
+[CreateAssetMenu(fileName = "PlayerStatSO", menuName = "StatSO/PlayerStatSO", order = 1)]
 public class PlayerStatSO : CharacterStatSO
 {
     [Header("플레이어 고유 스텟")]
