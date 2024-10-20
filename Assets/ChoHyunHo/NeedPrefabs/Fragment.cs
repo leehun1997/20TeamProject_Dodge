@@ -35,7 +35,7 @@ public class Fragment : MonoBehaviour
     private void OnDestroyMe() // 파괴됐을 때 생기는 함수 
     {
         gameObject.GetComponentInParent<OnDeathFragment>().FragmentDisable();
-        Destroy(this.gameObject);  
+        Destroy(this.gameObject);
     }
   
 }
