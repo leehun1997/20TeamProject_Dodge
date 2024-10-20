@@ -15,14 +15,11 @@ public class CallDeathAnimation : MonoBehaviour
         Spawner = GameObject.FindObjectOfType<SpawnerEnemy>();
         healthSystem = GetComponent<HealthSystem>();
     }
-
     
     private void Start()
     {
         healthSystem.OnDeath += OnDeathAnim;
     }
-
-    
     
     private void OnDeathAnim()//�ｺ �ý���OnDeath�� ������ DestroyOnDeath.OnDeath()���� ���ش�
     {

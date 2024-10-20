@@ -376,6 +376,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5454761205618383086, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
+      propertyPath: pools.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 4066768938554192773, guid: 52a290813cd766e4ab7ece839c27af0a, type: 3}
     - target: {fileID: 7174377245670715669, guid: 55d4b52de6259a34a90b2a44509a8d5c, type: 3}
       propertyPath: m_Name
       value: Spawner

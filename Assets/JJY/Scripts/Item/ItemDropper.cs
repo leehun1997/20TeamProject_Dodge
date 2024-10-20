@@ -14,6 +14,7 @@ public class ItemDropper : Dropper
     {
         int rand = Random.Range(0, (int)ItemName.Count);
         string itemName;
+        
         switch (rand)
         {
             case 0:
