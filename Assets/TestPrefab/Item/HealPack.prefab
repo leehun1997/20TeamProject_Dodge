@@ -178,4 +178,4 @@ MonoBehaviour:
   startBlinkTime: 3
   destroyTime: 5
   blinkInterval: 0.5
-  HealAmount: 10
+  HealAmount: 5

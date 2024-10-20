@@ -94,7 +94,7 @@ MonoBehaviour:
   startBlinkTime: 3
   destroyTime: 5
   blinkInterval: 0.5
-  powerUP: 10
+  powerUP: 1
 --- !u!1 &5437674295639286406
 GameObject:
   m_ObjectHideFlags: 0
