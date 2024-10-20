@@ -1,15 +1,13 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine;
+
+//TODO 볼륨 조절 기능
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("AudioClip")] 
+    [Header("AudioClip")]
     [SerializeField] private AudioClip[] bgmClip;
     [SerializeField] private AudioClip[] sfxClip;
 
@@ -44,15 +42,16 @@ public class AudioManager : MonoBehaviour
         CreateClipDictionary(bgmClip, bgmName, "BGM");
     }
 
+    
     private void CreateClipDictionary(AudioClip[] clips, Dictionary<string, AudioClip> clipDictionary, string clipType)
     {
         foreach (var clip in clips)
         {
             if (!clipDictionary.ContainsKey(clip.name))
                 clipDictionary.Add(clip.name, clip);
-            
+
             else
-                Debug.LogWarning($"중복된 {clipType} Clip: {clip.name}. 클립을 제거하거나 이름을 수정하세요.");
+                Debug.LogError($"중복된 {clipType} Clip: {clip.name}. 클립을 제거하거나 이름을 수정하세요.");
         }
     }
 
@@ -76,6 +75,7 @@ public class AudioManager : MonoBehaviour
         Destroy(audioSourcePrefab);
     }
 
+    
     private AudioSource GetSFXAudioSource()
     {
         foreach (var audioSource in sfxAudioSourcePools)
@@ -88,8 +88,8 @@ public class AudioManager : MonoBehaviour
 
         return RecycleAudioSource();
     }
-
-
+    
+    
     private AudioSource RecycleAudioSource()
     {
         AudioSource oldestAudioSource = sfxAudioSourcePools[0];
@@ -107,36 +107,41 @@ public class AudioManager : MonoBehaviour
         oldestAudioSource.Stop();
         return oldestAudioSource;
     }
-
-
-    public void PlaySfx(string name)
+    
+    
+    /// <summary>
+    /// SFX CLIP에 있는 이름을 키값으로 사용해 재생
+    /// EX) PlaySfx("CLIP NAME")
+    /// </summary>
+    public void PlaySfx(string sfxNameToPlay)
     {
-        if (!sfxName.ContainsKey(name))
+        if (!sfxName.ContainsKey(sfxNameToPlay))
         {
-            Debug.Log($"{name}과 동일한 효과음이 없습니다. 이름을 다시 확인해주세요.");
+            Debug.Log($"{sfxNameToPlay}과 동일한 효과음이 없습니다. 이름을 다시 확인해주세요.");
             return;
         }
 
         AudioSource source = GetSFXAudioSource();
 
-        source.clip = sfxName[name];
+        source.clip = sfxName[sfxNameToPlay];
         source.Play();
     }
 
-    public void PlayBGM(string name)
+
+    /// <summary>
+    /// BGM CLIP에 있는 이름을 키값으로 사용해 재생
+    /// EX) PlaySfx("CLIP NAME")
+    /// </summary>
+    public void PlayBGM(string bgmNameToPlay)
     {
-        if (!bgmName.ContainsKey(name))
+        if (!bgmName.ContainsKey(bgmNameToPlay))
         {
-            Debug.Log($"{name}과 동일한 배경음이 없습니다. 이름을 다시 확인해주세요.");
+            Debug.Log($"{bgmNameToPlay}과 동일한 배경음이 없습니다. 이름을 다시 확인해주세요.");
             return;
         }
 
-
-        if (bgmAudioSource.clip != bgmName[name])
-        {
-            bgmAudioSource.Stop();
-            bgmAudioSource.clip = bgmName[name];
-            bgmAudioSource.Play();
-        }
+        bgmAudioSource.Stop();
+        bgmAudioSource.clip = bgmName[bgmNameToPlay];
+        bgmAudioSource.Play();
     }
 }
