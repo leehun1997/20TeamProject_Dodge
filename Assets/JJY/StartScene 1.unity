@@ -780,7 +780,7 @@ MonoBehaviour:
   sfxClip:
   - {fileID: 8300000, guid: 8411e338bdc4035458ae07ee62e99a72, type: 3}
   - {fileID: 8300000, guid: cd1faee682f459245b93c2725a95461e, type: 3}
-  audioSourcePrefab: {fileID: 8174062565252087343, guid: d0d13127878d9b7439476118e8b36d86, type: 3}
+  audioSourcePoolsSize: 10
 --- !u!82 &2027345533
 AudioSource:
   m_ObjectHideFlags: 0

@@ -57,7 +57,7 @@ public class DestroyOnDeath : MonoBehaviour
         else
         {
             rigidbody.velocity = Vector2.zero;
-            AudioManager.Instance.PlaySfx(SfxType.EnemyDeath);
+            AudioManager.Instance.PlaySfx("EnemyDeath");
             gameObject.SetActive(false);
         }
         

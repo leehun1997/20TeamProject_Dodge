@@ -18,7 +18,7 @@ public class MenuButton : MonoBehaviour
 
     public void Select()
     {
-        AudioManager.Instance.PlaySfx(SfxType.Select);
+        AudioManager.Instance.PlaySfx("SelectSFX");
     }
     
 }
