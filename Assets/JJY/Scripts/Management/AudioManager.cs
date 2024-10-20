@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum SfxType 
+public enum SfxType
 {
     Select = 0,
 }
 
-public enum BgmType 
+public enum BgmType
 {
     Start = 0,
     InGame,
@@ -23,21 +23,23 @@ public class AudioManager : MonoBehaviour
 
 
     private AudioSource bgmAudioSource;
-    
-    [Header("AudioClip")]
-    [Tooltip("각 Clip을 넣는 순서는 enum SfxType의 값에 맞춰서 넣어야 합니다.")]
-    [SerializeField] private AudioClip[] bgmClip;
-    [SerializeField] private AudioClip[] sfxClip;
-   
-    
-    [Header("AudioSource Pool")]
-    [SerializeField] private List<AudioSource> audioSourcePools;
-    [SerializeField] private  GameObject audioSourcePrefab;   
-    
-    private int audioSourcePoolsSize = 10;
 
+    [Header("AudioClip")]
+    [Tooltip("각 Clip은 SfxType의 순서에 맞게 넣어야 합니다. 필요한 SfxType이 없으면 enum에 값을 추가하세요.")]
+    [SerializeField]
+    private AudioClip[] bgmClip;
+
+    [SerializeField] private AudioClip[] sfxClip;
+
+
+    [Header("AudioSource Pool")] [SerializeField]
+    private List<AudioSource> audioSourcePools;
+
+    [SerializeField] private GameObject audioSourcePrefab;
+
+    private int audioSourcePoolsSize = 10;
     private SfxType currentSfxType;
-    
+
     private void Awake()
     {
         if (Instance == null)
@@ -63,13 +65,12 @@ public class AudioManager : MonoBehaviour
 
         for (int i = 0; i < audioSourcePoolsSize; i++)
         {
-            GameObject obj = Instantiate(audioSourcePrefab);
+            GameObject obj = Instantiate(audioSourcePrefab, this.transform);
             AudioSource audioSource = obj.GetComponent<AudioSource>();
 
             if (audioSource != null)
             {
-                obj.SetActive(false); 
-                audioSourcePools.Add(audioSource); 
+                audioSourcePools.Add(audioSource);
             }
         }
     }
@@ -78,39 +79,55 @@ public class AudioManager : MonoBehaviour
     {
         foreach (var audioSource in audioSourcePools)
         {
-            if (!audioSource.isPlaying)  
+            if (!audioSource.isPlaying)
             {
-                audioSource.gameObject.SetActive(true);  
                 return audioSource;
             }
         }
-        return null;
+
+        return RecycleAudioSource();
     }
-    
+
+
+    private AudioSource RecycleAudioSource()
+    {
+        AudioSource oldestAudioSource = audioSourcePools[0];
+        float longestPlayTime = float.MinValue;
+
+        foreach (var audioSource in audioSourcePools)
+        {
+            if (audioSource.time > longestPlayTime)
+            {
+                oldestAudioSource = audioSource;
+                longestPlayTime = audioSource.time;
+            }
+        }
+
+        oldestAudioSource.Stop();
+        return oldestAudioSource;
+    }
+
+
     public void PlaySfx(SfxType sfxType)
     {
         AudioSource source = GetSFXAudioSource();
-      
-        if (source != null)  
+
+        if (source != null)
         {
             source.clip = sfxClip[(int)sfxType];
             source.Play();
         }
     }
 
+
     public void PlayBGM(BgmType bgmType)
     {
         // 기존 bgmAudioSource.clip과 같지 않으면
-        if (bgmAudioSource.clip != bgmClip[(int)bgmType])  
+        if (bgmAudioSource.clip != bgmClip[(int)bgmType])
         {
             bgmAudioSource.Stop();
             bgmAudioSource.clip = bgmClip[(int)bgmType];
             bgmAudioSource.Play();
         }
     }
-
-
 }
-
-
-
