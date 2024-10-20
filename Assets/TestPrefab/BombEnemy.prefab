@@ -120,10 +120,10 @@ GameObject:
   - component: {fileID: 170927817604726268}
   - component: {fileID: 6038440187712056759}
   - component: {fileID: 7686983550728984187}
-  - component: {fileID: 7695467377912724149}
   - component: {fileID: 6234219418161166882}
   - component: {fileID: 8935006132659995876}
   - component: {fileID: 2197523909925011997}
+  - component: {fileID: 5903911242789524631}
   m_Layer: 7
   m_Name: BombEnemy
   m_TagString: Untagged
@@ -229,7 +229,7 @@ Animator:
   m_GameObject: {fileID: 8404555889635739298}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00a15c60af46a8a43aa3bf0d4b5114e5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -267,23 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88638ee454efd2429235063cd249ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   accelerationTime: 2
---- !u!114 &7695467377912724149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8404555889635739298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24124875a300fb24d976cdd4fdc27594, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterStat:
-    characterStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
-    bulletSO: {fileID: 0}
 --- !u!114 &6234219418161166882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efc390333874000aebe8457b0714136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &2197523909925011997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,3 +308,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd93b6524d927e0409a6c701fd9396a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTag: Player
+--- !u!114 &5903911242789524631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404555889635739298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c34678512d4489baa6c071407cdc23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStat:
+    characterStatSO: {fileID: 11400000, guid: 5e9ac201e582faf4694204e5d25e6fd0, type: 2}
+    bulletSO: {fileID: 11400000, guid: a8759f8520eef7e42b325c7c3328b9a3, type: 2}
+  baseEnemyStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
+  baseEnemyBulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}

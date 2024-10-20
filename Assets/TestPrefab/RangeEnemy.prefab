@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd93b6524d927e0409a6c701fd9396a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTag: Player
 --- !u!114 &9049871403175952173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,5 +378,5 @@ MonoBehaviour:
   characterStat:
     characterStatSO: {fileID: 11400000, guid: 5e9ac201e582faf4694204e5d25e6fd0, type: 2}
     bulletSO: {fileID: 11400000, guid: a8759f8520eef7e42b325c7c3328b9a3, type: 2}
-  enemyStatSo: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
-  enemyBulletSo: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}
+  baseEnemyStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
+  baseEnemyBulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}
