@@ -21,11 +21,11 @@ public class CallDeathAnimation : MonoBehaviour
         healthSystem.OnDeath += OnDeathAnim;
     }
     
-    private void OnDeathAnim()//�ｺ �ý���OnDeath�� ������ DestroyOnDeath.OnDeath()���� ���ش�
+    private void OnDeathAnim()//DestroyOnDeath.OnDeath()
     {
-        //������Ʈ Ǯ���� ������ ��ü���� �̸���(Clone)�� �ٴ´� �̰� ������ ����� �̸��� ����Ѵ�
-        //������ ��ġ, ������ �����ϰ� �ϱ����� tranform�� �Ű������� �����Ѵ�
+        //스포너에 생성된 객체는 이름에(Clone)가 붙음 이걸제거하고 키값으로
+        //사망 애니메이션용 프리팹이 똑같은 위치에 똑같은 방향으로 생성되어야함
         Spawner.CreateDeathAnimation(gameObject.name.Remove(name.Length - 7), gameObject.transform);
     }
-    
+
 }

@@ -25,8 +25,8 @@ public class Fragment : MonoBehaviour
     
     private void Push()
     {
-        //TransformDirection����Ƽ ���� ������ǥ>������ǥ Vector2������ ������ x���(����ȭ��ǥ)�̴� Vector2.right�� 2D������ ����
-        //�ʹ� �ؼ� / 2
+        //TransformDirection유니티 제공 로컬방향>월드방향으로 돌려주는 Vector2.right가 2D기준 정면
+        //너무쌔서/2
         rb2D.AddForce(transform.TransformDirection(Vector2.right) / 2, ForceMode2D.Impulse);
     }
 

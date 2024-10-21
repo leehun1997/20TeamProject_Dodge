@@ -15,7 +15,8 @@ public class ProjectileController : MonoBehaviour
     private TrailRenderer trailRenderer;
     private HealthSystem healthSystem;
 
-    public BulletSO attackData;
+    private BulletSO attackData;
+    private CharacterStatHandler statHandler;
     private Vector2 direction;
     private float timeAfterShoot = 0f;
     private bool fxDestroy = true;
@@ -25,11 +26,7 @@ public class ProjectileController : MonoBehaviour
         rigidbody= GetComponent<Rigidbody2D>();
         spriteRenderer= GetComponent<SpriteRenderer>();
         trailRenderer= GetComponent<TrailRenderer>();
-    }
-
-    private void Start()
-    {
-    }
+     }
 
 
     // Update is called once per frame
@@ -61,48 +58,35 @@ public class ProjectileController : MonoBehaviour
         this.direction = direction;
 
         UpdateProjectile();
-        //trailRenderer.Clear();//ÇÊ¿ä¾øÀ¸¸é Á¦°Å        
+        //trailRenderer.Clear();//ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½        
 
         isReady= true;
     }
-    public void player1ChargeAttack(Vector2 direction, BulletSO bulletSO, double chargeGage)
+    public void chargeAttack(Vector2 direction, BulletSO bulletSO, double chargeGage)
     {
         
-        Debug.Log("Player1 Special Attack");
+        Debug.Log("Last Charge Check");
         this.attackData = bulletSO;
         this.direction = direction;
-        Debug.Log(attackData);
 
-        //trailRenderer.Clear();//ÇÊ¿ä¾øÀ¸¸é Á¦°Å        
-
-        isReady = true;
-    }
-    public void player2ChargeAttack(Vector2 direction, BulletSO bulletSO, double chargeGage)
-    {
-
-        Debug.Log("Player2 Special Attack");
-        this.attackData = bulletSO;
-        this.direction = direction;
-        //attackData.duration = 0.5f;
-
-        chargeGage = chargeGage < 2 ? chargeGage: 2;
         UpdateProjectile(chargeGage);
-        //trailRenderer.Clear();//ÇÊ¿ä¾øÀ¸¸é Á¦°Å        
+        //trailRenderer.Clear();//ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½        
 
         isReady = true;
     }
 
-    private void UpdateProjectile()//´Ù¾çÇÑ °ø°Ý Á¤º¸ ¾÷µ¥ÀÌÆ®
+    private void UpdateProjectile()//ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     {
         transform.localScale = Vector3.one * attackData.size;
     }
-    private void UpdateProjectile(double chargeGage)//´Ù¾çÇÑ °ø°Ý Á¤º¸ ¾÷µ¥ÀÌÆ®
+    private void UpdateProjectile(double chargeGage)//ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     {
         transform.localScale = Vector3.one * (float)chargeGage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (IsLayerMatched(levelCollisionLayer.value, collision.gameObject.layer))
         {
             Vector2 destroyPosition = collision.ClosestPoint(transform.position) - direction * 0.2f;
@@ -110,25 +94,26 @@ public class ProjectileController : MonoBehaviour
 
             DestroyProjectile(destroyPosition);
         }
-        else if(IsLayerMatched(attackData.targetLayer , collision.gameObject.layer))
+        else if (IsLayerMatched(attackData.targetLayer , collision.gameObject.layer))
         {
-            //µ¥¹ÌÁö °è»ê ÇÊ¿ä
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
             healthSystem = collision.GetComponent<HealthSystem>();
             healthSystem.ChangeHP(-attackData.damage);
             Debug.Log(attackData.damage + "  " + healthSystem.CurrentHp);
 
             DestroyProjectile(collision.ClosestPoint(transform.position));
         }
+
     }
 
-    private bool IsLayerMatched(int value, int layer)//·¹ÀÌ¾î ¸¶½ºÅ©´Â 2Áø¼ö °³³äÀÌÁö¸¸ 2Áø¼ö´Â ¾Æ´Ï´Ù. 
+    private bool IsLayerMatched(int value, int layer)//ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï´ï¿½. 
     {
-        return value == (value | 1 << layer);//³»°¡ ¿øÇÏ´Â ¹øÈ£ÀÇ ·¹ÀÌ¾î ¸¶½ºÅ©ÀÎÁö È®ÀÎ, ´Ù¸¥ ·¹ÀÌ¾î¸é ºÒ¼ø¹°ÀÌ µé¾î°¡¼­ ¾Æ´ÔÀ» ¾Ë ¼ö ÀÖÀ½
+        return value == (value | 1 << layer);//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½, ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½Æ´ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     private void DestroyProjectile(Vector2 destroyPosition)
     {
-        //ÆÄ±« ÀÌÆåÆ® Ãß°¡ ½Ã À§Ä¡ Á¤º¸°¡ ÇÊ¿ä
+        //ï¿½Ä±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
         gameObject.SetActive(false);
     }
 }
