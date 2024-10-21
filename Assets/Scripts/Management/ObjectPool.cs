@@ -52,7 +52,7 @@ public class ObjectPool : MonoBehaviour
             PoolDictionary.Add(pool.name, queue); //1���� ���� ������Ʈ�� Ǯ�� �־��ش� : �̸����� �ٸ���
         }
     }
-
+    
     public GameObject SpawnFromPool(string name)
     {
         if (!PoolDictionary.ContainsKey(name)) //name�� �����ϴ��� Ȯ���ϰ� ������ null
