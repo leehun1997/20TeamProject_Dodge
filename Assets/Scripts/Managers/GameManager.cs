@@ -25,8 +25,14 @@ public class GameManager : MonoBehaviour
     [Header("PlayerSelect")] private GameObject playerPrefab; //Prefab불러오기
     private GameObject newPlayer; //플레이어 생성
     public GameObject PlayerSelectUI; //선택 UI
+  
     public Slider playerHealthSlider; //플레이어가 소환될 때 slider 가져오기 위함
+    public Slider playerGageSlider; //플레이어가 소환될 때 slider 가져오기 위함
 
+    [Header("PauseUI")] [SerializeField] private GameObject pauseUI; 
+    
+    
+    
     private void Awake()
     {
         if (Instance == null)
@@ -49,6 +55,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         playerPrefab = Resources.Load<GameObject>("Prefabs/Player/PlayerBlue"); //플레이어 선택을 위해 리소스에서 플레이어를 받아온다.
         LoadTimes(); // 최고 기록 및 최단 기록 불러오기
+    }
+
+    private void OnPauseUI()
+    {
+        Time.timeScale = 0f;
+        pauseUI.SetActive(true);
     }
 
     private void Update()
@@ -133,7 +145,26 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    
+    private void ReconnectPlayerGageSlider()
+    {
+        // PlayerUICanvas 하위의 PlayerGage_Slider 오브젝트를 찾아서 연결
+        GameObject canvas = GameObject.Find("PlayerUICanvas");
+        if (canvas != null)
+        {
+            Transform sliderTransform = canvas.transform.Find("PlayerGage_Slider");
+            if (sliderTransform != null)
+            {
+                playerHealthSlider = sliderTransform.GetComponent<Slider>();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerGage_Slider를 찾을 수 없습니다.");
+            }
+        }
+    }
 
+    
     public void Score()
     {
         //몬스터 죽었을 때 점수를 받아오는 로직
@@ -235,7 +266,8 @@ public class GameManager : MonoBehaviour
             healthSystem.healthSlider = playerHealthSlider;
             Time.timeScale = 1f;
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
-            
+            Player.GetComponent<DodgeController>().OnPauseEvent -= OnPauseUI;
+            Player.GetComponent<DodgeController>().OnPauseEvent += OnPauseUI;
             ObjectPool.instance.CreatePools();
             CreateBoss();
         }

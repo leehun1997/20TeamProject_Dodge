@@ -7,13 +7,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class RangeEnemyController : EnemyController
-    {
-    [SerializeField][Range(0f, 100f)] float walkTargetRange = 0f;
-    [SerializeField][Range(0f, 100f)] float attackTargetRange = 0f;
+{
+    [SerializeField] [Range(0f, 100f)] float walkTargetRange = 0f;
+    [SerializeField] [Range(0f, 100f)] float attackTargetRange = 0f;
 
     [SerializeField] private LayerMask Target; // ## 만약 스탯SO에 있다면 삭제
     private int layerMaskTarget;
-    
+
+    [SerializeField] private LayerMask levelCollisionLayer;
+
 
     protected override void Start()
     {
@@ -21,7 +23,7 @@ public class RangeEnemyController : EnemyController
         layerMaskTarget = Target;
         // layerMaskTarget = 스탯SO.Target; ## 스탯 SO 있다면 사용
     }
-    
+
 
     protected override void Awake()
     {
@@ -33,9 +35,10 @@ public class RangeEnemyController : EnemyController
         base.Update();
     }
 
-    protected override void FixedUpdate ()
+
+    protected override void FixedUpdate()
     {
-        base.FixedUpdate ();
+        base.FixedUpdate();
 
         float distanceToTarget = DistanceToTarget();
         Vector2 directionToTarget = DirectionToTarget();
@@ -46,7 +49,8 @@ public class RangeEnemyController : EnemyController
     private void UpdateEnemyState(float distanceToTarget, Vector2 directionToTarget)
     {
         isAttacking = false;
-        if (distanceToTarget < walkTargetRange) {
+        if (distanceToTarget < walkTargetRange)
+        {
             HowToAction(distanceToTarget, directionToTarget);
         }
     }
@@ -57,11 +61,17 @@ public class RangeEnemyController : EnemyController
         {
             AttackPlayer(directionToTarget);
         }
-        else 
+        else
         {
             CallLookEvent(directionToTarget);
             CallMoveEvent(directionToTarget);
         }
+    }
+
+    public override void Init()
+    {
+        base.Init();
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     private void AttackPlayer(Vector2 directionToTarget)
@@ -71,15 +81,26 @@ public class RangeEnemyController : EnemyController
         Debug.DrawRay(transform.position, directionToTarget, Color.red);
         if (hit.collider != null)
         {
-            
             isAttacking = true;
             CallLookEvent(directionToTarget);
             CallMoveEvent(Vector2.zero);
         }
-        else 
+        else
         {
             CallMoveEvent(directionToTarget);
         }
     }
-}
 
+    private bool IsLayerMatched(int value, int layer)
+    {
+        return value == (value | 1 << layer);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (IsLayerMatched(levelCollisionLayer.value, collision.gameObject.layer))
+        {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
+    }
+}
