@@ -16,3 +16,4 @@ MonoBehaviour:
   bgm: []
   sfx:
   - {fileID: 8300000, guid: 8411e338bdc4035458ae07ee62e99a72, type: 3}
+  - {fileID: 8300000, guid: 75c7655413e2ff24a8ccc681f3d826fd, type: 3}

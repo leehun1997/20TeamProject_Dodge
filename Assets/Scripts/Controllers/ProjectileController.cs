@@ -94,6 +94,7 @@ public class ProjectileController : MonoBehaviour
 
             DestroyProjectile(destroyPosition);
         }
+        
         else if (IsLayerMatched(attackData.targetLayer , collision.gameObject.layer))
         {
             //������ ��� �ʿ�

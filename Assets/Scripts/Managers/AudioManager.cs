@@ -54,8 +54,7 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-
-
+    
     public void SetBGMVolume(float value)
     {
         bgmAudioSource.volume = value;
