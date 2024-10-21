@@ -43,6 +43,7 @@ public class Boss1Controller : EnemyController
         if (collectingFrag == needCreateFrag) 
         {
             OnReady?.Invoke();
+            collectingFrag = 0;
         }
         raiderTime += Time.time;
         if (raiderTime > 1f) 

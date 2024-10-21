@@ -51,7 +51,7 @@ MonoBehaviour:
     size: 2
   - name: RangeEnemy
     prefab: {fileID: 2124374614835837934, guid: ec9207e52d3121947b7d980bec5526ef, type: 3}
-    size: 0
+    size: 5
   - name: HealPack
     prefab: {fileID: 5783343856515672222, guid: cde82b89c6358854289e6762b5824d96, type: 3}
     size: 5
