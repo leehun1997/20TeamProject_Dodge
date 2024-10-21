@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 3528146085142422611}
   m_Layer: 7
   m_Name: BombEnemy_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
