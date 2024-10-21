@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public abstract class EnemyController : DodgeController
     {
         base.Start();
         ClosesTarget = GameManager.Instance.Player; // 게임매니저에 Player 가 있을시 가져오기
+       _healthSystem = GetComponent<HealthSystem>();
     }
 
     protected override void Update()
@@ -33,7 +35,12 @@ public abstract class EnemyController : DodgeController
 
     public virtual void Init()
     {
-        _healthSystem.ChangeHP(statHandler.maxHp);
+        float addInitHP = statHandler.maxHp;
+        if (statHandler.maxHp == _healthSystem.CurrentHp) 
+        {
+            addInitHP = 0;
+        }
+        _healthSystem.ChangeHP(addInitHP);
     }
 
 

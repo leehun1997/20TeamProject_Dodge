@@ -12,7 +12,7 @@ public class DestroyOnDeath : MonoBehaviour
 {
     private HealthSystem healthSystem;
     private Rigidbody2D rigidbody;
-    [SerializeField] private string playerTag = "Player";
+    [SerializeField] private string PlayerTag = "Player";
     private Animation PlayerAnimation;
     
 
@@ -29,7 +29,7 @@ public class DestroyOnDeath : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
 
-        if (this.CompareTag(playerTag))
+        if (this.CompareTag(PlayerTag))
         {
             //죽는 로직 : 플레이어가 죽었을 때 무한맵이면 시간 저장, 스토리면 그냥 restart로
             if (currentSceneName == "InfiniteMap")
