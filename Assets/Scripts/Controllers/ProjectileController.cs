@@ -15,24 +15,27 @@ public class ProjectileController : MonoBehaviour
     private TrailRenderer trailRenderer;
     private HealthSystem healthSystem;
 
-    private BulletSO attackData;
-    private CharacterStatHandler statHandler;
+    public BulletSO attackData;
     private Vector2 direction;
     private float timeAfterShoot = 0f;
     private bool fxDestroy = true;
 
     private void Awake()
     {
-        rigidbody= GetComponent<Rigidbody2D>();
-        spriteRenderer= GetComponent<SpriteRenderer>();
-        trailRenderer= GetComponent<TrailRenderer>();
-     }
+        rigidbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        trailRenderer = GetComponent<TrailRenderer>();
+    }
+
+    private void Start()
+    {
+    }
 
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -60,15 +63,29 @@ public class ProjectileController : MonoBehaviour
         UpdateProjectile();
         //trailRenderer.Clear();//�ʿ������ ����        
 
-        isReady= true;
+        isReady = true;
     }
-    public void chargeAttack(Vector2 direction, BulletSO bulletSO, double chargeGage)
+    public void player1ChargeAttack(Vector2 direction, BulletSO bulletSO, double chargeGage)
     {
-        
-        Debug.Log("Last Charge Check");
+
+        Debug.Log("Player1 Special Attack");
+        this.attackData = bulletSO;
+        this.direction = direction;
+        Debug.Log(attackData);
+
+        //trailRenderer.Clear();//�ʿ������ ����        
+
+        isReady = true;
+    }
+    public void player2ChargeAttack(Vector2 direction, BulletSO bulletSO, double chargeGage)
+    {
+
+        Debug.Log("Player2 Special Attack");
         this.attackData = bulletSO;
         this.direction = direction;
 
+
+        chargeGage = chargeGage < 1 ? chargeGage : 1;
         UpdateProjectile(chargeGage);
         //trailRenderer.Clear();//�ʿ������ ����        
 
@@ -86,7 +103,6 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
         if (IsLayerMatched(levelCollisionLayer.value, collision.gameObject.layer))
         {
             Vector2 destroyPosition = collision.ClosestPoint(transform.position) - direction * 0.2f;
@@ -94,7 +110,7 @@ public class ProjectileController : MonoBehaviour
 
             DestroyProjectile(destroyPosition);
         }
-        else if (IsLayerMatched(attackData.targetLayer , collision.gameObject.layer))
+        else if (IsLayerMatched(attackData.targetLayer, collision.gameObject.layer))
         {
             //������ ��� �ʿ�
             healthSystem = collision.GetComponent<HealthSystem>();
@@ -115,5 +131,6 @@ public class ProjectileController : MonoBehaviour
     {
         //�ı� ����Ʈ �߰� �� ��ġ ������ �ʿ�
         gameObject.SetActive(false);
+        timeAfterShoot = 0;
     }
 }

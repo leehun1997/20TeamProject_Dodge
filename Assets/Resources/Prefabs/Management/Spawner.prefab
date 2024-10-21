@@ -77,7 +77,7 @@ MonoBehaviour:
     prefab: {fileID: 9097393757096149843, guid: 4da7ff561d7413446bf65d6040ddbc49, type: 3}
     size: 15
   - name: PlayerRed_SpecialBullet
-    prefab: {fileID: 3869224136777379077, guid: 69e642894b53d9e429edc777aecc9975, type: 3}
+    prefab: {fileID: 7017701712052476396, guid: 05fe7c6a181c2714c9a81b7921c736fa, type: 3}
     size: 10
   - name: PlayerBlue_SpecialBullet
     prefab: {fileID: 8949915539897686073, guid: 953ccd8d52b424641a4bdd6e45bc27fa, type: 3}

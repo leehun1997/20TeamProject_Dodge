@@ -390,9 +390,9 @@ MonoBehaviour:
   characterStat:
     characterStatSO: {fileID: 11400000, guid: 5e9ac201e582faf4694204e5d25e6fd0, type: 2}
     bulletSO: {fileID: 11400000, guid: a8759f8520eef7e42b325c7c3328b9a3, type: 2}
-    specialBulletSO: {fileID: 0}
-  basePlayerStatSO: {fileID: 11400000, guid: 83c1fb618e2419848b9a6b6248bcc43a, type: 2}
-  basePlayerBulletSO: {fileID: 11400000, guid: 02c18828d440eef458e56959d96d15e3, type: 2}
+    specialBulletSO: {fileID: 11400000, guid: 7ce088d19019a364eb0cde1641cb4024, type: 2}
+  basePlayerStatSO: {fileID: 11400000, guid: c948b2fd1075fc74b87ceaec49e11f0f, type: 2}
+  basePlayerBulletSO: {fileID: 11400000, guid: 7c825f616a37fb64eb24924eeae978a8, type: 2}
   basePlayerSpecialBulletSO: {fileID: 11400000, guid: 7ce088d19019a364eb0cde1641cb4024, type: 2}
 --- !u!114 &1924361586305059916
 MonoBehaviour:

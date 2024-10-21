@@ -21,7 +21,7 @@ MonoBehaviour:
   speed: 5
   delay: 5
   duration: 5
-  bulletPrefab: {fileID: 3869224136777379077, guid: 69e642894b53d9e429edc777aecc9975, type: 3}
+  bulletPrefab: {fileID: 7017701712052476396, guid: 05fe7c6a181c2714c9a81b7921c736fa, type: 3}
   bulletDuration: 0
   bulletDelay: 0
   str: "\uC544\uC9C1 \uD50C\uB808\uC774\uC5B4 \uACE0\uC720\uC758 \uBB34\uAE30\uAC00

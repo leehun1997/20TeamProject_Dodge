@@ -14,7 +14,7 @@ public class TopDownCharginging : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<DodgeController>();
-        playerStat= GetComponent<PlayerStatHandler>();
+        playerStat = GetComponent<PlayerStatHandler>();
         pool = GameObject.FindObjectOfType<ObjectPool>();
     }
 
@@ -24,14 +24,14 @@ public class TopDownCharginging : MonoBehaviour
         controller.OnChargeEvent += Charging;
     }
 
-    private void Charging(BulletSO bulletSO,bool isCharging, double chargeGage)
+    private void Charging(BulletSO bulletSO, bool isCharging, double chargeGage)
     {
         Debug.Log($"player : {playerStat.id} check");
         switch (playerStat.id)
         {
             case 1: CreatePlayer1SpecailAttack(bulletSO, isCharging, chargeGage); return;
             case 2: CreatePlayer2SpecailAttack(bulletSO, isCharging, chargeGage); return;
-                default: Debug.Log("ID index err."); return;
+            default: Debug.Log("ID index err."); return;
         }
     }
 
@@ -62,9 +62,9 @@ public class TopDownCharginging : MonoBehaviour
                 b.transform.localScale = Vector3.one * (float)chargeGage;
             }
         }
-        else if(ready)
+        else if (ready)
         {
-            ready= false;
+            ready = false;
             attackController = b.GetComponent<ProjectileController>();
             attackController.player1ChargeAttack(shootDirection, bulletSO, chargeGage);
         }
