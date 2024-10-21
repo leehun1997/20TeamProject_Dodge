@@ -11,10 +11,10 @@ using UnityEngine.UIElements;
 
 public class BombEnemyController : EnemyController
 {
-    [SerializeField][Range(0f, 1000f)] float walkTargetRange = 0f;
+    [SerializeField] [Range(0f, 1000f)] float walkTargetRange = 0f;
     [SerializeField] private string targetTag = "Player";
-    
-    
+
+
     private Vector3 playerPastPosition;
     private SpriteRenderer BombEnemyRenderer;
     Vector2 direction = Vector2.zero;
@@ -29,19 +29,17 @@ public class BombEnemyController : EnemyController
     protected override void Start()
     {
         base.Start();
-
         playerPastPosition = ClosesTarget.position;
         BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
-        
-        Chase();
 
+        Chase();
     }
 
     protected override void Update()
     {
         base.Update();
         if (Mathf.Abs(playerPastPosition.x - transform.position.x) < 0.1
-           && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1)
+            && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1)
         {
             _healthSystem.ChangeHP(-statHandler.maxHp);
             gameObject.SetActive(false);
@@ -54,14 +52,14 @@ public class BombEnemyController : EnemyController
         base.FixedUpdate();
     }
 
-    public override void Init() 
+    public override void Init()
     {
         base.Init();
-        SupHealth = GetComponent<HealthSystem>();
-        if (ClosesTarget == null) 
+        if (ClosesTarget == null)
         {
             ClosesTarget = GameManager.Instance.Player;
         }
+
         playerPastPosition = ClosesTarget.position;
         BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
         Chase();
@@ -71,10 +69,9 @@ public class BombEnemyController : EnemyController
     {
         //EnemyStatSO bombEnemyStatSO = statHandler.currentStat.characterStatSO as EnemyStatSO;
         SupHealth.ChangeHP(-20f);
-        
     }
 
-    private void Chase() 
+    private void Chase()
     {
         direction = DirectionToTarget();
 
@@ -86,15 +83,15 @@ public class BombEnemyController : EnemyController
     {
         GameObject player = collision.gameObject;
 
-        if (!player.CompareTag(targetTag)) { return; }
+        if (!player.CompareTag(targetTag))
+        {
+            return;
+        }
+
         SupHealth = collision.GetComponent<HealthSystem>();
 
-            ApplyDamage();
+        ApplyDamage();
         _healthSystem.ChangeHP(-statHandler.maxHp);
-            gameObject.SetActive(false);
-
-
+        gameObject.SetActive(false);
     }
-
 }
-

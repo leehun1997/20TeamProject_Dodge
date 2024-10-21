@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 
 public class DestroyOnDeath : MonoBehaviour
@@ -39,7 +40,6 @@ public class DestroyOnDeath : MonoBehaviour
             {
                 SceneManager.LoadScene("GameOver");
             }
-            
         }
         else if(this.CompareTag("Boss"))
         {

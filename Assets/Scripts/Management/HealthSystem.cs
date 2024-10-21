@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
-
    // [Header("Health System Settings")]
    
     private CharacterStatHandler statHandler;
@@ -61,6 +60,10 @@ public class HealthSystem : MonoBehaviour
         else
         {
             OnDamage?.Invoke();
+            
+            //TODO 파편 HIT 처리 할건지?
+            if(CurrentHp >0)
+               AudioManager.Instance.PlaySfx("Hit");
         }
     }
     

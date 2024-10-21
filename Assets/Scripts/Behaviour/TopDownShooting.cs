@@ -27,8 +27,9 @@ public class TopDownShooting : MonoBehaviour
         BulletSO bSO = bulletSO as BulletSO;
         if (bulletSO == null) return;
 
-        Debug.Log("ReadyToShoot");
-
+        if(CompareTag("Player"))
+            AudioManager.Instance.PlaySfx("Shoot");
+        
         CreateProjectile(bSO);
     }
 
