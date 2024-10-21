@@ -20,16 +20,16 @@ public class BombEnemyController : EnemyController
     Vector2 direction = Vector2.zero;
     public CharacterStatSO CSO;
     private HealthSystem SupHealth;
-    private HealthSystem BombHealth;
     int i = 0;
 
     private bool isCollision = false;
 
 
+
     protected override void Start()
     {
         base.Start();
-        BombHealth = GetComponent<HealthSystem>();
+
         playerPastPosition = ClosesTarget.position;
         BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
         
@@ -43,7 +43,7 @@ public class BombEnemyController : EnemyController
         if (Mathf.Abs(playerPastPosition.x - transform.position.x) < 0.1
            && Mathf.Abs(playerPastPosition.y - transform.position.y) < 0.1)
         {
-            BombHealth.ChangeHP(-statHandler.maxHp);
+            _healthSystem.ChangeHP(-statHandler.maxHp);
             gameObject.SetActive(false);
         }
     }
@@ -90,7 +90,7 @@ public class BombEnemyController : EnemyController
         SupHealth = collision.GetComponent<HealthSystem>();
 
             ApplyDamage();
-            BombHealth.ChangeHP(-statHandler.maxHp);
+        _healthSystem.ChangeHP(-statHandler.maxHp);
             gameObject.SetActive(false);
 
 
