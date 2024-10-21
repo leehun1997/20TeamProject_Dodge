@@ -15,10 +15,14 @@ public enum StatType
 public  abstract class CharacterStatHandler : MonoBehaviour
 {
     //공통 변수
-    public float  speed{ get; protected set; }
+    public float speed{ get; protected set; }
     public float maxHp { get; protected set; }
     public float damage { get; protected set;}
+    public float duration { get; protected set;}
+
     
+    public Transform target { get; protected set;}
+
     
     // 플레이어 , 몬스터 고유 정보를 불러올 수는 있는데 값을 변경하지는 못하는 상황 
     private CharacterStatHandler _handler; 
@@ -45,7 +49,8 @@ public  abstract class CharacterStatHandler : MonoBehaviour
                 speed += value;
                 break;
             case StatType.BulletDamage:
-                currentStat.bulletSO.damage += value;
+                //TODO DAMAGE 사용 하나로 
+                damage += value;
                 break;
         }
     }

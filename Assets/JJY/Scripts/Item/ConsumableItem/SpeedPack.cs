@@ -9,7 +9,7 @@ public class SpeedPack : ConsumableItem
     
     protected override void UseConsumableItem()
     {
-        playerStat.UpdateStat(StatType.Speed,100);
+        playerStat.UpdateStat(StatType.Speed,speedUp);
         Destroy(gameObject);
     }
     

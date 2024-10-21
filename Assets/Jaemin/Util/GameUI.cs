@@ -7,21 +7,21 @@ using TMPro;
 
 public class GameUI : MonoBehaviour
 {
-    [Header("Åä±Û ¿ÀºêÁ§Æ®")]
+    [Header("ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     public GameObject object1;
     public GameObject object2;
 
-    [Header("¿Àµð¿À °ü·Ã")]
-    public AudioClip buttonClickSound; // ¹öÆ° Å¬¸¯ ¼Ò¸®¸¦ °¡Á®¿Ã º¯¼ö
-    private AudioSource audioSource;   // ¿Àµð¿À ¼Ò½º ÄÄÆ÷³ÍÆ®
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
+    public AudioClip buttonClickSound; // ï¿½ï¿½Æ° Å¬ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private AudioSource audioSource;   // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
-    [Header("ÃÖ°íÁ¡¼ö,½Ã°£")]
+    [Header("ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ã°ï¿½")]
     [SerializeField] private TextMeshProUGUI highTimeTxt;
     [SerializeField] private TextMeshProUGUI lowTimeTxt;
 
     private void Start()
     {
-        // ¿Àµð¿À ¼Ò½º ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿À°Å³ª ¾øÀ¸¸é Ãß°¡
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
         audioSource = gameObject.GetComponent<AudioSource>();
         //PlayerPrefs.DeleteKey("LowTime");
         LoadBestTime();
@@ -29,7 +29,7 @@ public class GameUI : MonoBehaviour
     }
     public void StartGame(string sceneName)
     {
-        // ¿Àµð¿À Å¬¸³ÀÌ nullÀÌ ¾Æ´ÑÁö È®ÀÎÇÏ°í Àç»ý
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½ ï¿½Æ´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½
         if (buttonClickSound != null)
         {
             audioSource.PlayOneShot(buttonClickSound);
@@ -44,26 +44,26 @@ public class GameUI : MonoBehaviour
     public void Exit()
     {
         #if UNITY_EDITOR
-        // ¿¡µðÅÍ¿¡¼­ ½ÇÇà ÁßÀÏ ¶§´Â ÇÃ·¹ÀÌ ¸ðµå¸¦ Á¾·áÇÕ´Ï´Ù.
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         UnityEditor.EditorApplication.isPlaying = false;
         #else
-            // ºôµåµÈ °ÔÀÓ¿¡¼­ ½ÇÇà ÁßÀÏ ¶§´Â °ÔÀÓÀ» Á¾·áÇÕ´Ï´Ù.
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
             Application.Quit();
         #endif
     }
 
     private IEnumerator LoadSceneAfterDelay(string SceneName, float delay)
     {
-        // µô·¹ÀÌ ÈÄ ¾À ÀüÈ¯
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¯
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(SceneName);
-        Debug.Log("¾À ÀüÈ¯");
+        Debug.Log("ï¿½ï¿½ ï¿½ï¿½È¯");
         Time.timeScale = 0f;
     }
 
     public void Toggle()
     {
-        // ¿ÀºêÁ§Æ®ÀÇ È°¼ºÈ­ »óÅÂ¸¦ ¹Ý´ë·Î ¼³Á¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½Ý´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (object1.activeSelf)
         {
             object1.SetActive(false);
@@ -101,5 +101,4 @@ public class GameUI : MonoBehaviour
             lowTimeTxt.text = "No Time Recorded";
         }
     }
-
 }

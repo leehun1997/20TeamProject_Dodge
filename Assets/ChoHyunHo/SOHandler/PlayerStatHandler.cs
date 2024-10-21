@@ -40,5 +40,7 @@ public class PlayerStatHandler : CharacterStatHandler
         speed = basePlayerStatSO.MoveSpeed;
         maxHp = basePlayerStatSO.MaxHP;
         damage = basePlayerBulletSO.damage;
+        duration = basePlayerBulletSO.duration;
+        Debug.Log(gage);
     }
 }

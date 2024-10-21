@@ -30,7 +30,7 @@ public abstract class EnemyController : DodgeController
 
     protected virtual void FixedUpdate()
     {
-
+        
     }
 
      
