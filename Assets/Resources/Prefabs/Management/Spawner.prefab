@@ -67,6 +67,21 @@ MonoBehaviour:
   - name: Enemy_0_Death
     prefab: {fileID: 6362070292789610762, guid: 1fceb19cd40483f4ea06704d0935482f, type: 3}
     size: 50
+  - name: Enemy_0_Bullet
+    prefab: {fileID: 9097393757096149843, guid: 6ce16fe784c1dcf47b142c4a34fdac14, type: 3}
+    size: 20
+  - name: PlayerRed_Bullet
+    prefab: {fileID: 9097393757096149843, guid: 90775ad691d93344ca8262a047cb7dcc, type: 3}
+    size: 15
+  - name: PlayerBlue_Bullet
+    prefab: {fileID: 9097393757096149843, guid: 4da7ff561d7413446bf65d6040ddbc49, type: 3}
+    size: 15
+  - name: PlayerRed_SpecialBullet
+    prefab: {fileID: 7017701712052476396, guid: 05fe7c6a181c2714c9a81b7921c736fa, type: 3}
+    size: 10
+  - name: PlayerBlue_SpecialBullet
+    prefab: {fileID: 8949915539897686073, guid: 953ccd8d52b424641a4bdd6e45bc27fa, type: 3}
+    size: 100
 --- !u!114 &7885805222944456272
 MonoBehaviour:
   m_ObjectHideFlags: 0
