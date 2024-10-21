@@ -9,6 +9,7 @@ public class TopDownCharginging : MonoBehaviour
     private GameObject b;
     private BulletSO bulletSO;
     private bool ready = false;
+    private ProjectileController attackController;
 
     private void Awake()
     {
@@ -22,12 +23,13 @@ public class TopDownCharginging : MonoBehaviour
         controller.OnChargeEvent += Charging;
     }
 
-    private void Charging(bool isCharging, double chargeGage)
+    private void Charging(BulletSO bulletSO,bool isCharging, double chargeGage)
     {
-        switch (playerStat.PlayerStatSo.id)
+        Debug.Log($"playrt : {playerStat.id} check");
+        switch (playerStat.id)
         {
-            case 1: CreatePlayer1SpecailAttack(isCharging, chargeGage); return;
-            case 2: CreatePlayer2SpecailAttack(isCharging, chargeGage); return;
+            case 1: CreatePlayer1SpecailAttack(bulletSO, isCharging, chargeGage); return;
+            case 2: CreatePlayer2SpecailAttack(bulletSO, isCharging, chargeGage); return;
                 default: Debug.Log("ID index err."); return;
         }
     }
@@ -36,29 +38,38 @@ public class TopDownCharginging : MonoBehaviour
     {
         shootDirection = direction;
     }
-    private void CreatePlayer1SpecailAttack(bool isCharging, double chargeGage)
-    {        
+    private void CreatePlayer1SpecailAttack(BulletSO bulletSO, bool isCharging, double chargeGage)
+    {
+        Debug.Log("Create Charge");
         if (isCharging)
         {
             if (!ready)
             {
-                ready= true;
+                ready = true;
+                Debug.Log($"Charge : {ready}");
                 b = Instantiate(bulletSO.specialbulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
+                ProjectileController attackController = b.GetComponent<ProjectileController>();
+                attackController.attackData = bulletSO;
             }
             else
             {
+                Debug.Log("Charging!!!!!");
+                b.transform.position = BulletSpawnPoint.transform.position;
+                b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);
                 b.transform.localScale = Vector3.one * (float)chargeGage;
             }
         }
-        bulletSO = playerStat.PlayerBulletSo;        
-        ProjectileController attackController = b.GetComponent<ProjectileController>();
-        attackController.chargeAttack(shootDirection, bulletSO, chargeGage);
+        else
+        {
+            ready= false;
+            attackController = b.GetComponent<ProjectileController>();
+            attackController.player1ChargeAttack(shootDirection, bulletSO, chargeGage);
+        }
     }
-    private void CreatePlayer2SpecailAttack(bool isCharging, double chargeGage)
+    private void CreatePlayer2SpecailAttack(BulletSO bulletSO, bool isCharging, double chargeGage)
     {
-        bulletSO = playerStat.PlayerBulletSo;
         b = Instantiate(bulletSO.specialbulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
         ProjectileController attackController = b.GetComponent<ProjectileController>();
-        attackController.chargeAttack(shootDirection, bulletSO, chargeGage);
+        attackController.player2ChargeAttack(shootDirection, bulletSO, chargeGage);
     }
 }

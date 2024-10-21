@@ -8,7 +8,7 @@ public class DodgeController : MonoBehaviour
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<BulletSO> OnAttackEvent;
-    public event Action<bool,double> OnChargeEvent;
+    public event Action<BulletSO,bool,double> OnChargeEvent;
     protected bool isAttacking { get; set; }
     protected bool isCharging { get; set; }
 
@@ -26,31 +26,35 @@ public class DodgeController : MonoBehaviour
 
     protected virtual void Start()
     {        
-        currentGage = statHandler.PlayerStatSo.specialGage;
+        currentGage = (int)statHandler.gage;
     }
 
     protected virtual void Update()
     {
         if (isCharging)//차지중이면 공격불가로 만들기?
         {
-            if (currentGage <= 0) 
-            { 
-                Debug.Log($"Can't Use SpecialAttack! {currentGage} {chargeGage}"); 
-                return; 
+            if (currentGage <= 0)
+            {
+                Debug.Log($"Can't Use SpecialAttack! {currentGage} {chargeGage}");
+                return;
             }
-            else  if (chargeGage >= currentGage)
+            else if (chargeGage >= currentGage)
             {
                 Debug.Log($"Full Charge! {chargeGage} {currentGage}");
                 chargeGage = currentGage;
+                CallChargeAttackEvent(statHandler.basePlayerBulletSO, isCharging, chargeGage);
             }
             else
+            {
                 chargeGage += Time.deltaTime;
+                CallChargeAttackEvent(statHandler.basePlayerBulletSO, isCharging, chargeGage);
+            }
         }
 
         if (isAttacking && delayTime <= 0)
         {
             delayTime = statHandler.currentStat.bulletSO.delay;
-            CallAttackEvent(statHandler.currentStat.bulletSO);
+            CallAttackEvent(statHandler.basePlayerBulletSO);
         }
         else
         {
@@ -72,9 +76,9 @@ public class DodgeController : MonoBehaviour
     {
        OnAttackEvent?.Invoke(attackSO);
     }
-    public void CallChargeAttackEvent(bool isCharging,double chargeGage)
+    public void CallChargeAttackEvent(BulletSO attackSO, bool isCharging,double chargeGage)
     {
-        OnChargeEvent?.Invoke(isCharging,chargeGage);
+        OnChargeEvent?.Invoke(attackSO,isCharging,chargeGage);
     }
 }
 
