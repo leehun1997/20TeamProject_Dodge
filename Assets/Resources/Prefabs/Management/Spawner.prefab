@@ -62,7 +62,7 @@ MonoBehaviour:
     prefab: {fileID: 4066768938554192773, guid: 4bdd98d537557a443a86f50cf16708b2, type: 3}
     size: 5
   - name: BombEnemy_0_Death
-    prefab: {fileID: 6362070292789610762, guid: 1fceb19cd40483f4ea06704d0935482f, type: 3}
+    prefab: {fileID: 6362070292789610762, guid: 3314d20d5a0a992478118182b879841c, type: 3}
     size: 50
   - name: Enemy_0_Death
     prefab: {fileID: 6362070292789610762, guid: 1fceb19cd40483f4ea06704d0935482f, type: 3}

@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BulletSO", menuName = "BulletSO/PlayerBulletSO", order = 1)]
 public class PlayerBulletSO : BulletSO
 {
-    [Header("ÇÃ·¹ÀÌ¾î °íÀ¯ ¹«±âÁ¤º¸")]
+    [Header("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float bulletDuration;
     public float bulletDelay;
-    public string str = "¾ÆÁ÷ ÇÃ·¹ÀÌ¾î °íÀ¯ÀÇ ¹«±â°¡ ¾øÀ½";
+    public string str = "ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â°¡ ï¿½ï¿½ï¿½ï¿½";
 }
