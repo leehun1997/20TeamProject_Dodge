@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: StartSceneAudioData
   m_EditorClassIdentifier: 
   targetSceneName: StartScene
-  bgm: []
+  bgm:
+  - {fileID: 8300000, guid: 8493fdf03bbdfed49a17c7e484f1ac08, type: 3}
+  - {fileID: 8300000, guid: 0df016b6a48e84941a34a3e8210ad2d0, type: 3}
   sfx:
   - {fileID: 8300000, guid: 8411e338bdc4035458ae07ee62e99a72, type: 3}
   - {fileID: 8300000, guid: 75c7655413e2ff24a8ccc681f3d826fd, type: 3}

@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: StoryMapAudioData
   m_EditorClassIdentifier: 
   targetSceneName: StoryMap
-  bgm: []
+  bgm:
+  - {fileID: 8300000, guid: 341db241e1763564383d77b1038e47a6, type: 3}
+  - {fileID: 8300000, guid: b927c4cd41928474ea92ddb41fbfae9b, type: 3}
+  - {fileID: 8300000, guid: 21cdf3a626edf6a41ac0166e1e3ab5f0, type: 3}
   sfx:
   - {fileID: 8300000, guid: 8411e338bdc4035458ae07ee62e99a72, type: 3}
   - {fileID: 8300000, guid: cd1faee682f459245b93c2725a95461e, type: 3}
   - {fileID: 8300000, guid: 75c7655413e2ff24a8ccc681f3d826fd, type: 3}
   - {fileID: 8300000, guid: 620b5fb2c343427498a35e92417a0654, type: 3}
   - {fileID: 8300000, guid: c8647741b5be006439a740659c726159, type: 3}
+  - {fileID: 8300000, guid: eca501d2ddea10c44977a814a4680afd, type: 3}

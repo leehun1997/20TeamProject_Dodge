@@ -8,10 +8,16 @@ using UnityEngine.Serialization;
 //TODO 2 중앙집중식 오디오 관리 방식을 효과음을 사용하는 오브젝트에서 재생하는 방식으로 변경.
 
 
+public enum ClipDictionaryType
+{
+    SFX,
+    BGM
+}
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    
+
     [Header("AudioDatSO")] [SerializeField]
     private AudioDataSO[] audioDataSO;
 
@@ -20,7 +26,7 @@ public class AudioManager : MonoBehaviour
     [Header("AudioSource Pool")] [SerializeField]
     private int audioSourcePoolsSize = 10;
 
-    private AudioSource bgmAudioSource;
+    public AudioSource bgmAudioSource { get; private set; }
     private List<AudioSource> sfxAudioSourcePools = new List<AudioSource>();
     private Dictionary<string, AudioClip> sfxName = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> bgmName = new Dictionary<string, AudioClip>();
@@ -45,16 +51,38 @@ public class AudioManager : MonoBehaviour
 
         bgmAudioSource = GetComponent<AudioSource>();
         CreateAudioSourcePools();
+        InitAudioSource();
     }
 
 
     private void Start()
     {
-        InitAudioSource();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    
+
+    public List<string> GetDictionaryKey(ClipDictionaryType type)
+    {
+        Dictionary<string, AudioClip> clipDictionary;
+
+        switch (type)
+        {
+            case ClipDictionaryType.SFX:
+                clipDictionary = sfxName;
+                break;
+            case ClipDictionaryType.BGM:
+                clipDictionary = bgmName;
+                break;
+            default:
+                clipDictionary = bgmName;
+                break;
+        }
+
+
+        List<string> keysList = new List<string>(clipDictionary.Keys);
+        return keysList;
+    }
+
     public void SetBGMVolume(float value)
     {
         bgmAudioSource.volume = value;
@@ -73,9 +101,10 @@ public class AudioManager : MonoBehaviour
         InitAudioSource();
     }
 
-    
+
     private void InitAudioSource()
     {
+        StopBGM();
         SetAudioData();
         CreateClipDictionary(sfxClip, sfxName, "SFX");
         CreateClipDictionary(bgmClip, bgmName, "BGM");
@@ -103,7 +132,7 @@ public class AudioManager : MonoBehaviour
                 Debug.LogError("씬에 해당하는 오디오 데이터 혹은 기본 데이터를 넣어주세요.");
                 return;
             }
-            
+
             Debug.LogWarning("씬에 해당하는 오디오 데이터가 없어 기본값으로 설정합니다.");
             bgmClip = defaultAudioDataSO.bgm;
             sfxClip = defaultAudioDataSO.sfx;
@@ -215,7 +244,9 @@ public class AudioManager : MonoBehaviour
         bgmAudioSource.Play();
     }
 
+    public void StopBGM() => bgmAudioSource.Stop();
 
+ 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
