@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DodgeController : MonoBehaviour
 {
+
+    public event Action OnPauseEvent;
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<BulletSO> OnAttackEvent;
@@ -72,6 +74,11 @@ public class DodgeController : MonoBehaviour
     public void CallChargeAttackEvent(BulletSO attackSO,double chargeGage)
     {
         OnChargeEvent?.Invoke(attackSO,chargeGage);
+    }
+
+    public void CallPauseEvent()
+    {
+        OnPauseEvent?.Invoke();
     }
 }
 

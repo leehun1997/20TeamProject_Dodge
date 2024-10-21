@@ -18,6 +18,11 @@ public class PlayerInputController : DodgeController
           CallMoveEvent(moveInput);
      }
 
+    public void OnPause(InputValue value)
+    {
+        CallPauseEvent();
+    }
+
      
     
     public void OnLook(InputValue value)
@@ -34,7 +39,7 @@ public class PlayerInputController : DodgeController
     }
     public void OnRightMouse(InputValue value)
     {
-        if(value.isPressed)//Â÷ÁöÁß
+        if(value.isPressed)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             isCharging= true;
             Debug.Log("Charging");

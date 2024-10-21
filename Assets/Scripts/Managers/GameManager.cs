@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     public Slider playerHealthSlider; //플레이어가 소환될 때 slider 가져오기 위함
     public Slider playerGageSlider; //플레이어가 소환될 때 slider 가져오기 위함
 
+    [Header("PauseUI")] [SerializeField] private GameObject pauseUI; 
+    
+    
+    
     private void Awake()
     {
         if (Instance == null)
@@ -51,6 +55,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         playerPrefab = Resources.Load<GameObject>("Prefabs/Player/PlayerBlue"); //플레이어 선택을 위해 리소스에서 플레이어를 받아온다.
         LoadTimes(); // 최고 기록 및 최단 기록 불러오기
+    }
+
+    private void OnPauseUI()
+    {
+        Time.timeScale = 0f;
+        pauseUI.SetActive(true);
     }
 
     private void Update()
@@ -256,6 +266,8 @@ public class GameManager : MonoBehaviour
             healthSystem.healthSlider = playerHealthSlider;
             Time.timeScale = 1f;
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
+            Player.GetComponent<DodgeController>().OnPauseEvent -= OnPauseUI;
+            Player.GetComponent<DodgeController>().OnPauseEvent += OnPauseUI;
             ObjectPool.instance.CreatePools();
         }
         

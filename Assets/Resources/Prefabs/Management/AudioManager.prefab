@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c7ec47de9f032b4fbe49f0c31e19f0e, type: 2}
   - {fileID: 11400000, guid: 56fe005618da13e4493bcb658dec2032, type: 2}
   defaultAudioDataSO: {fileID: 11400000, guid: f0439328de703414fb213aa9b154ef46, type: 2}
-  audioSourcePoolsSize: 10
+  audioSourcePoolsSize: 3
 --- !u!82 &8569845553466612588
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
