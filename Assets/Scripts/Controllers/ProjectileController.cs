@@ -99,7 +99,7 @@ public class ProjectileController : MonoBehaviour
             //������ ��� �ʿ�
             healthSystem = collision.GetComponent<HealthSystem>();
             healthSystem.ChangeHP(-attackData.damage);
-            Debug.Log(attackData.damage + "  " + healthSystem.CurrentHp);
+            Debug.Log("공격력"+attackData.damage + "  " + healthSystem.CurrentHp);
 
             DestroyProjectile(collision.ClosestPoint(transform.position));
         }

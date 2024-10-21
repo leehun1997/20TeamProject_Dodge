@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
     [Header("PlayerSelect")] private GameObject playerPrefab; //Prefab불러오기
     private GameObject newPlayer; //플레이어 생성
     public GameObject PlayerSelectUI; //선택 UI
+  
     public Slider playerHealthSlider; //플레이어가 소환될 때 slider 가져오기 위함
+    public Slider playerGageSlider; //플레이어가 소환될 때 slider 가져오기 위함
 
     private void Awake()
     {
@@ -133,7 +135,26 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    
+    private void ReconnectPlayerGageSlider()
+    {
+        // PlayerUICanvas 하위의 PlayerGage_Slider 오브젝트를 찾아서 연결
+        GameObject canvas = GameObject.Find("PlayerUICanvas");
+        if (canvas != null)
+        {
+            Transform sliderTransform = canvas.transform.Find("PlayerGage_Slider");
+            if (sliderTransform != null)
+            {
+                playerHealthSlider = sliderTransform.GetComponent<Slider>();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerGage_Slider를 찾을 수 없습니다.");
+            }
+        }
+    }
 
+    
     public void Score()
     {
         //몬스터 죽었을 때 점수를 받아오는 로직
@@ -235,7 +256,6 @@ public class GameManager : MonoBehaviour
             healthSystem.healthSlider = playerHealthSlider;
             Time.timeScale = 1f;
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
-            
             ObjectPool.instance.CreatePools();
         }
         

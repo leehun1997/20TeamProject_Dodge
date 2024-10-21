@@ -24,12 +24,12 @@ public abstract class Item : MonoBehaviour
 
     protected virtual void Awake()
     {
-        Player = GameManager.Instance.Player;//추후 GameManger 혹은 DataManager 클래스에서 Player오브젝트 저장 후 가져오기도 가능
+        Player = GameManager.Instance.Player; //추후 GameManger 혹은 DataManager 클래스에서 Player오브젝트 저장 후 가져오기도 가능
         playerStat = Player.GetComponent<CharacterStatHandler>();
         inventory = Player.GetComponent<Inventory>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
-    
+
 
     public void OnEnableItem()
     {
@@ -39,6 +39,11 @@ public abstract class Item : MonoBehaviour
 
     private void StartDestroyAfterTime()
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+        
+        
+        
         StartCoroutine(DestroyAfterTime());
     }
 
@@ -56,6 +61,7 @@ public abstract class Item : MonoBehaviour
             yield return new WaitForSeconds(blinkInterval);
             timePassed += blinkInterval;
         }
+
         gameObject.SetActive(false);
     }
 

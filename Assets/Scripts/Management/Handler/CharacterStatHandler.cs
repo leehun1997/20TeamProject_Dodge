@@ -50,6 +50,7 @@ public  abstract class CharacterStatHandler : MonoBehaviour
                 break;
             case StatType.BulletDamage:
                 //TODO DAMAGE 사용 하나로 
+                currentStat.bulletSO.damage += value;
                 damage += value;
                 break;
         }

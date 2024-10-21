@@ -18,7 +18,6 @@ public class HealPack : ConsumableItem
     protected override void UseConsumableItem()
     {
         playerHP.ChangeHP(HealAmount);
-        Debug.Log("HEALPACK USED"); // 테스트용 추후 삭제
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
