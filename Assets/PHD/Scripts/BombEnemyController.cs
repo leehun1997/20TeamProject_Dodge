@@ -81,7 +81,6 @@ public class BombEnemyController : EnemyController
 
     private void Chase() 
     {
-        Debug.Log("chase");
         direction = DirectionToTarget();
 
         CallMoveEvent(direction);

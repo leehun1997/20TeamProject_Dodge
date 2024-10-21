@@ -19,7 +19,6 @@ public class HealthSystem : MonoBehaviour
     private void Awake()
     {
          statHandler = GetComponent<CharacterStatHandler>();
-         Debug.Log(statHandler);
     }
 
     private void Start()
