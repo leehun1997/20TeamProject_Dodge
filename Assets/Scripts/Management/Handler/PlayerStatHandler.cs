@@ -6,6 +6,7 @@ public class PlayerStatHandler : CharacterStatHandler
 {
     [SerializeField] public PlayerStatSO basePlayerStatSO;
     [SerializeField] public PlayerBulletSO basePlayerBulletSO;
+    [SerializeField] public PlayerBulletSO basePlayerSpecialBulletSO;
 
     public string desc { get; private set; }
     public int id { get; private set; }
@@ -16,18 +17,21 @@ public class PlayerStatHandler : CharacterStatHandler
     {
         PlayerStatSO playerStatSO = null;
         PlayerBulletSO playerBulletSO = null;
+        PlayerBulletSO playerSpecialBulletSO = null;
 
 
-        if (basePlayerStatSO != null && basePlayerBulletSO != null)
+        if (basePlayerStatSO != null && basePlayerBulletSO != null && basePlayerSpecialBulletSO != null)
         {
             playerStatSO = Instantiate(basePlayerStatSO);
             playerBulletSO = Instantiate(basePlayerBulletSO);
+            playerSpecialBulletSO = Instantiate(basePlayerSpecialBulletSO);
         }
         
         currentStat = new CharacterStat
         {
             characterStatSO = playerStatSO,
-            bulletSO = playerBulletSO
+            bulletSO = playerBulletSO,
+            specialBulletSO = playerSpecialBulletSO
         };
 
         

@@ -14,7 +14,12 @@ public class CharacterAiming : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<DodgeController>();
+        //if (controller == null) controller = GetComponentInParent<DodgeController>();//보스일때 
+
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        Debug.Log("랜더러1차" + spriteRenderer);
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();//보스일때 
+        Debug.Log("랜더러2차" + spriteRenderer);
     }
     
     void Start()
