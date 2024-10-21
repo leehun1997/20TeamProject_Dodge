@@ -16,4 +16,11 @@ public class DataManger : MonoBehaviour
         else
             Destroy(gameObject);
     }
+    
+    
+    
+    //여기서 SO에서 변경 될 데이터 들을 모아 놓고 관리? 
+    private float playerSpeed; 
+    
+
 }

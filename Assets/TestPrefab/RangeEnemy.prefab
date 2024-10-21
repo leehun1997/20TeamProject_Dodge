@@ -151,11 +151,12 @@ GameObject:
   - component: {fileID: 2997455831428085074}
   - component: {fileID: 1219004548592446526}
   - component: {fileID: 5465676460415077572}
-  - component: {fileID: 1070783927903779958}
   - component: {fileID: 2406405141067471677}
   - component: {fileID: 914531278091868662}
   - component: {fileID: 2168443160450665162}
   - component: {fileID: 6359558872373850080}
+  - component: {fileID: 9049871403175952173}
+  - component: {fileID: 1113416173792155491}
   m_Layer: 7
   m_Name: RangeEnemy
   m_TagString: Untagged
@@ -281,7 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88638ee454efd2429235063cd249ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
   accelerationTime: 0
 --- !u!114 &5465676460415077572
 MonoBehaviour:
@@ -297,21 +297,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2848857218766733824}
   rotationSpeed: 5
---- !u!114 &1070783927903779958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124374614835837934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24124875a300fb24d976cdd4fdc27594, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterStat:
-    characterStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
-    bulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}
 --- !u!114 &2406405141067471677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efc390333874000aebe8457b0714136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &6359558872373850080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,3 +348,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd93b6524d927e0409a6c701fd9396a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTag: Player
+--- !u!114 &9049871403175952173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124374614835837934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6efc390333874000aebe8457b0714136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  isPlayer: 0
+--- !u!114 &1113416173792155491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124374614835837934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c34678512d4489baa6c071407cdc23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStat:
+    characterStatSO: {fileID: 11400000, guid: 5e9ac201e582faf4694204e5d25e6fd0, type: 2}
+    bulletSO: {fileID: 11400000, guid: a8759f8520eef7e42b325c7c3328b9a3, type: 2}
+  baseEnemyStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
+  baseEnemyBulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}

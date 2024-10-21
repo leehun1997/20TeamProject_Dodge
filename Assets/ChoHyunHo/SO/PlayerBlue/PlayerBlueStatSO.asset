@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 10
   MoveSpeed: 5
+  MaxGage: 3
+  specialGage: 0
   str: "\uC544\uC9C1 \uD50C\uB808\uC774\uC5B4 \uACE0\uC720\uC758 \uC2A4\uD15F\uC774
     \uC5C6\uC74C"
