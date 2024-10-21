@@ -13,6 +13,8 @@ public class BombEnemyController : EnemyController
 {
     [SerializeField][Range(0f, 1000f)] float walkTargetRange = 0f;
     [SerializeField] private string targetTag = "Player";
+    
+    
     private Vector3 playerPastPosition;
     private SpriteRenderer BombEnemyRenderer;
     Vector2 direction = Vector2.zero;

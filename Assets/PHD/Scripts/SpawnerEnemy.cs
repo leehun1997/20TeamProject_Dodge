@@ -64,7 +64,15 @@ public class SpawnerEnemy : MonoBehaviour
             _bombEnemyController = BombEnemyClone.GetComponent<BombEnemyController>();
             _bombEnemyController.Init();
         }
-        
+    }
+
+    public void CreateDeathAnimation(string name, Transform makeTransform)//사망 애니메이션용 객체를 생성해야할 객체가 호출
+    {
+        Debug.Log("함수시작");
+        GameObject Enemy_0_Death = objectPool.SpawnFromPool(name + "_Death");
+        Debug.Log("오브젝트 이름: " + Enemy_0_Death.name);
+        Enemy_0_Death.transform.position = makeTransform.position;
+        Enemy_0_Death.transform.rotation = makeTransform.rotation;
     }
 
     private void randomPos() 
