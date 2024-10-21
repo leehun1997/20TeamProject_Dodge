@@ -7,14 +7,15 @@ public class TopDownCharginging : MonoBehaviour
     private Vector2 shootDirection = Vector2.up;
 
     private GameObject b;
-    private BulletSO bulletSO;
     private bool ready = false;
     private ProjectileController attackController;
+    private ObjectPool pool;
 
     private void Awake()
     {
         controller = GetComponent<DodgeController>();
         playerStat= GetComponent<PlayerStatHandler>();
+        pool = GameObject.FindObjectOfType<ObjectPool>();
     }
 
     private void Start()
@@ -25,7 +26,7 @@ public class TopDownCharginging : MonoBehaviour
 
     private void Charging(BulletSO bulletSO,bool isCharging, double chargeGage)
     {
-        Debug.Log($"playrt : {playerStat.id} check");
+        Debug.Log($"player : {playerStat.id} check");
         switch (playerStat.id)
         {
             case 1: CreatePlayer1SpecailAttack(bulletSO, isCharging, chargeGage); return;
@@ -40,14 +41,16 @@ public class TopDownCharginging : MonoBehaviour
     }
     private void CreatePlayer1SpecailAttack(BulletSO bulletSO, bool isCharging, double chargeGage)
     {
-        Debug.Log("Create Charge");
         if (isCharging)
         {
             if (!ready)
             {
                 ready = true;
-                Debug.Log($"Charge : {ready}");
-                b = Instantiate(bulletSO.specialbulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
+                //b = Instantiate(bulletSO.bulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
+                b = pool.SpawnFromPool(bulletSO.bulletNameTag);
+                b.transform.position = BulletSpawnPoint.transform.position;
+                b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);
+
                 ProjectileController attackController = b.GetComponent<ProjectileController>();
                 attackController.attackData = bulletSO;
             }
@@ -68,7 +71,10 @@ public class TopDownCharginging : MonoBehaviour
     }
     private void CreatePlayer2SpecailAttack(BulletSO bulletSO, bool isCharging, double chargeGage)
     {
-        b = Instantiate(bulletSO.specialbulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
+        b = pool.SpawnFromPool(bulletSO.bulletNameTag);
+        b.transform.position = BulletSpawnPoint.transform.position;
+        b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);
+
         ProjectileController attackController = b.GetComponent<ProjectileController>();
         attackController.player2ChargeAttack(shootDirection, bulletSO, chargeGage);
     }

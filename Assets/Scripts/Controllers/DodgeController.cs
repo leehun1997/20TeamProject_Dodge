@@ -13,6 +13,7 @@ public class DodgeController : MonoBehaviour
     protected bool isCharging { get; set; }
 
     private float delayTime = 0f;
+    private float specialDelayTime = 0f;
 
     protected int currentGage;
     protected double chargeGage = 0;
@@ -40,12 +41,21 @@ public class DodgeController : MonoBehaviour
         else
         {
             delayTime -= Time.deltaTime;
+            specialDelayTime -= Time.deltaTime;
         }
+
         if (isCharging)
         {
             if (currentGage <= 0)
             {
-                Debug.Log($"Can't Use SpecialAttack! {chargeGage} {currentGage}");
+                Debug.Log("Not Enough Gage!");
+                return;
+            }
+
+            else if (specialDelayTime > 0)
+            {
+                Debug.Log("Charge not Ready!");
+                specialDelayTime -= Time.deltaTime;
                 return;
             }
 
@@ -53,12 +63,12 @@ public class DodgeController : MonoBehaviour
             {
                 Debug.Log("Full Charge!");
                 chargeGage = currentGage;
-                CallChargeAttackEvent(statHandler.currentStat.bulletSO, isCharging, chargeGage);
+                CallChargeAttackEvent(statHandler.currentStat.specialBulletSO, isCharging, chargeGage);
             }
             else
             {
                 chargeGage += Time.deltaTime;
-                CallChargeAttackEvent(statHandler.currentStat.bulletSO, isCharging, chargeGage);
+                CallChargeAttackEvent(statHandler.currentStat.specialBulletSO, isCharging, chargeGage);
             }
          }
     }

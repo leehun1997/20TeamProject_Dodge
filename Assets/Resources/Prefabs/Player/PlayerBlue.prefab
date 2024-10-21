@@ -284,8 +284,10 @@ MonoBehaviour:
   characterStat:
     characterStatSO: {fileID: 11400000, guid: 5e9ac201e582faf4694204e5d25e6fd0, type: 2}
     bulletSO: {fileID: 11400000, guid: a8759f8520eef7e42b325c7c3328b9a3, type: 2}
+    specialBulletSO: {fileID: 0}
   basePlayerStatSO: {fileID: 11400000, guid: 97307af006839724aaa1f4fd909e91df, type: 2}
   basePlayerBulletSO: {fileID: 11400000, guid: 79b71c93574ab09428140fe7b333d5b5, type: 2}
+  basePlayerSpecialBulletSO: {fileID: 11400000, guid: ab33e67713810624f8f29a0344e65067, type: 2}
 --- !u!114 &4490400211285329538
 MonoBehaviour:
   m_ObjectHideFlags: 0

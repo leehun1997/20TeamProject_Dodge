@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9df077b3936db4a8ec735f45467c38, type: 3}
   m_Name: Enemy_0BulletSO
   m_EditorClassIdentifier: 
+  bulletNameTag: Enemy_0_Bullet
   targetLayer:
     serializedVersion: 2
     m_Bits: 64

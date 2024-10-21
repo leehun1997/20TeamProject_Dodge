@@ -45,13 +45,9 @@ public class PlayerInputController : DodgeController
             if (chargeGage == 0) return;
 
             Debug.Log("Special Attack" + chargeGage);
-            CallChargeAttackEvent(statHandler.currentStat.bulletSO,isCharging, chargeGage);
+            CallChargeAttackEvent(statHandler.currentStat.specialBulletSO,isCharging, chargeGage);
             currentGage -= (int)chargeGage;
-            chargeGage= 0;
-        }
-        else
-        {
-            Debug.Log("Charging End");
+            chargeGage= 0f;
         }
     }
 }

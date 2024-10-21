@@ -71,7 +71,6 @@ public class ProjectileController : MonoBehaviour
         Debug.Log("Player1 Special Attack");
         this.attackData = bulletSO;
         this.direction = direction;
-        Debug.Log(attackData);
 
         //trailRenderer.Clear();//필요없으면 제거        
 

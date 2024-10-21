@@ -29,8 +29,6 @@ public class TopDownShooting : MonoBehaviour
         BulletSO bSO = bulletSO as BulletSO;
         if (bulletSO == null) return;
 
-        Debug.Log("ReadyToShoot");
-
         CreateProjectile(bSO);
     }
 
@@ -41,8 +39,10 @@ public class TopDownShooting : MonoBehaviour
 
     private void CreateProjectile(BulletSO bulletSO)
     {
-        GameObject b = Instantiate(bulletSO.bulletPrefab, BulletSpawnPoint.transform.position,
-        Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
+        GameObject b = pool.SpawnFromPool(bulletSO.bulletNameTag);
+        b.transform.position = BulletSpawnPoint.transform.position;
+        b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);
+
         ProjectileController attackController = b.GetComponent<ProjectileController>();
         attackController.InitiateAttack(shootDirection, bulletSO); //�⺻ ���ݸ� �ִٰ� ����, ������ ������ �������� ����
     }
