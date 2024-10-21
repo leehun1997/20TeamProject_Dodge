@@ -54,11 +54,27 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+
+
+    public void SetBGMVolume(float value)
+    {
+        bgmAudioSource.volume = value;
+    }
+
+    public void SetSFXVolume(float value)
+    {
+        foreach (var source in sfxAudioSourcePools)
+        {
+            source.volume = value;
+        }
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         InitAudioSource();
     }
 
+    
     private void InitAudioSource()
     {
         SetAudioData();
