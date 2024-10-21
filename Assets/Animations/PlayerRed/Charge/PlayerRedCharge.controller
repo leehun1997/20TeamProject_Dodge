@@ -47,7 +47,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AfterShootOut
+  m_Name: Red_Charge_AfterShootOut
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -61,7 +61,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7056221b6e30b384698fd73b97d5fafb, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2bc75267ff6a7da4d9467f4f635587bf, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -96,7 +96,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ChargeDisable
+  m_Name: Red_Charge_ChargeDisable
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -110,7 +110,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 78c3dfce85541194a86b9c0ca07351a0, type: 2}
+  m_Motion: {fileID: 7400000, guid: a2b2faefeb8688147b08ee994a60d822, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -123,7 +123,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AfterShootCooling
+  m_Name: Red_Charge_AfterShootCooling
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -137,7 +137,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1aff91da2d0f33046a2f3881326b56a5, type: 2}
+  m_Motion: {fileID: 7400000, guid: 72e6f2de70a82884ab69ac4c6caa40ed, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -198,8 +198,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isShoot
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharge
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2621306068480764873}
@@ -244,7 +244,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ChargeEnable
+  m_Name: Red_Charge_ChargeEnable
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -258,7 +258,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fded295e8982eac4bbd78cf2888834ef, type: 2}
+  m_Motion: {fileID: 7400000, guid: d4782182b353d3243b28cf82ef8a4721, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -319,7 +319,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a91a24d4d602df8428c5d6a30690f36d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 932eee9a3ce7d624ba11da5f6f830679, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -354,7 +354,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AfterShootIn
+  m_Name: Red_Charge_AfterShootIn
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -368,7 +368,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 26ab9f5d7da405c4bb286c3977da2734, type: 2}
+  m_Motion: {fileID: 7400000, guid: 19a7924f8fd7edf4b8019defcf09edf2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -403,7 +403,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Chargeing
+  m_Name: Red_Charge_Chargeing
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -417,7 +417,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e98facac2f1b5fb40a1369bbe283e4e6, type: 2}
+  m_Motion: {fileID: 7400000, guid: 282aba21f6ed02549a38a60a89852303, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
