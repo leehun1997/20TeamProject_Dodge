@@ -7,6 +7,7 @@ public abstract class EnemyController : DodgeController
 {
 
     public Transform ClosesTarget { get; protected set; }
+    protected HealthSystem _healthSystem;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -19,8 +20,8 @@ public abstract class EnemyController : DodgeController
     protected override void Start()
     {
         base.Start();
-     ClosesTarget = GameManager.Instance.Player; // 게임매니저에 Player 가 있을시 가져오기
-       
+        ClosesTarget = GameManager.Instance.Player; // 게임매니저에 Player 가 있을시 가져오기
+       _healthSystem = GetComponent<HealthSystem>();
     }
 
     protected override void Update()
@@ -33,7 +34,10 @@ public abstract class EnemyController : DodgeController
         
     }
 
-     
+    public virtual void Init() 
+    {
+        _healthSystem.ChangeHP(statHandler.maxHp);
+    }
 
 
     public float DistanceToTarget() 

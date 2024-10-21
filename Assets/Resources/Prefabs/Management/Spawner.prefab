@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4501667766091766195}
-  - component: {fileID: 1864046359731681278}
   - component: {fileID: 5454761205618383086}
+  - component: {fileID: 7885805222944456272}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -33,20 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1864046359731681278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7174377245670715669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c16af7a9b53ea4790e691cd027e827, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombEnemy: BombEnemy
-  rangeEnemy: RangeEnemy
 --- !u!114 &5454761205618383086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,10 +48,10 @@ MonoBehaviour:
   pools:
   - name: BombEnemy
     prefab: {fileID: 8404555889635739298, guid: b6ad41fb3fd00904d882f5ed29512441, type: 3}
-    size: 5
+    size: 2
   - name: RangeEnemy
     prefab: {fileID: 2124374614835837934, guid: ec9207e52d3121947b7d980bec5526ef, type: 3}
-    size: 5
+    size: 2
   - name: HealPack
     prefab: {fileID: 5783343856515672222, guid: cde82b89c6358854289e6762b5824d96, type: 3}
     size: 5
@@ -81,3 +67,17 @@ MonoBehaviour:
   - name: Enemy_0_Death
     prefab: {fileID: 6362070292789610762, guid: 1fceb19cd40483f4ea06704d0935482f, type: 3}
     size: 50
+--- !u!114 &7885805222944456272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7174377245670715669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8141feb0afeed44cb9aa6ca5ff2e0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombEnemy: BombEnemy
+  rangeEnemy: RangeEnemy

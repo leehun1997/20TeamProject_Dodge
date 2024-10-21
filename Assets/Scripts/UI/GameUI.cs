@@ -57,7 +57,6 @@ public class GameUI : MonoBehaviour
         // ������ �� �� ��ȯ
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(SceneName);
-        Debug.Log("�� ��ȯ");
         Time.timeScale = 0f;
     }
 

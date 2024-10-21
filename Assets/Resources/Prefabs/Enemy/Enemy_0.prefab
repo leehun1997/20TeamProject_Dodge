@@ -148,16 +148,15 @@ GameObject:
   - component: {fileID: 4425165845731207072}
   - component: {fileID: 7320645589884999158}
   - component: {fileID: 5834931868220717254}
-  - component: {fileID: 2997455831428085074}
   - component: {fileID: 1219004548592446526}
   - component: {fileID: 5465676460415077572}
   - component: {fileID: 2406405141067471677}
   - component: {fileID: 914531278091868662}
   - component: {fileID: 2168443160450665162}
-  - component: {fileID: 6359558872373850080}
-  - component: {fileID: 9049871403175952173}
   - component: {fileID: 1113416173792155491}
   - component: {fileID: 2713634712384204784}
+  - component: {fileID: 5239497854780832679}
+  - component: {fileID: 7697064045239440871}
   m_Layer: 7
   m_Name: Enemy_0
   m_TagString: Untagged
@@ -254,23 +253,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
---- !u!114 &2997455831428085074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124374614835837934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fac4c6d36e257f9468ffed9259f517f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkTargetRange: 20.3
-  attackTargetRange: 10.1
-  Target:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &1219004548592446526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,33 +319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 0}
   isPlayer: 0
---- !u!114 &6359558872373850080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124374614835837934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd93b6524d927e0409a6c701fd9396a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Player
---- !u!114 &9049871403175952173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124374614835837934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6efc390333874000aebe8457b0714136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSlider: {fileID: 0}
-  isPlayer: 0
 --- !u!114 &1113416173792155491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,3 +348,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9248aa0c8c81a0048abee3f3f038309b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5239497854780832679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124374614835837934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffba32e57d1458e438893697144f6261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkTargetRange: 9.8
+  attackTargetRange: 4.9
+  Target:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &7697064045239440871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124374614835837934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21f90963e8d2994f88789e6dd77fc2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Enemy
