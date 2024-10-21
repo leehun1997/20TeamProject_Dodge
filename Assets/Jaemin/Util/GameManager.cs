@@ -216,10 +216,10 @@ public class GameManager : MonoBehaviour
             healthSystem.healthSlider = playerHealthSlider;
             Time.timeScale = 1f;
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
-
-            //오브젝트풀이 비어있으면 생성
-                 ObjectPool.instance.CreatePools();
+            
+            ObjectPool.instance.CreatePools();
         }
+        
         else
         {
             Debug.Log("플레이어가 없다");

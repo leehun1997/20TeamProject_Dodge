@@ -15,9 +15,12 @@ public enum StatType
 public  abstract class CharacterStatHandler : MonoBehaviour
 {
     //공통 변수
-    public float  speed{ get; protected set; }
+    public float speed{ get; protected set; }
     public float maxHp { get; protected set; }
     public float damage { get; protected set;}
+    public float duration { get; protected set;}
+
+    
     public Transform target { get; protected set;}
 
     
@@ -47,7 +50,6 @@ public  abstract class CharacterStatHandler : MonoBehaviour
                 break;
             case StatType.BulletDamage:
                 //TODO DAMAGE 사용 하나로 
-                currentStat.bulletSO.damage += value;
                 damage += value;
                 break;
         }

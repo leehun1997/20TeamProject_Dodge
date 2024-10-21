@@ -19,7 +19,7 @@ public class InstanceEnemy : MonoBehaviour
 
     private void Start()
     {
-        randomPosition = new Vector2();
+         randomPosition = new Vector2();
     }
 
     private void Update()

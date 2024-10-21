@@ -28,8 +28,10 @@ public class EnemyStatHandler : CharacterStatHandler
             bulletSO = enemyBulletSo
         };
 
+        //기본 스텟
         speed = baseEnemyStatSO.MoveSpeed;
         maxHp = baseEnemyStatSO.MaxHP;
         damage = baseEnemyBulletSO.damage;
+        duration = baseEnemyBulletSO.duration;
     }
 }
