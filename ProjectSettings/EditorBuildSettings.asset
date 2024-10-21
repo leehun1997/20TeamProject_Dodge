@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Jaemin/InfiniteMap.unity
+    path: Assets/Scenes/InfiniteMap.unity
     guid: 6fd42505ff76d7f47afb0633d8a3592d
   - enabled: 1
-    path: Assets/Jaemin/StoryMap.unity
+    path: Assets/Scenes/StoryMap.unity
     guid: 7d0a51409bdb2954e9b0f886e83f9c9c
   - enabled: 1
-    path: Assets/Jaemin/StartScene.unity
+    path: Assets/Scenes/StartScene.unity
     guid: 15e5e29cbe1de2846bc0762cacf51f1a
   - enabled: 1
-    path: Assets/Jaemin/GameOver.unity
+    path: Assets/Scenes/GameOver.unity
     guid: fc484ff88058dee4d86e98350c91b6e0
   - enabled: 1
-    path: Assets/Jaemin/GameClear.unity
+    path: Assets/Scenes/GameClear.unity
     guid: a35ceba93cf71f0489bb1311bfda42cc
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
