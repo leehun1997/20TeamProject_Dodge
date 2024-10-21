@@ -21,12 +21,12 @@ public class DodgeController : MonoBehaviour
 
     protected virtual void Awake()
     {
-        
+        statHandler = GetComponent<CharacterStatHandler>();
     }
 
+    
     protected virtual void Start()
     {
-        statHandler = GetComponent<CharacterStatHandler>();
         currentGage = statHandler.currentStat.characterStatSO.MaxGage;
     }
 

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
-
    // [Header("Health System Settings")]
    
     private CharacterStatHandler statHandler;

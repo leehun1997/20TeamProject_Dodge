@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 
 public class DestroyOnDeath : MonoBehaviour
 {
     private HealthSystem healthSystem;
     private Rigidbody2D rigidbody;
-    [SerializeField] private string targetTag = "Player";
+    [SerializeField] private string playerTag = "Player";
     private Animation PlayerAnimation;
     
 
@@ -28,9 +29,8 @@ public class DestroyOnDeath : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
 
-        if (this.CompareTag(targetTag))
+        if (this.CompareTag(playerTag))
         {
-
             //죽는 로직 : 플레이어가 죽었을 때 무한맵이면 시간 저장, 스토리면 그냥 restart로
             if (currentSceneName == "InfiniteMap")
             {
@@ -40,7 +40,6 @@ public class DestroyOnDeath : MonoBehaviour
             {
                 SceneManager.LoadScene("GameOver");
             }
-            
         }
         else if(this.CompareTag("Boss"))
         {

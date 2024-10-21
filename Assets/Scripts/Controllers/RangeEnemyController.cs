@@ -21,12 +21,7 @@ public class RangeEnemyController : EnemyController
         layerMaskTarget = Target;
         // layerMaskTarget = 스탯SO.Target; ## 스탯 SO 있다면 사용
     }
-
-
-    protected override void Awake()
-    {
-        
-    }
+    
 
     protected override void Update()
     {
