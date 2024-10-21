@@ -39,7 +39,7 @@ public class Boss1Controller : EnemyController
         base.Update();
         if (collectingFrag == needCreateFrag) 
         {
-            
+            CreateBombEnemy();
         }
         raiderTime += Time.time;
         if (raiderTime > 1f) 
@@ -67,9 +67,8 @@ public class Boss1Controller : EnemyController
 
     private void MoveToFragState(float distanceToTarget, Vector2 directionToTarget)
     {
-
-        CallMoveEvent(directionToTarget);
-        CallLookEvent(directionToTarget);
+            CallMoveEvent(directionToTarget);
+            CallLookEvent(directionToTarget);
     }
 
     private void UpdateEnemyState(float distanceToTarget, Vector2 directionToTarget)
@@ -129,25 +128,23 @@ public class Boss1Controller : EnemyController
 
     private Transform FindFragment()
     {
-        float i = 0f;
-        RaycastHit2D findFrag = Physics2D.CircleCast(transform.position, 20, transform.position);
-        i += 0.1f;
-        Debug.Log(findFrag.collider);
-        if (findFrag.collider.CompareTag("Fragment"))
-        {
-            ClosesFragment = findFrag.collider.transform;
-            isfindFrag = true;
-
-        }
-        else
-        {
-            if (!isfindFrag)
+            RaycastHit2D findFrag = Physics2D.CircleCast(transform.position, 15, transform.position);
+            Debug.Log(findFrag.collider);
+            if (isfindFrag == true) { return ClosesFragment; }
+            if (findFrag.collider.CompareTag("Fragment"))
             {
-                ClosesFragment = ClosesTarget;
+                ClosesFragment = findFrag.collider.transform;
+                isfindFrag = true;
             }
+            else
+            {
+                if (!isfindFrag)
+                {
+                    ClosesFragment = ClosesTarget;
+                }
 
-        }
-
+            }
+        
         return ClosesFragment;
     }
 
