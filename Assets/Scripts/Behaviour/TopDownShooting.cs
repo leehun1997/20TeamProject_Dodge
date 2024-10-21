@@ -15,6 +15,7 @@ public class TopDownShooting : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<DodgeController>();
+        if (controller == null) controller = GetComponentInParent<DodgeController>();
         pool = GameObject.FindObjectOfType<ObjectPool>();
     }
 

@@ -19,6 +19,9 @@ public class Boss1Controller : EnemyController
     private HealthSystem SupHealth;
     private ObjectPool objectPool;
     private BombEnemyController _bombEnemyController;
+    [SerializeField] private GameObject bomberSpawnPivot;
+
+    public event Action OnReady;
 
     protected override void Start()
     {
@@ -39,7 +42,7 @@ public class Boss1Controller : EnemyController
         base.Update();
         if (collectingFrag == needCreateFrag) 
         {
-            CreateBombEnemy();
+            OnReady?.Invoke();
         }
         raiderTime += Time.time;
         if (raiderTime > 1f) 
@@ -166,12 +169,12 @@ public class Boss1Controller : EnemyController
 
     }
 
-    private void CreateBombEnemy()
+    public void CreateBombEnemy()
     {
         GameObject BombEnemyClone = objectPool.SpawnFromPool("BombEnemy");
         if (BombEnemyClone != null)
         {
-            BombEnemyClone.transform.position = this.transform.position;
+            BombEnemyClone.transform.position = bomberSpawnPivot.transform.position;
             _bombEnemyController = BombEnemyClone.GetComponent<BombEnemyController>();
             _bombEnemyController.Init();
         }
