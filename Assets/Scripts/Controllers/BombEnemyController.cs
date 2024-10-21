@@ -29,7 +29,6 @@ public class BombEnemyController : EnemyController
     protected override void Start()
     {
         base.Start();
-        BombHealth = GetComponent<HealthSystem>();
         playerPastPosition = ClosesTarget.position;
         BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
 
