@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
 
         ReconnectUI();
         ReconnectPlayerSelectUI(); // PlayerSelectUI 재연결
+        ReconnectPlayerHealthSlider();
     }
 
     private void ReconnectUI()
@@ -112,6 +113,24 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.LogWarning("PlayerSelectCanvas를 찾을 수 없습니다.");
+        }
+    }
+
+    private void ReconnectPlayerHealthSlider()
+    {
+        // PlayerUICanvas 하위의 PlayerHP_Slider 오브젝트를 찾아서 연결
+        GameObject canvas = GameObject.Find("PlayerUICanvas");
+        if (canvas != null)
+        {
+            Transform sliderTransform = canvas.transform.Find("PlayerHP_Slider");
+            if (sliderTransform != null)
+            {
+                playerHealthSlider = sliderTransform.GetComponent<Slider>();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerHP_Slider를 찾을 수 없습니다.");
+            }
         }
     }
 

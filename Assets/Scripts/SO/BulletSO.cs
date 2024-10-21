@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class BulletSO : ScriptableObject
 {
-    [Header("°øÅë ±âº» ÃÑ¾ËÁ¤º¸")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public LayerMask targetLayer;
     public float damage;
     public float size;
     public float speed;
     public float delay;
-    public float duration;//¸îÃÊ ÈÄ Åõ»çÃ¼ ÆÄ±«
+    public float duration;//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½Ä±ï¿½
 
     public GameObject bulletPrefab;
     public GameObject specialbulletPrefab;
-    //ÇÇ°İ ¹æ½Ä ÃÑ¾ËÀÌ Layer°Ë»çÇØ¼­ ÂüÀÌ¸é damageÀü´Ş
+    //ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ Layerï¿½Ë»ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ damageï¿½ï¿½ï¿½ï¿½
 }

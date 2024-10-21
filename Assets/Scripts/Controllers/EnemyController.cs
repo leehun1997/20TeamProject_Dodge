@@ -6,7 +6,6 @@ using UnityEngine;
 
 public abstract class EnemyController : DodgeController
 {
-
     public Transform ClosesTarget { get; protected set; }
     protected HealthSystem _healthSystem;
 
@@ -22,7 +21,7 @@ public abstract class EnemyController : DodgeController
     {
         base.Start();
         ClosesTarget = GameManager.Instance.Player; // 게임매니저에 Player 가 있을시 가져오기
-        
+       _healthSystem = GetComponent<HealthSystem>();
     }
 
     protected override void Update()
@@ -32,10 +31,9 @@ public abstract class EnemyController : DodgeController
 
     protected virtual void FixedUpdate()
     {
-        
     }
 
-    public virtual void Init() 
+    public virtual void Init()
     {
         float addInitHP = statHandler.maxHp;
         if (statHandler.maxHp == _healthSystem.CurrentHp) 
@@ -46,12 +44,12 @@ public abstract class EnemyController : DodgeController
     }
 
 
-    public float DistanceToTarget() 
+    public float DistanceToTarget()
     {
         return Vector2.Distance(transform.position, ClosesTarget.position);
     }
 
-    public Vector2 DirectionToTarget() 
+    public Vector2 DirectionToTarget()
     {
         return (ClosesTarget.position - transform.position).normalized;
     }
