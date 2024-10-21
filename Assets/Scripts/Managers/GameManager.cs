@@ -237,11 +237,18 @@ public class GameManager : MonoBehaviour
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
             
             ObjectPool.instance.CreatePools();
+            CreateBoss();
         }
         
         else
         {
             Debug.Log("플레이어가 없다");
         }
+    }
+
+    public void CreateBoss() 
+    {
+        GameObject bossPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/Enemy/Boss"));
+        HealthSystem healthSystem = bossPrefab.GetComponent<HealthSystem>();  
     }
 }
