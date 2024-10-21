@@ -118,13 +118,13 @@ GameObject:
   - component: {fileID: 7168601379169088738}
   - component: {fileID: 3325608784105045747}
   - component: {fileID: 170927817604726268}
-  - component: {fileID: 6038440187712056759}
   - component: {fileID: 7686983550728984187}
   - component: {fileID: 6234219418161166882}
   - component: {fileID: 8935006132659995876}
-  - component: {fileID: 2197523909925011997}
   - component: {fileID: 5903911242789524631}
   - component: {fileID: 5994523031063967565}
+  - component: {fileID: 5309007383018661778}
+  - component: {fileID: 3528146085142422611}
   m_Layer: 7
   m_Name: BombEnemy_0
   m_TagString: Untagged
@@ -241,21 +241,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6038440187712056759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8404555889635739298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a98af0b7d778384a97d3b63cd5fc712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkTargetRange: 1000
-  targetTag: Player
-  CSO: {fileID: 0}
 --- !u!114 &7686983550728984187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1438931323460971910}
-  rotationSpeed: 100
+  rotationSpeed: 1000
 --- !u!114 &8935006132659995876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,19 +282,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 0}
   isPlayer: 0
---- !u!114 &2197523909925011997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8404555889635739298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd93b6524d927e0409a6c701fd9396a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Player
 --- !u!114 &5903911242789524631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,3 +311,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9248aa0c8c81a0048abee3f3f038309b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5309007383018661778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404555889635739298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35034a672f3d884c952b37ba6b9ceb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkTargetRange: 0
+  targetTag: Player
+  CSO: {fileID: 0}
+--- !u!114 &3528146085142422611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404555889635739298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21f90963e8d2994f88789e6dd77fc2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Enemy

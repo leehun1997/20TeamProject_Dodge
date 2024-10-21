@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 0f;
-        playerPrefab = Resources.Load<GameObject>("Prefabs/PlayerBlue"); //플레이어 선택을 위해 리소스에서 플레이어를 받아온다.
+        playerPrefab = Resources.Load<GameObject>("Prefabs/Player/PlayerBlue"); //플레이어 선택을 위해 리소스에서 플레이어를 받아온다.
         LoadTimes(); // 최고 기록 및 최단 기록 불러오기
     }
 
@@ -195,14 +195,14 @@ public class GameManager : MonoBehaviour
 
     public void PlayerBlue() //Blue를 골랐을 때
     {
-        playerPrefab = Resources.Load<GameObject>("Prefabs/PlayerBlue");
+        playerPrefab = Resources.Load<GameObject>("Prefabs/Player/PlayerBlue");
         PlayerSelectUI.SetActive(false);
         PlayerChange();
     }
 
     public void PlayerRed() //Red를 골랐을 때
     {
-        playerPrefab = Resources.Load<GameObject>("Prefabs/PlayerRed");
+        playerPrefab = Resources.Load<GameObject>("Prefabs/Player/PlayerRed");
         PlayerSelectUI.SetActive(false);
         PlayerChange();
     }

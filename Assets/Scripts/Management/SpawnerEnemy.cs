@@ -23,7 +23,7 @@ public class SpawnerEnemy : MonoBehaviour
     private RangeEnemyController _rangeEnemyController;
     private ObjectPool objectPool;
 
-    private void Awake()
+    private void Start()
     {
         objectPool = GameObject.FindObjectOfType<ObjectPool>();
     }
@@ -57,6 +57,7 @@ public class SpawnerEnemy : MonoBehaviour
         {
             RangeEnemyClone.transform.position = new Vector3(randomPosX, randomPosY);
             _rangeEnemyController = RangeEnemyClone.GetComponent<RangeEnemyController>();
+            _rangeEnemyController.Init();
         }
     }
 
