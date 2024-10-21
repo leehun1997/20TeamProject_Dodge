@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class OnDeathFragment : MonoBehaviour
 {
-    [Header("ĳ���� ������ �´� ������ �ڽ�ȭ �� �� ���")]
+    [Header("유형에 맞는 파편 프리팹 연결")]
     [SerializeField] List<GameObject> fragmentPrefabs;
 
     private SpriteRenderer SpriteRenderer;
@@ -17,23 +17,21 @@ public class OnDeathFragment : MonoBehaviour
     private Vector2 makePosition;
     private int count = 0;
 
-    public event Action OnDeathAnimationEnd; 
+    public event Action OnDeathAnimationEnd;//템 드랍할때 씀 Dropper.cs
     
-    
-
     private void Awake()
     {
         SpriteRenderer=GetComponent<SpriteRenderer>();
     }
 
-    //Enemy_0_Death�ִϸ�����>Death�ִϸ��̼�>Add Animation Event���� ȣ���
+    //Enemy_0_Death생성>Death종료>Add Animation Event에서 호출
     public void DeathAnimationEnd()
     {
         SpriteRenderer.enabled = false;
         InstancePrefabs();
         OnDeathAnimationEnd?.Invoke();
     }
-    private void InstancePrefabs()//�ν����Ϳ��� ��ϵ� ���������յ� ��üȭ
+    private void InstancePrefabs()//파편 동적생성, 자식화, 랜덤방향 돌리기
     {
         foreach (var obj in fragmentPrefabs)
         {
@@ -44,10 +42,10 @@ public class OnDeathFragment : MonoBehaviour
         
      }
 
-    public void FragmentDisable()//�ڽ��� ������� ��Ȱ��ȭ(����)�Ǹ� ȣ��
+    public void FragmentDisable()//자식 파편에서 호출
     {
         count += 1;
-        if (count >= fragmentPrefabs.Count)//��� ������ ��Ȱ��ȭ(����)�Ǹ� ���� ������on, gameObject��Ȱ��ȭ
+        if (count >= fragmentPrefabs.Count)//자식 파편에서 호출 생성한 파편만큼 제거되면 스프라이트on, gameObject비활성
         {
             SpriteRenderer.enabled = true;
             gameObject.SetActive(false);

@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e91a1b095a0db24b87f08ed6b259c46, type: 3}
-  m_Color: {r: 1, g: 0.08176805, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e0f5d545b7b64f745bf1e84ab1363e2f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 7160635814322855230}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9b24ced0f6edd740addc60cc42c5f36, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 5456681713220584827}
   - component: {fileID: 7168601379169088738}
   - component: {fileID: 3325608784105045747}
-  - component: {fileID: 170927817604726268}
   - component: {fileID: 7686983550728984187}
   - component: {fileID: 6234219418161166882}
   - component: {fileID: 8935006132659995876}
@@ -125,6 +124,7 @@ GameObject:
   - component: {fileID: 5994523031063967565}
   - component: {fileID: 5309007383018661778}
   - component: {fileID: 3528146085142422611}
+  - component: {fileID: 5091722674633188622}
   m_Layer: 7
   m_Name: BombEnemy_0
   m_TagString: Enemy
@@ -220,27 +220,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &170927817604726268
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8404555889635739298}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 00a15c60af46a8a43aa3bf0d4b5114e5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7686983550728984187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,4 +317,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21f90963e8d2994f88789e6dd77fc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Enemy
+  PlayerTag: Player
+--- !u!114 &5091722674633188622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404555889635739298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa2d733696612446b8728b17f1f5160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
