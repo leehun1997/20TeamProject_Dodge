@@ -28,7 +28,6 @@ public class DodgeController : MonoBehaviour
 
     protected virtual void Start()
     {
-        statHandler = GetComponent<CharacterStatHandler>();
         currentGage = statHandler.currentStat.characterStatSO.MaxGage;
     }
 
