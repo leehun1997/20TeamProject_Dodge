@@ -6,5 +6,7 @@ using UnityEngine;
 public class PlayerBulletSO : BulletSO
 {
     [Header("플레이어 고유 무기정보")]
+    public float bulletDuration;
+    public float bulletDelay;
     public string str = "아직 플레이어 고유의 무기가 없음";
 }

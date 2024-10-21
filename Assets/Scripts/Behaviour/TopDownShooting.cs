@@ -9,10 +9,13 @@ public class TopDownShooting : MonoBehaviour
     [SerializeField] private Transform BulletSpawnPoint;
     private Vector2 shootDirection = Vector2.up;
 
+    private ObjectPool pool;
+
 
     private void Awake()
     {
         controller = GetComponent<DodgeController>();
+        pool = GameObject.FindObjectOfType<ObjectPool>();
     }
 
     private void Start()

@@ -7,6 +7,7 @@ using UnityEngine;
 public class BulletSO : ScriptableObject
 {
     [Header("공통 기본 총알정보")]
+    public string bulletNameTag;
     public LayerMask targetLayer;
     public float damage;
     public float size;

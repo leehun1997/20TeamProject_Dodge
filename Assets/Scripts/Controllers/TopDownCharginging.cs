@@ -59,7 +59,7 @@ public class TopDownCharginging : MonoBehaviour
                 b.transform.localScale = Vector3.one * (float)chargeGage;
             }
         }
-        else
+        else if(ready)
         {
             ready= false;
             attackController = b.GetComponent<ProjectileController>();

@@ -83,9 +83,9 @@ public class ProjectileController : MonoBehaviour
         Debug.Log("Player2 Special Attack");
         this.attackData = bulletSO;
         this.direction = direction;
-        
+        //attackData.duration = 0.5f;
 
-        chargeGage = chargeGage < 1 ? chargeGage: 1;
+        chargeGage = chargeGage < 2 ? chargeGage: 2;
         UpdateProjectile(chargeGage);
         //trailRenderer.Clear();//필요없으면 제거        
 

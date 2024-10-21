@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 1467951896719085702}
   - component: {fileID: 4655400098424253089}
   - component: {fileID: 1924361586305059916}
+  - component: {fileID: -4079834160018680459}
   m_Layer: 6
   m_Name: PlayerRed
   m_TagString: Player
@@ -389,8 +390,8 @@ MonoBehaviour:
   characterStat:
     characterStatSO: {fileID: 11400000, guid: 5e9ac201e582faf4694204e5d25e6fd0, type: 2}
     bulletSO: {fileID: 11400000, guid: a8759f8520eef7e42b325c7c3328b9a3, type: 2}
-  basePlayerStatSO: {fileID: 11400000, guid: 97307af006839724aaa1f4fd909e91df, type: 2}
-  basePlayerBulletSO: {fileID: 11400000, guid: 79b71c93574ab09428140fe7b333d5b5, type: 2}
+  basePlayerStatSO: {fileID: 11400000, guid: 83c1fb618e2419848b9a6b6248bcc43a, type: 2}
+  basePlayerBulletSO: {fileID: 11400000, guid: 02c18828d440eef458e56959d96d15e3, type: 2}
 --- !u!114 &1924361586305059916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,4 +404,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21f90963e8d2994f88789e6dd77fc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Player
+  PlayerTag: Player
+--- !u!114 &-4079834160018680459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910557852464748505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283bc121fe45d3c49b51fbcb03f07b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletSpawnPoint: {fileID: 8157933500163472825}
