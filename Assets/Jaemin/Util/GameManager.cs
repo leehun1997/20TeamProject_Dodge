@@ -65,7 +65,6 @@ public class GameManager : MonoBehaviour
         {
             currentTime1 += Time.deltaTime;
             currentTimeTxt.text = $"Time : {currentTime1:F0}";
-            Debug.Log(currentTime1);
         }
         else if (currentSceneName == "StoryMap")
         {
@@ -114,10 +113,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerSelectUI = playerSelectCanvas;
         }
-        else
-        {
-            Debug.LogWarning("PlayerSelectCanvas를 찾을 수 없습니다.");
-        }
+
     }
 
     public void Score()
@@ -158,7 +154,6 @@ public class GameManager : MonoBehaviour
         {
             highTime = currentTime1;
             SaveBestTime();
-            Debug.Log("새로운 최고 기록: " + highTime + " 초");
         }
     }
 
@@ -168,7 +163,6 @@ public class GameManager : MonoBehaviour
         {
             lowTime = currentTime2;
             SaveLowTime();
-            Debug.Log("새로운 최단 기록: " + lowTime + " 초");
         }
     }
 
@@ -224,10 +218,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
         }
-        else
-        {
-            Debug.Log("플레이어가 없다");
-        }
+
     }
 
 

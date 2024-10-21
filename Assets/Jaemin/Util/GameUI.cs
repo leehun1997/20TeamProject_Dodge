@@ -57,7 +57,6 @@ public class GameUI : MonoBehaviour
         // µô·¹ÀÌ ÈÄ ¾À ÀüÈ¯
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(SceneName);
-        Debug.Log("¾À ÀüÈ¯");
         Time.timeScale = 0f;
     }
 

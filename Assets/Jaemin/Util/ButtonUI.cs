@@ -17,7 +17,6 @@ public class ButtonUI : MonoBehaviour
 
         if (gameManager == null)
         {
-            Debug.LogError("GameManager 인스턴스를 찾을 수 없습니다.");
             return;
         }
 
