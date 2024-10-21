@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class BulletSO : ScriptableObject
 {
-    [Header("���� �⺻ �Ѿ�����")]
+    [Header("공통 기본 총알정보")]
+    public string bulletNameTag;
     public LayerMask targetLayer;
     public float damage;
     public float size;
     public float speed;
     public float delay;
-    public float duration;//���� �� ����ü �ı�
+    public float duration;//몇초 후 투사체 파괴
 
     public GameObject bulletPrefab;
     public GameObject specialbulletPrefab;
-    //�ǰ� ��� �Ѿ��� Layer�˻��ؼ� ���̸� damage����
+    //피격 방식 총알이 Layer검사해서 참이면 damage전달
 }
