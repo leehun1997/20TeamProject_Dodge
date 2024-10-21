@@ -351,6 +351,9 @@ MonoBehaviour:
   Target:
     serializedVersion: 2
     m_Bits: 64
+  levelCollisionLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &7697064045239440871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21f90963e8d2994f88789e6dd77fc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Enemy
+  PlayerTag: Player
 --- !u!114 &2430152947048918967
 MonoBehaviour:
   m_ObjectHideFlags: 0
