@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0d089afa45c7345902dfd39ae326e9, type: 3}
+  m_Name: PlayerBlueBulletSO
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1152
+  damage: 1
+  size: 1
+  speed: 2
+  delay: 0.5
+  duration: 5
+  bulletPrefab: {fileID: 9097393757096149843, guid: 4da7ff561d7413446bf65d6040ddbc49, type: 3}
+  specialbulletPrefab: {fileID: 9097393757096149843, guid: 90775ad691d93344ca8262a047cb7dcc, type: 3}
+  str: "\uC544\uC9C1 \uD50C\uB808\uC774\uC5B4 \uACE0\uC720\uC758 \uBB34\uAE30\uAC00
+    \uC5C6\uC74C"
