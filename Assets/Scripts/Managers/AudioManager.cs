@@ -210,9 +210,9 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// SFX CLIP에 있는 이름을 키값으로 사용해 재생
-    /// EX) PlaySfx("CLIP NAME")
+    /// EX) PlaySFX("CLIP NAME")
     /// </summary>
-    public void PlaySfx(string sfxNameToPlay)
+    public void PlaySFX(string sfxNameToPlay)
     {
         if (!sfxName.ContainsKey(sfxNameToPlay))
         {
@@ -229,7 +229,7 @@ public class AudioManager : MonoBehaviour
 
     /// <summary>
     /// BGM CLIP에 있는 이름을 키값으로 사용해 재생
-    /// EX) PlaySfx("CLIP NAME")
+    /// EX) PlayBGM("CLIP NAME")
     /// </summary>
     public void PlayBGM(string bgmNameToPlay)
     {

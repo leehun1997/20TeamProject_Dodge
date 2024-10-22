@@ -6,6 +6,9 @@ public class BossAnimationController : AnimationController
 {
     private int isMoving = Animator.StringToHash("isMoving");
     [SerializeField] private Boss1Controller boss1Controller;
+
+    private int isHit = Animator.StringToHash("isHit");
+
     protected override void Awake()
     {
         base.Awake();
@@ -14,6 +17,11 @@ public class BossAnimationController : AnimationController
     private void Start()
     {
         dodgeController.OnMoveEvent += Move;
+
+        if (healthSystem != null)
+        {
+            healthSystem.OnDamage += Hit;
+        }
         //dodgeController.OnEvent += Launch;
         //healthSystem.OnDeath += OnDeath; 사망시 애니메이션 연출 과정에서 구독시킬 필요가 없어졌다
         //사망시 DestroyOnDeath에서 사망 애니메이션만 수행할 객체를 생성한다
@@ -26,7 +34,10 @@ public class BossAnimationController : AnimationController
         MainSpriteAnimator.SetBool(isMoving, v.magnitude > 0.5f);
     }
 
-    //사망시 애니메이션처리는 별도 객체에서 수행한다
-    //private void OnDeath()
+    private void Hit()//healthSystem.OnDamage 구독중
+    {
+        MainSpriteAnimator.SetBool(isMoving, false);
+        MainSpriteAnimator.SetTrigger(isHit);
+    }
 
 }
