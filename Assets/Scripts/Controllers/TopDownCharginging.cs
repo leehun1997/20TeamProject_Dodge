@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 public class TopDownCharginging : MonoBehaviour
 {
     [SerializeField] private Transform BulletSpawnPoint;
@@ -11,11 +12,14 @@ public class TopDownCharginging : MonoBehaviour
     private ProjectileController attackController;
     private ObjectPool pool;
 
+    private PlayerAnimationController playerAnimationController;
+
     private void Awake()
     {
         controller = GetComponent<DodgeController>();
         playerStat = GetComponent<PlayerStatHandler>();
         pool = GameObject.FindObjectOfType<ObjectPool>();
+        playerAnimationController = GetComponent<PlayerAnimationController>();
     }
 
     private void Start()
@@ -35,7 +39,7 @@ public class TopDownCharginging : MonoBehaviour
         }
     }
 
-    private void Aim2(Vector2 direction)//���� �޾ƿ���
+    private void Aim2(Vector2 direction)
     {
         shootDirection = direction;
     }
@@ -43,6 +47,8 @@ public class TopDownCharginging : MonoBehaviour
     {
         if (isCharging)
         {
+            playerAnimationController.ChargeAnimation(isCharging);
+
             if (!ready)
             {
                 ready = true;
@@ -64,6 +70,8 @@ public class TopDownCharginging : MonoBehaviour
         }
         else if (ready)
         {
+            playerAnimationController.ChargeAnimation(isCharging);
+
             ready = false;
             attackController = b.GetComponent<ProjectileController>();
             attackController.player1ChargeAttack(shootDirection, bulletSO, chargeGage);
@@ -71,6 +79,8 @@ public class TopDownCharginging : MonoBehaviour
     }
     private void CreatePlayer2SpecailAttack(BulletSO bulletSO, bool isCharging, double chargeGage)
     {
+        playerAnimationController.ChargeAnimation(isCharging);
+
         b = pool.SpawnFromPool(bulletSO.bulletNameTag);
         b.transform.position = BulletSpawnPoint.transform.position;
         b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);
