@@ -90,11 +90,7 @@ public class GameManager : MonoBehaviour
             currentTimeTxt.text = $"Time : {currentTime1:F0}";
             //Debug.Log(currentTime1);
             Score(currentSceneName);
-            if (currentTime1 > 30 && !CreateOnce)
-            {
-                CreateBoss();
-                CreateOnce = true;
-            }
+            
             currentScore = (currentTime1 * 100);
             scoreText.text = $"Score : {currentScore:F0}";
         }
@@ -183,6 +179,12 @@ public class GameManager : MonoBehaviour
             if (scoreTransform != null)
             {
                 scoreText = scoreTransform.GetComponent<TextMeshProUGUI>();
+            }
+
+            Transform pauseTransform = canvas.transform.Find("PauseUI");
+            if (pauseTransform != null)
+            {
+                pauseUI = pauseTransform.gameObject;
             }
         }
     }

@@ -29,7 +29,10 @@ public class TopDownShooting : MonoBehaviour
     {
         BulletSO bSO = bulletSO as BulletSO;
         if (bulletSO == null) return;
-
+        if(CompareTag("Player"))
+        {
+            AudioManager.Instance.PlaySFX("Shoot");
+        }
         CreateProjectile(bSO);
     }
 
