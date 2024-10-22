@@ -48,6 +48,10 @@ public class DestroyOnDeath : MonoBehaviour
             {
                 GameManager.Instance.PlayerTimeSave(); //게임 시간 저장
             }
+            else if(currentSceneName == "InfiniteMap")
+            {
+                this.gameObject.SetActive(false);
+            }
             else
             {
                 SceneManager.LoadScene("GameClear");
