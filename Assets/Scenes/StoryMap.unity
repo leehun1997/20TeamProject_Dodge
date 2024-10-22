@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &91052283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5312929310218879814, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
+  m_PrefabInstance: {fileID: 504695731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &296559384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,6 +275,14 @@ PrefabInstance:
     - target: {fileID: 2719398864747769496, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
       propertyPath: m_Name
       value: PlayerUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111379046928867360, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111379046928867360, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3620900397177697620, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
       propertyPath: m_Pivot.x
@@ -436,6 +455,10 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1860075197}
+    - target: {fileID: 736418985565312737, guid: f324282f01578584e894093c23b63add, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 91052283}
     - target: {fileID: 736418985565312737, guid: f324282f01578584e894093c23b63add, type: 3}
       propertyPath: PlayerSelectUI
       value: 
