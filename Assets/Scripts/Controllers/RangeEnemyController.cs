@@ -16,7 +16,6 @@ public class RangeEnemyController : EnemyController
 
     [SerializeField] private LayerMask levelCollisionLayer;
 
-
     protected override void Start()
     {
         base.Start();
@@ -72,6 +71,9 @@ public class RangeEnemyController : EnemyController
     {
         base.Init();
         gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+
+        SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     private void AttackPlayer(Vector2 directionToTarget)

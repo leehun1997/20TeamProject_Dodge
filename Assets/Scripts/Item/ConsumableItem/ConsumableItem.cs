@@ -6,7 +6,7 @@ public abstract class ConsumableItem : Item
     public override void UseItem()
     {
         UseConsumableItem();
-        AudioManager.Instance.PlaySfx("Pickup");
+        AudioManager.Instance.PlaySFX("Pickup");
     }
     
     protected abstract void UseConsumableItem();

@@ -63,7 +63,7 @@ public class HealthSystem : MonoBehaviour
             
             //TODO 파편 HIT 처리 할건지?
             if(CurrentHp >0)
-               AudioManager.Instance.PlaySfx("Hit");
+               AudioManager.Instance.PlaySFX("Hit");
         }
     }
     

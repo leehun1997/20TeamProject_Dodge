@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 5711151959512483830}
   - component: {fileID: 5781618988050763719}
   - component: {fileID: 451823542097882903}
+  - component: {fileID: 5563252343226431044}
   m_Layer: 6
   m_Name: ChargeSprite
   m_TagString: Untagged
@@ -544,3 +545,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5563252343226431044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926470218534970466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2af71c0d4de17428c41ca5d339ac6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

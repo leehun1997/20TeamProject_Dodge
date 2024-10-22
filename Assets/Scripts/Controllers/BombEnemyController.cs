@@ -62,6 +62,7 @@ public class BombEnemyController : EnemyController
 
         playerPastPosition = ClosesTarget.position;
         BombEnemyRenderer = GetComponentInChildren<SpriteRenderer>();
+        BombEnemyRenderer.color = new Color(1, 1, 1, 1);
         Chase();
     }
 

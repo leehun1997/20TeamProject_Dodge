@@ -29,10 +29,22 @@ public class GameManager : MonoBehaviour
     public Slider playerHealthSlider; //플레이어가 소환될 때 slider 가져오기 위함
     public Slider playerGageSlider; //플레이어가 소환될 때 slider 가져오기 위함
 
-    [Header("PauseUI")] [SerializeField] private GameObject pauseUI; 
-    
-    
-    
+    [Header("PauseUI")] [SerializeField] private GameObject pauseUI;
+
+
+    // 아이템 개수를 관리하는 딕셔너리
+    private Dictionary<ItemName, int> itemCounts = new Dictionary<ItemName, int>
+    {
+        { ItemName.PowerPack, 0 },
+        { ItemName.SpeedPack, 0 }
+    };
+
+    public Text powerPackText;
+    public Text speedPackText;
+
+    private bool CreateOnce = false;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -73,15 +85,40 @@ public class GameManager : MonoBehaviour
             currentTime1 += Time.deltaTime;
             currentTimeTxt.text = $"Time : {currentTime1:F0}";
             //Debug.Log(currentTime1);
+            Score(currentSceneName);
+            if (currentTime1 > 10 && !CreateOnce)
+            {
+                CreateBoss();
+                CreateOnce = true;
+            }
         }
         else if (currentSceneName == "StoryMap")
         {
             currentTime2 += Time.deltaTime;
             currentTimeTxt.text = $"Time : {currentTime2:F0}";
+            Score(currentSceneName);
+            if (currentTime2 > 10 && !CreateOnce)
+            {
+                CreateBoss();
+                CreateOnce = true;
+            }
         }
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void Score(string currentSceneName)
+    {
+        if (currentSceneName == "InfiniteMap")
+        {
+            currentScore = (currentTime1 * 100);
+        }
+        else if (currentSceneName == "StoryMap")
+        {
+            currentScore = (currentTime2 * 100);
+        }
+
+    }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         string sceneName = scene.name;
 
@@ -98,7 +135,12 @@ public class GameManager : MonoBehaviour
         ReconnectUI();
         ReconnectPlayerSelectUI(); // PlayerSelectUI 재연결
         ReconnectPlayerHealthSlider();
-        ReconnectPlayerGageSlider();
+        ResetItemCounts();
+    }
+    private void ResetItemCounts()
+    {
+        itemCounts[ItemName.PowerPack] = 0;
+        itemCounts[ItemName.SpeedPack] = 0;
     }
 
     private void ReconnectUI()
@@ -107,6 +149,18 @@ public class GameManager : MonoBehaviour
         GameObject canvas = GameObject.Find("PlayerUICanvas");
         if (canvas != null)
         {
+            Transform powerPackTransform = canvas.transform.Find("PowerCount");
+            if (powerPackTransform != null)
+            {
+                powerPackText = powerPackTransform.GetComponent<Text>();
+            }
+
+            Transform speedPackTransform = canvas.transform.Find("SpeedCount");
+            if (speedPackTransform != null)
+            {
+                speedPackText = speedPackTransform.GetComponent<Text>();
+            }
+
             Transform timeTransform = canvas.transform.Find("Time");
             if (timeTransform != null)
             {
@@ -156,7 +210,7 @@ public class GameManager : MonoBehaviour
             Transform sliderTransform = canvas.transform.Find("PlayerGage_Slider");
             if (sliderTransform != null)
             {
-                playerGageSlider = sliderTransform.GetComponent<Slider>();
+                playerHealthSlider = sliderTransform.GetComponent<Slider>();
             }
             else
             {
@@ -265,8 +319,6 @@ public class GameManager : MonoBehaviour
             newPlayer = Instantiate(playerPrefab);
             HealthSystem healthSystem = newPlayer.GetComponent<HealthSystem>();
             healthSystem.healthSlider = playerHealthSlider;
-            GageSystem gageSystem = newPlayer.GetComponent<GageSystem>();
-            gageSystem.gageSlider = playerGageSlider;
             Time.timeScale = 1f;
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
             Player.GetComponent<DodgeController>().OnPauseEvent -= OnPauseUI;
@@ -284,6 +336,35 @@ public class GameManager : MonoBehaviour
     public void CreateBoss() 
     {
         GameObject bossPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/Enemy/Boss"));
-        HealthSystem healthSystem = bossPrefab.GetComponent<HealthSystem>();  
+    }
+
+    public void AddItem(ItemName itemName)
+    {
+        if (itemCounts.ContainsKey(itemName))
+        {
+            itemCounts[itemName]++;
+            Debug.Log($"Added item: {itemName}, Count: {itemCounts[itemName]}");
+            UpdateItemUI(itemName);
+        }
+    }
+
+    // UI를 업데이트하는 메서드
+    private void UpdateItemUI(ItemName itemName)
+    {
+        switch (itemName)
+        {
+            case ItemName.PowerPack:
+                if (powerPackText != null)
+                {
+                    powerPackText.text = "X" + itemCounts[itemName].ToString();
+                }
+                break;
+            case ItemName.SpeedPack:
+                if (speedPackText != null)
+                {
+                    speedPackText.text = "X " + itemCounts[itemName].ToString();
+                }
+                break;
+        }
     }
 }

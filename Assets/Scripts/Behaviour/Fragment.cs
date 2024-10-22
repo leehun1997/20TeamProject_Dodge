@@ -36,34 +36,12 @@ public class Fragment : MonoBehaviour
 
     private void OnDestroyMe() // 파괴됐을 때 생기는 함수 
     {
-        gameObject.GetComponentInParent<OnDeathFragment>().FragmentDisable();
+        if(gameObject.GetComponentInParent<OnDeathFragment>() != null)
+        {
+            gameObject.GetComponentInParent<OnDeathFragment>().FragmentDisable();
+        }
+
         Destroy(this.gameObject);
     }
 
-    private bool IsLayerMatched(int value, int layer) //���̾� ����ũ�� 2���� ���������� 2������ �ƴϴ�. 
-    {
-        return
-            value == (value |
-                      1 << layer); //���� ���ϴ� ��ȣ�� ���̾� ����ũ���� Ȯ��, �ٸ� ���̾�� �Ҽ����� ���� �ƴ��� �� �� ����
-    }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (IsLayerMatched(levelCollisionLayer.value, collision.gameObject.layer))
-        {
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-            Push();
-        }
-    }
-
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (IsLayerMatched(levelCollisionLayer.value, collision.gameObject.layer))
-        {
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-            OnDestroyMe();
-        }
-    }
 }

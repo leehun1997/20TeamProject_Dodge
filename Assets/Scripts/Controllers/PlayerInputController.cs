@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.UI;
@@ -40,12 +40,12 @@ public class PlayerInputController : DodgeController
     }
     public void OnRightMouse(InputValue value)
     {
-        if(value.isPressed)//������
+        if(value.isPressed)//占쏙옙占쏙옙占쏙옙
         {
             isCharging= true;
             Debug.Log("Charging");
         } 
-        else if(value.isPressed == false && isCharging == true)//player1�� Ư�� ����
+        else if(value.isPressed == false && isCharging == true)//player1의 특수 공격
         {
             isCharging= false;
             if (chargeGage == 0) return;
