@@ -85,7 +85,7 @@ public class ProjectileController : MonoBehaviour
         this.direction = direction;
 
 
-        chargeGage = chargeGage < 1 ? chargeGage : 1;
+        chargeGage = chargeGage < 3 ? chargeGage : 3;
         UpdateProjectile(chargeGage);
         //trailRenderer.Clear();//�ʿ������ ����        
 
