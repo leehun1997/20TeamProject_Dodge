@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
         }
         else if (currentSceneName == "StoryMap")
         {
-            EndGameMap2(); // 최단 시간 저장
+            //EndGameMap2(); // 최단 시간 저장
         }
 
         SaveScore(); // 점수 저장
@@ -391,7 +391,6 @@ public class GameManager : MonoBehaviour
         if (itemCounts.ContainsKey(itemName))
         {
             itemCounts[itemName]++;
-            Debug.Log($"Added item: {itemName}, Count: {itemCounts[itemName]}");
             UpdateItemUI(itemName);
         }
     }
