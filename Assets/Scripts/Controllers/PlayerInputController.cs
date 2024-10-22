@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.UI;
 
 public class PlayerInputController : DodgeController
 {
     private Camera camera;
-    
+
     protected override void Awake()
     {
         base.Awake();
@@ -42,7 +43,7 @@ public class PlayerInputController : DodgeController
         if(value.isPressed)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             isCharging= true;
-            Debug.Log("Charging");            
+            Debug.Log("Charging");
         } 
         else if(value.isPressed == false && isCharging == true)//player1ÀÇ Æ¯¼ö °ø°Ý
         {
@@ -51,7 +52,7 @@ public class PlayerInputController : DodgeController
 
             Debug.Log("Special Attack" + chargeGage);
             CallChargeAttackEvent(statHandler.currentStat.specialBulletSO,isCharging, chargeGage);
-            currentGage -= (int)chargeGage;
+            currentGage -= chargeGage;
             chargeGage= 0f;
         }
     }
