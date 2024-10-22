@@ -10,7 +10,7 @@ public class PowerPack : ConsumableItem
     protected override void UseConsumableItem()
     {
         playerStat.UpdateStat(StatType.BulletDamage, powerUP);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     
 }

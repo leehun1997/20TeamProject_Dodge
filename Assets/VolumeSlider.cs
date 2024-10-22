@@ -16,6 +16,7 @@ public class VolumeSlider : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
+        slider.value = AudioManager.Instance.bgmAudioSource.volume;
         slider.onValueChanged.AddListener(SetVolume);
     }
 

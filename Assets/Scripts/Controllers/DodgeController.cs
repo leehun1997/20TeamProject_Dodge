@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class DodgeController : MonoBehaviour
 {
+
+    public event Action OnPauseEvent;
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<BulletSO> OnAttackEvent;
-    public event Action<BulletSO,double> OnChargeEvent;
+    public event Action<BulletSO, bool, double> OnChargeEvent;
     protected bool isAttacking { get; set; }
     protected bool isCharging { get; set; }
 
@@ -26,12 +28,32 @@ public class DodgeController : MonoBehaviour
 
     protected virtual void Start()
     {
-        statHandler = GetComponent<CharacterStatHandler>();
+
         currentGage = statHandler.currentStat.characterStatSO.MaxGage;
     }
 
     protected virtual void Update()
     {
+        if (isCharging)//차지중이면 공격불가로 만들기?
+        {
+            if (currentGage <= 0)
+            {
+                Debug.Log($"Can't Use SpecialAttack! {currentGage} {chargeGage}");
+                return;
+            }
+            else if (chargeGage >= currentGage)
+            {
+                Debug.Log($"Full Charge! {chargeGage} {currentGage}");
+                chargeGage = currentGage;
+                CallChargeAttackEvent(statHandler.currentStat.specialBulletSO, isCharging, chargeGage);
+            }
+            else
+            {
+                chargeGage += Time.deltaTime;
+                CallChargeAttackEvent(statHandler.currentStat.specialBulletSO, isCharging, chargeGage);
+            }
+        }
+
         if (isAttacking && delayTime <= 0)
         {
             delayTime = statHandler.currentStat.bulletSO.delay;
@@ -40,18 +62,6 @@ public class DodgeController : MonoBehaviour
         else
         {
             delayTime -= Time.deltaTime;
-        }
-        if (isCharging)
-        {
-            if (currentGage == 0) { Debug.Log("Can't Use SpecialAttack!"); return; }
-
-            if (chargeGage >= currentGage)
-            {
-                Debug.Log("Full Charge!");
-                chargeGage = currentGage;
-            }
-            else
-                chargeGage += Time.deltaTime;
         }
     }
 
@@ -67,11 +77,16 @@ public class DodgeController : MonoBehaviour
     }
     public void CallAttackEvent(BulletSO attackSO)
     {
-       OnAttackEvent?.Invoke(attackSO);
+        OnAttackEvent?.Invoke(attackSO);
     }
-    public void CallChargeAttackEvent(BulletSO attackSO,double chargeGage)
+    public void CallChargeAttackEvent(BulletSO attackSO, bool isCharging, double chargeGage)
     {
-        OnChargeEvent?.Invoke(attackSO,chargeGage);
+        OnChargeEvent?.Invoke(attackSO, isCharging, chargeGage);
+    }
+
+    public void CallPauseEvent()
+    {
+        OnPauseEvent?.Invoke();
     }
 }
 

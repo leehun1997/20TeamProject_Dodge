@@ -13,5 +13,5 @@ public class CharacterStat
     [Header ("캐릭터 유형에 맞는 SO를 연결해야함")]
     public CharacterStatSO characterStatSO;
     public BulletSO bulletSO;
-
+    public BulletSO specialBulletSO;
 }

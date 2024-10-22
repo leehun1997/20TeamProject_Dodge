@@ -18,6 +18,11 @@ public class PlayerInputController : DodgeController
           CallMoveEvent(moveInput);
      }
 
+    public void OnPause(InputValue value)
+    {
+        CallPauseEvent();
+    }
+
      
     
     public void OnLook(InputValue value)
@@ -34,20 +39,20 @@ public class PlayerInputController : DodgeController
     }
     public void OnRightMouse(InputValue value)
     {
-        if(value.isPressed)//Â÷ÁöÁß
+        if(value.isPressed)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             isCharging= true;
-            Debug.Log("Charging");
+            Debug.Log("Charging");            
         } 
-        else if(value.isPressed == false && isCharging == true)
+        else if(value.isPressed == false && isCharging == true)//player1ÀÇ Æ¯¼ö °ø°Ý
         {
             isCharging= false;
             if (chargeGage == 0) return;
 
-            Debug.Log("Charge Attack" + chargeGage);
-            CallChargeAttackEvent(statHandler.currentStat.bulletSO, chargeGage);
+            Debug.Log("Special Attack" + chargeGage);
+            CallChargeAttackEvent(statHandler.currentStat.specialBulletSO,isCharging, chargeGage);
             currentGage -= (int)chargeGage;
-            chargeGage= 0;
+            chargeGage= 0f;
         }
     }
 }
