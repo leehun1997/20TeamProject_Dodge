@@ -133,7 +133,6 @@ public class Boss1Controller : EnemyController
     private Transform FindFragment()
     {
             RaycastHit2D findFrag = Physics2D.CircleCast(transform.position, 15, transform.position);
-            Debug.Log(findFrag.collider);
             if (isfindFrag == true) { return ClosesFragment; }
             if (findFrag.collider.CompareTag("Fragment"))
             {

@@ -52,7 +52,6 @@ public class TopDownCharginging : MonoBehaviour
             if (!ready)
             {
                 ready = true;
-                //b = Instantiate(bulletSO.bulletPrefab, BulletSpawnPoint.transform.position, Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg));
                 b = pool.SpawnFromPool(bulletSO.bulletNameTag);
                 b.transform.position = BulletSpawnPoint.transform.position;
                 b.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);

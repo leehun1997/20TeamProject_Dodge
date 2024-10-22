@@ -29,9 +29,16 @@ public class GageSystem : MonoBehaviour
 
 
 
-    public void ChangeGage()
+    public void ChangeGage(double _currentGage, double chargeGage)
     {
-        gageSlider.value = (float)((currentGage-cHargeGage)/maxGage);
+        gageSlider.value = (float)((_currentGage-chargeGage)/maxGage);
+    }
+    public void ChangeGage(double gage)
+    {
+        currentGage += gage;
+        if(currentGage > maxGage)
+            currentGage= maxGage;
+        gageSlider.value = (float)((currentGage)/maxGage);
     }
 
 

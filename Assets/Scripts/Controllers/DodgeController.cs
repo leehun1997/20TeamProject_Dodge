@@ -21,7 +21,7 @@ public class DodgeController : MonoBehaviour
     protected double chargeGage = 0;
 
     protected CharacterStatHandler statHandler { get; set; }
-    private GageSystem gageSystem;
+    protected GageSystem gageSystem;
 
     protected virtual void Awake()
     {
@@ -39,9 +39,8 @@ public class DodgeController : MonoBehaviour
     {
         if (isCharging)//차지중이면 공격불가로 만들기?
         {
-            gageSystem.currentGage = currentGage;
-            gageSystem.cHargeGage = chargeGage;
-            gageSystem.ChangeGage();
+            currentGage = gageSystem.currentGage;
+            gageSystem.ChangeGage(currentGage, chargeGage);
             if (currentGage <= 0)
             {
                 Debug.Log($"Can't Use SpecialAttack! {currentGage} {chargeGage}");

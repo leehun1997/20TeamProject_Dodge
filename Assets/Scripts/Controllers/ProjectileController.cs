@@ -56,7 +56,6 @@ public class ProjectileController : MonoBehaviour
 
     public void InitiateAttack(Vector2 direction, BulletSO bulletSO)
     {
-        Debug.Log("InitiateAttack");
         this.attackData = bulletSO;
         this.direction = direction;
 
@@ -116,7 +115,6 @@ public class ProjectileController : MonoBehaviour
             //������ ��� �ʿ�
             healthSystem = collision.GetComponent<HealthSystem>();
             healthSystem.ChangeHP(-attackData.damage);
-            Debug.Log("공격력"+attackData.damage + "  " + healthSystem.CurrentHp);
 
             DestroyProjectile(collision.ClosestPoint(transform.position));
         }
@@ -130,7 +128,6 @@ public class ProjectileController : MonoBehaviour
 
     private void DestroyProjectile(Vector2 destroyPosition)
     {
-        //�ı� ����Ʈ �߰� �� ��ġ ������ �ʿ�
         gameObject.SetActive(false);
         timeAfterShoot = 0;
     }
