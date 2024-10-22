@@ -41,7 +41,7 @@ public class HealthSystem : MonoBehaviour
 
     public void ChangeHP(float amount)
     {
-        
+
         CurrentHp = Mathf.Min(amount + CurrentHp , maxHp);
  
         if (isPlayer && healthSlider != null)
@@ -60,9 +60,8 @@ public class HealthSystem : MonoBehaviour
         else
         {
             OnDamage?.Invoke();
-            
             //TODO 파편 HIT 처리 할건지?
-            if(CurrentHp >0)
+            if (CurrentHp >0)
                AudioManager.Instance.PlaySFX("Hit");
         }
     }

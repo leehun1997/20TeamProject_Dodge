@@ -58,7 +58,6 @@ public class PlayerAnimationController : AnimationController
 
     public void CooldownEnd()//Anim_PlayerChargingCooldownEnd.cs에서 호출될것
     {
-        Debug.Log("타냐?");
         ChargeAnimator.SetBool(isCooldown, false);
         Debug.Log(isCooldown);
     }
