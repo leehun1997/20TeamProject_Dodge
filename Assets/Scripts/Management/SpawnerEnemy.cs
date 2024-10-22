@@ -83,8 +83,8 @@ public class SpawnerEnemy : MonoBehaviour
 
     private void randomPos() 
     {
-        float sup = 12f;
-        randomPosX = Random.Range(-12f,12f);
+        float sup = 7.5f;
+        randomPosX = Random.Range(-7.5f,7.5f);
         randomPosY = sup - MathF.Abs(randomPosX);
         randomPosY = Random.Range(-1, 1) == -1 ? -randomPosY : randomPosY;
 

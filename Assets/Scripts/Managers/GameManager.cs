@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             currentTimeTxt.text = $"Time : {currentTime1:F0}";
             //Debug.Log(currentTime1);
             Score(currentSceneName);
-            if (currentTime1 > 10 && !CreateOnce)
+            if (currentTime1 > 30 && !CreateOnce)
             {
                 CreateBoss();
                 CreateOnce = true;
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
             currentTime2 += Time.deltaTime;
             currentTimeTxt.text = $"Time : {currentTime2:F0}";
             Score(currentSceneName);
-            if (currentTime2 > 10 && !CreateOnce)
+            if (currentTime2 > 30 && !CreateOnce)
             {
                 CreateBoss();
                 CreateOnce = true;
@@ -135,10 +135,12 @@ public class GameManager : MonoBehaviour
         if (sceneName == "InfiniteMap")
         {
             currentTime1 = 0f;
+            CreateOnce = false;
         }
         else if (sceneName == "StoryMap")
         {
             currentTime2 = 0f;
+            CreateOnce = false;
         }
 
         ReconnectUI();
@@ -375,7 +377,6 @@ public class GameManager : MonoBehaviour
             Player.GetComponent<DodgeController>().OnPauseEvent -= OnPauseUI;
             Player.GetComponent<DodgeController>().OnPauseEvent += OnPauseUI;
             ObjectPool.instance.CreatePools();
-            CreateBoss();
         }
         
         else
