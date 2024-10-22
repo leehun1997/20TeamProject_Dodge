@@ -90,11 +90,7 @@ public class GameManager : MonoBehaviour
             currentTimeTxt.text = $"Time : {currentTime1:F0}";
             //Debug.Log(currentTime1);
             Score(currentSceneName);
-            if (currentTime1 > 30 && !CreateOnce)
-            {
-                CreateBoss();
-                CreateOnce = true;
-            }
+            
             currentScore = (currentTime1 * 100);
             scoreText.text = $"Score : {currentScore:F0}";
         }
@@ -184,6 +180,12 @@ public class GameManager : MonoBehaviour
             {
                 scoreText = scoreTransform.GetComponent<TextMeshProUGUI>();
             }
+
+            Transform pauseTransform = canvas.transform.Find("PauseUI");
+            if (pauseTransform != null)
+            {
+                pauseUI = pauseTransform.gameObject;
+            }
         }
     }
 
@@ -246,7 +248,7 @@ public class GameManager : MonoBehaviour
         }
         else if (currentSceneName == "StoryMap")
         {
-            EndGameMap2(); // 최단 시간 저장
+            //EndGameMap2(); // 최단 시간 저장
         }
 
         SaveScore(); // 점수 저장
@@ -395,7 +397,6 @@ public class GameManager : MonoBehaviour
         if (itemCounts.ContainsKey(itemName))
         {
             itemCounts[itemName]++;
-            Debug.Log($"Added item: {itemName}, Count: {itemCounts[itemName]}");
             UpdateItemUI(itemName);
         }
     }
