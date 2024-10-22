@@ -17,7 +17,7 @@ public class DodgeController : MonoBehaviour
     private float delayTime = 0f;
 
     protected double maxGage;
-    protected double currentGage;
+    public double currentGage;
     protected double chargeGage = 0;
 
     protected CharacterStatHandler statHandler { get; set; }

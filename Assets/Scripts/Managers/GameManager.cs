@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
         ReconnectUI();
         ReconnectPlayerSelectUI(); // PlayerSelectUI 재연결
         ReconnectPlayerHealthSlider();
+        ReconnectPlayerGageSlider();
         ResetItemCounts();
     }
     private void ResetItemCounts()
@@ -210,7 +211,7 @@ public class GameManager : MonoBehaviour
             Transform sliderTransform = canvas.transform.Find("PlayerGage_Slider");
             if (sliderTransform != null)
             {
-                playerHealthSlider = sliderTransform.GetComponent<Slider>();
+                playerGageSlider = sliderTransform.GetComponent<Slider>();
             }
             else
             {
@@ -319,6 +320,8 @@ public class GameManager : MonoBehaviour
             newPlayer = Instantiate(playerPrefab);
             HealthSystem healthSystem = newPlayer.GetComponent<HealthSystem>();
             healthSystem.healthSlider = playerHealthSlider;
+            GageSystem gageSystem = newPlayer.GetComponent<GageSystem>();
+            gageSystem.gageSlider = playerGageSlider;
             Time.timeScale = 1f;
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
             Player.GetComponent<DodgeController>().OnPauseEvent -= OnPauseUI;
