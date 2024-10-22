@@ -71,6 +71,7 @@ public class ProjectileController : MonoBehaviour
         Debug.Log("Player1 Special Attack");
         this.attackData = bulletSO;
         this.direction = direction;
+        attackData.damage = (float)chargeGage * 2;
         Debug.Log(attackData);
 
         //trailRenderer.Clear();//�ʿ������ ����        
