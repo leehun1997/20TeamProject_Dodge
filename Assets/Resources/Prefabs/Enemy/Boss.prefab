@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6717619584339008558}
   - component: {fileID: 7755885405397698707}
   m_Layer: 7
-  m_Name: RangeEnemySprite
+  m_Name: BossEnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 3610450871631584274}
   m_Layer: 7
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5210dc794a6c3d42a442dec6f0df42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGage: 0
   walkTargetRange: 12.4
   attackTargetRange: 100
   collidingDamage: 10
@@ -579,6 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffba32e57d1458e438893697144f6261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGage: 0
   walkTargetRange: 100
   attackTargetRange: 100
   Target:
