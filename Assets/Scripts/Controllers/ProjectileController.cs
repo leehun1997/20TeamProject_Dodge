@@ -128,7 +128,6 @@ public class ProjectileController : MonoBehaviour
 
     private void DestroyProjectile(Vector2 destroyPosition)
     {
-        //�ı� ����Ʈ �߰� �� ��ġ ������ �ʿ�
         gameObject.SetActive(false);
         timeAfterShoot = 0;
     }

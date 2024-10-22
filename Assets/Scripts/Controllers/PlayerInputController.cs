@@ -54,6 +54,7 @@ public class PlayerInputController : DodgeController
             CallChargeAttackEvent(statHandler.currentStat.specialBulletSO,isCharging, chargeGage);
             currentGage -= chargeGage;
             chargeGage= 0f;
+            gageSystem.currentGage = currentGage;
         }
     }
 }
