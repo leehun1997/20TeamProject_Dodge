@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.U2D.Animation;
+using UnityEngine.U2D.Animation;
 using UnityEngine;
 
 public class Fragment : MonoBehaviour
@@ -21,7 +21,7 @@ public class Fragment : MonoBehaviour
 
     private void Start()
     {
-        healthSystem.OnDeath += OnDestroyMe;
+        healthSystem.OnDeath += OnDisableMe;
         Push();
     }
 
@@ -34,14 +34,20 @@ public class Fragment : MonoBehaviour
 
     //유니티에서 이미 제공하는 메서드들은 이벤트 구독자로 사용 하면 문제가 생길 수 있음, 
 
-    private void OnDestroyMe() // 파괴됐을 때 생기는 함수 
+    private void OnDisableMe() //파괴시 SetActive(false);
     {
-        if(gameObject.GetComponentInParent<OnDeathFragment>() != null)
+        //if(gameObject.GetComponentInParent<OnDeathFragment>() != null)
+        //{
+        //    gameObject.GetComponentInParent<OnDeathFragment>().FragmentDisable();
+        //}
+
+        //Destroy(this.gameObject);
+
+        if (gameObject.GetComponentInParent<OnDeathFragment>() != null)
         {
             gameObject.GetComponentInParent<OnDeathFragment>().FragmentDisable();
+            this.gameObject.SetActive(false);
         }
-
-        Destroy(this.gameObject);
     }
 
 }

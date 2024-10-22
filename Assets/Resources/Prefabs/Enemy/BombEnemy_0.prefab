@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88638ee454efd2429235063cd249ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationTime: 2
+  accelerationTime: 0
 --- !u!114 &6234219418161166882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +276,7 @@ MonoBehaviour:
   characterStat:
     characterStatSO: {fileID: 11400000, guid: 5e9ac201e582faf4694204e5d25e6fd0, type: 2}
     bulletSO: {fileID: 11400000, guid: a8759f8520eef7e42b325c7c3328b9a3, type: 2}
+    specialBulletSO: {fileID: 0}
   baseEnemyStatSO: {fileID: 11400000, guid: a733eabc0b006aa4699493b55350882d, type: 2}
   baseEnemyBulletSO: {fileID: 11400000, guid: 6f345c5985c19c745bb02f4ca2bee3bc, type: 2}
 --- !u!114 &5994523031063967565
@@ -302,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35034a672f3d884c952b37ba6b9ceb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGage: 0
   walkTargetRange: 0
   targetTag: Player
   CSO: {fileID: 0}
