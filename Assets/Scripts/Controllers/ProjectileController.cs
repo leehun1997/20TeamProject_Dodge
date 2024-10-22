@@ -85,7 +85,7 @@ public class ProjectileController : MonoBehaviour
         this.direction = direction;
 
 
-        chargeGage = chargeGage < 1 ? chargeGage : 1;
+        chargeGage = chargeGage < 3 ? chargeGage : 3;
         UpdateProjectile(chargeGage);
         //trailRenderer.Clear();//�ʿ������ ����        
 
@@ -129,7 +129,6 @@ public class ProjectileController : MonoBehaviour
 
     private void DestroyProjectile(Vector2 destroyPosition)
     {
-        //�ı� ����Ʈ �߰� �� ��ġ ������ �ʿ�
         gameObject.SetActive(false);
         timeAfterShoot = 0;
     }
