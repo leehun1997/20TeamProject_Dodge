@@ -180,6 +180,12 @@ public class GameManager : MonoBehaviour
             {
                 scoreText = scoreTransform.GetComponent<TextMeshProUGUI>();
             }
+
+            Transform pauseTransform = canvas.transform.Find("PauseUI");
+            if (pauseTransform != null)
+            {
+                pauseUI = pauseTransform.gameObject;
+            }
         }
     }
 
