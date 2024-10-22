@@ -22,6 +22,8 @@ public abstract class Item : MonoBehaviour
 
     public SpriteRenderer SpriteRenderer { get; private set; }
 
+    public ItemName itemName; // 아이템의 이름을 지정하는 필드
+
     protected virtual void Awake()
     {
         Player = GameManager.Instance.Player; //추후 GameManger 혹은 DataManager 클래스에서 Player오브젝트 저장 후 가져오기도 가능
