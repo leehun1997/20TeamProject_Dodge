@@ -69,7 +69,7 @@ public class BombEnemyController : EnemyController
     private void ApplyDamage()
     {
         //EnemyStatSO bombEnemyStatSO = statHandler.currentStat.characterStatSO as EnemyStatSO;
-        SupHealth.ChangeHP(-20f);
+        SupHealth.ChangeHP(-5f);
     }
 
     private void Chase()
