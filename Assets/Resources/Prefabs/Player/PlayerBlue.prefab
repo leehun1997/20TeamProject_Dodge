@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 8946084660264426041}
   - component: {fileID: 4490400211285329538}
   - component: {fileID: -1238248532627094405}
+  - component: {fileID: 4157650726783358243}
   m_Layer: 6
   m_Name: PlayerBlue
   m_TagString: Player
@@ -315,6 +316,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletSpawnPoint: {fileID: 5429872082459762682}
+--- !u!114 &4157650726783358243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3860057544589093311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22de4f4eb7ab3f34a8ecb874f96c209a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGage: 0
+  cHargeGage: 0
+  gageSlider: {fileID: 0}
+  isPlayer: 0
 --- !u!1 &6774978496482717757
 GameObject:
   m_ObjectHideFlags: 0

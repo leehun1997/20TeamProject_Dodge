@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour
     private float highTime = 0f; //최고 시간
     private float lowTime = 0f; //가장 빨리 깬 시간을 저장
     private float currentTime2 = 0f; //현재 시간
-    [Header("Score")] public float currentScore; //현재 점수
+
+    [Header("Score")] 
+    public float currentScore; //현재 점수
+    public TextMeshProUGUI scoreText;
     public float highScore; //최고 점수
 
     [Header("PlayerSelect")] private GameObject playerPrefab; //Prefab불러오기
@@ -67,6 +70,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         playerPrefab = Resources.Load<GameObject>("Prefabs/Player/PlayerBlue"); //플레이어 선택을 위해 리소스에서 플레이어를 받아온다.
         LoadTimes(); // 최고 기록 및 최단 기록 불러오기
+        LoadScore(); // 점수 불러오기
     }
 
     private void OnPauseUI()
@@ -91,6 +95,8 @@ public class GameManager : MonoBehaviour
                 CreateBoss();
                 CreateOnce = true;
             }
+            currentScore = (currentTime1 * 100);
+            scoreText.text = $"Score : {currentScore:F0}";
         }
         else if (currentSceneName == "StoryMap")
         {
@@ -102,6 +108,9 @@ public class GameManager : MonoBehaviour
                 CreateBoss();
                 CreateOnce = true;
             }
+
+            currentScore = (currentTime2 * 100);
+            scoreText.text = $"Score : {currentScore:F0}";
         }
     }
 
@@ -118,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         string sceneName = scene.name;
 
@@ -135,6 +144,7 @@ public class GameManager : MonoBehaviour
         ReconnectUI();
         ReconnectPlayerSelectUI(); // PlayerSelectUI 재연결
         ReconnectPlayerHealthSlider();
+        ReconnectPlayerGageSlider();
         ResetItemCounts();
     }
     private void ResetItemCounts()
@@ -165,6 +175,12 @@ public class GameManager : MonoBehaviour
             if (timeTransform != null)
             {
                 currentTimeTxt = timeTransform.GetComponent<TextMeshProUGUI>();
+            }
+
+            Transform scoreTransform = canvas.transform.Find("Score");
+            if (scoreTransform != null)
+            {
+                scoreText = scoreTransform.GetComponent<TextMeshProUGUI>();
             }
         }
     }
@@ -210,19 +226,13 @@ public class GameManager : MonoBehaviour
             Transform sliderTransform = canvas.transform.Find("PlayerGage_Slider");
             if (sliderTransform != null)
             {
-                playerHealthSlider = sliderTransform.GetComponent<Slider>();
+                playerGageSlider = sliderTransform.GetComponent<Slider>();
             }
             else
             {
                 Debug.LogWarning("PlayerGage_Slider를 찾을 수 없습니다.");
             }
         }
-    }
-
-    
-    public void Score()
-    {
-        //몬스터 죽었을 때 점수를 받아오는 로직
     }
 
     public void PlayerTimeSave()
@@ -237,8 +247,39 @@ public class GameManager : MonoBehaviour
             EndGameMap2(); // 최단 시간 저장
         }
 
+        SaveScore(); // 점수 저장
+
         SceneManager.LoadScene("GameOver");
         //Time.timeScale = 0f;
+    }
+
+    private void SaveScore()
+    {
+        // 현재 점수를 저장
+        PlayerPrefs.SetFloat("CurrentScore", currentScore);
+
+        // 최고 점수를 갱신하고 저장
+        if (currentScore > highScore)
+        {
+            highScore = currentScore;
+            PlayerPrefs.SetFloat("HighScore", highScore);
+            Debug.Log("새로운 최고 점수: " + highScore);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    private void LoadScore()
+    {
+        if (PlayerPrefs.HasKey("CurrentScore"))
+        {
+            currentScore = PlayerPrefs.GetFloat("CurrentScore");
+        }
+
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highScore = PlayerPrefs.GetFloat("HighScore");
+        }
     }
 
     public void PlayerClear()
@@ -298,6 +339,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + currentScore.ToString("F0");
+        }
+    }
+
     public void PlayerBlue() //Blue를 골랐을 때
     {
         playerPrefab = Resources.Load<GameObject>("Prefabs/Player/PlayerBlue");
@@ -319,6 +368,8 @@ public class GameManager : MonoBehaviour
             newPlayer = Instantiate(playerPrefab);
             HealthSystem healthSystem = newPlayer.GetComponent<HealthSystem>();
             healthSystem.healthSlider = playerHealthSlider;
+            GageSystem gageSystem = newPlayer.GetComponent<GageSystem>();
+            gageSystem.gageSlider = playerGageSlider;
             Time.timeScale = 1f;
             Player = GameObject.FindGameObjectWithTag(playerTag).transform;
             Player.GetComponent<DodgeController>().OnPauseEvent -= OnPauseUI;

@@ -5,6 +5,7 @@ public enum ItemName
     HealPack = 0,
     PowerPack,
     SpeedPack,
+    GagePack,
     Count
 }
 
@@ -25,6 +26,9 @@ public class ItemDropper : Dropper
                 break;
             case 2:
                 itemName = ItemName.SpeedPack.ToString();
+                break;
+            case 3:
+                itemName = ItemName.GagePack.ToString();
                 break;
             default:
                 itemName = ItemName.HealPack.ToString();

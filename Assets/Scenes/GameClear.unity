@@ -250,6 +250,7 @@ MonoBehaviour:
   buttonClickSound: {fileID: 8300000, guid: 75c7655413e2ff24a8ccc681f3d826fd, type: 3}
   highTimeTxt: {fileID: 423360936680170554}
   lowTimeTxt: {fileID: 4800939577448688217}
+  highScoreText: {fileID: 8636142473760961532}
 --- !u!82 &334534382
 AudioSource:
   m_ObjectHideFlags: 0
@@ -699,6 +700,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 346cb354ce2cf024e8dd8f83e068fc6a, type: 3}
+--- !u!114 &8636142473760961532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1516006288863170437, guid: 346cb354ce2cf024e8dd8f83e068fc6a, type: 3}
+  m_PrefabInstance: {fileID: 8636142473760961531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
