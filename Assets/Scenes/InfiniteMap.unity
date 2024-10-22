@@ -342,6 +342,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5719740328676830204}
     - target: {fileID: 736418985565312737, guid: f324282f01578584e894093c23b63add, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 1423392607}
+    - target: {fileID: 736418985565312737, guid: f324282f01578584e894093c23b63add, type: 3}
       propertyPath: powerPackText
       value: 
       objectReference: {fileID: 1386327154}
@@ -636,6 +640,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1423392607 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5312929310218879814, guid: e027d2fcb1cb29840b9ce80f38e09ddc, type: 3}
+  m_PrefabInstance: {fileID: 2396647710019631342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1646377649
