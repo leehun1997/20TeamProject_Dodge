@@ -18,6 +18,7 @@ public class GameUI : MonoBehaviour
     [Header("�ְ�����,�ð�")]
     [SerializeField] private TextMeshProUGUI highTimeTxt;
     [SerializeField] private TextMeshProUGUI lowTimeTxt;
+    [SerializeField] private TextMeshProUGUI highScoreText;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class GameUI : MonoBehaviour
         //PlayerPrefs.DeleteKey("LowTime");
         LoadBestTime();
         LoadLowTime();
+        LoadHighScore();
     }
     public void StartGame(string sceneName)
     {
@@ -98,6 +100,20 @@ public class GameUI : MonoBehaviour
         else
         {
             lowTimeTxt.text = "No Time Recorded";
+        }
+    }
+
+    private void LoadHighScore()
+    {
+        // GameManager의 Instance를 통해 최고 점수를 가져옴
+        if (GameManager.Instance != null)
+        {
+            float highScore = GameManager.Instance.highScore;
+            highScoreText.text = $"High Score: {highScore:F0}";
+        }
+        else
+        {
+            highScoreText.text = "No Score Recorded";
         }
     }
 }
